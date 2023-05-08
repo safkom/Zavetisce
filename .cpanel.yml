@@ -2,7 +2,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/safkoeu/public_html/
+    - export DEPLOYPATH=/home/safkoeu/public_html/zavetisce
     - /bin/cp -R .vscode $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R css $DEPLOYPATH
