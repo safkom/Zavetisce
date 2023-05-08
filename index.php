@@ -12,6 +12,7 @@
         echo $_COOKIE['prijava'];
         setcookie('prijava', '');
     ?>
+    <p>A dela?</p>
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label><br>
   <input type="text" id="email" name="email"><br>
