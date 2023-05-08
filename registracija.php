@@ -10,6 +10,7 @@
 </head>
 <body>
   <?php
+  require_once 'cookie.php';
   echo '<p>'.$_COOKIE['register'].'</p>'
   ?>
  <form action="register.php" method="get">
