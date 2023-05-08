@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "safko.eu";
 $username = "safkoeu_miha";
 $password = "m1h42005";
 $database = "safkoeu_zavetisce";

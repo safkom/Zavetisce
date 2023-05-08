@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
-    <title>Zavetiščee</title>
+    <title>Zavetišče</title>
 </head>
 <body>
-
+    <?php
+        echo $_COOKIE['prijava'];
+        setcookie('prijava', '');
+    ?>
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label><br>
   <input type="text" id="email" name="email"><br>
