@@ -95,7 +95,7 @@ echo "Seznam kužkov:";
             $klic2 = mysqli_query($conn,$sql);
             $klic3 = mysqli_fetch_array($klic2);
             $datum = $klic3['datum'];
-            $rezervacija = 'Da, ' + $datum;
+            $rezervacija = 'Da, '.$datum;
         }
 
         echo'<tr>';
