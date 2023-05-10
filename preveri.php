@@ -13,6 +13,7 @@ if (mysqli_num_rows($result) > 0) {
     if (password_verify($password, $hash)) {
         if($row['admin'] == 1){
             setcookie('id', $row['id']);
+            setcookie('admin', 1);
             setcookie('prijava', "Prijava uspešna.");
             header('Location: admin.php');
             exit();
