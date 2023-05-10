@@ -39,7 +39,7 @@
 </datalist>
   <input type="submit" value="Pošlji">
 </form>
-<p>Ste že uporabnik? <a href = "index.html">Pojdite na prijavo</a>
+<p>Ste že uporabnik? <a href = "index.php">Pojdite na prijavo</a>
 
 </body>
 </html>
