@@ -33,10 +33,11 @@ echo "<a href='admin-rezervacije.php'>Rezervacije</a><br>";
 echo "Seznam kužkov:";
     echo '<table border ="1">';
     echo'<tr>';
-        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviraj</b></td>";
+        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td>";
         echo'</tr>';
 
     while($row=mysqli_fetch_array($result)){
+        $zival_id = $row['id'];
         $slikaid = $row['slika_id'];
         $sql = "SELECT * FROM slike WHERE id = ".$slikaid.";";
         $klic = mysqli_query($conn,$sql);
@@ -83,7 +84,11 @@ echo "Seznam kužkov:";
             $posvojen = 'Ne';
         }
         else{
-            $posvojen = 'Da';
+            $sql = "SELECT * FROM rezervacija WHERE zival_id = '".$zival_id."'";
+            $klic2 = mysqli_query($conn,$sql);
+            $klic3 = mysqli_fetch_array($kli2);
+            $datum = $klic3['datum'];
+            $posvojen = 'Da, ' + $datum;
         }
 
         if(is_null($row['rezervacija_id'])){
