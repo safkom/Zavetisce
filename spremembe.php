@@ -13,15 +13,15 @@
   require_once 'cookie.php';
   require_once 'connect.php';
   $sql = "SELECT * from zivali WHERE id = ".$_GET['zival_id'].";";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result)?>
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_array($result)?>
  <form action="register.php" method="get">
     <label for="ime">Ime:</label><br>
   <input type="text" id="ime" name="ime" value = "<?php echo $row['ime']?>" required><br>
   <label for="datum">Datum rojstva:</label><br>
   <input type="date" id="datum" name="datum" value = "<?php echo $row['datum_r']?>" required><br>
   <label for="posvojen">Posvojen:</label><br>
-  <input type="checkbox" id="posvojen" name="posvojen" value = "<?php echo $row['posvojen']?>" required><br>
+  <input type="checkbox" id="posvojen" name="posvojen" value = "<?php if($row['posvojen']== 1){echo "checked";}?>" required><br>
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika" required><br>
   <label for="rezervacija">rezervacija:</label><br>
