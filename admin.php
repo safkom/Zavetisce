@@ -93,7 +93,7 @@ echo "Seznam kužkov:";
         else{
             $sql = "SELECT * FROM rezervacija WHERE zival_id = '".$zival_id."'";
             $klic2 = mysqli_query($conn,$sql);
-            $klic3 = mysqli_fetch_array($kli2);
+            $klic3 = mysqli_fetch_array($klic2);
             $datum = $klic3['datum'];
             $rezervacija = 'Da, ' + $datum;
         }
