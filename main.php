@@ -16,6 +16,10 @@ if(!isset($_COOKIE['id'])){
     header('Location: index.php');
     exit();
 }
+if(isset($_COOKIE['admin'])){
+    header('Location: admin.php');
+    exit();
+}
 $id = $_COOKIE['id'];
 $sql = "SELECT * FROM uporabniki WHERE id = $id;";
 $result = mysqli_query($conn,$sql);
@@ -25,6 +29,7 @@ if($query == 0){
     header('Location: index.php');
     exit();
 }
+
 echo $_COOKIE['prijava']."<br>";
 setcookie('prijava', '');
 $sql = "SELECT * FROM zivali;";
