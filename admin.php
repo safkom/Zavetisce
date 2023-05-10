@@ -33,7 +33,7 @@ echo "<a href='admin-rezervacije.php'>Rezervacije</a><br>";
 echo "Seznam kužkov:";
     echo '<table border ="1">';
     echo'<tr>';
-        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td>";
+        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td><td><b>Spremeni</b></td>";
         echo'</tr>';
 
     while($row=mysqli_fetch_array($result)){
@@ -99,7 +99,7 @@ echo "Seznam kužkov:";
         }
 
         echo'<tr>';
-        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezervacija."</td>";
+        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezervacija."</td><td><a href = 'spremembe.php?zival_id=".$zival_id."'>Spremeni</a></td>";
         echo'</tr>';
     }
     echo '</table>';
