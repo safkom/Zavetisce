@@ -21,7 +21,7 @@
   <label for="datum">Datum rojstva:</label><br>
   <input type="date" id="datum" name="datum" value = "<?php echo $row['datum_r']?>" required><br>
   <label for="posvojen">Posvojen:</label><br>
-  <input type="checkbox" id="posvojen" name="posvojen" value = "<?php if($row['posvojen']== 1){echo "checked";}?>" required><br>
+  <input type="checkbox" id="posvojen" name="posvojen" <?php if($row['posvojen']== 1){echo "checked";}?> required><br>
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika" required><br>
   <label for="rezervacija">rezervacija:</label><br>
