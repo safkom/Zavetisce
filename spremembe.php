@@ -22,7 +22,6 @@
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika" required><br>
   <label for="rezervacija">rezervacija:</label><br>
-  <input type="list" id="zivalid" name="zivalid" list="zivali" ><br>
   <input type="list" id="uporabnikid" name = "uporabnikid" list="uporabniki"><br>  
   <datalist id="zivali">
     <?php
