@@ -84,18 +84,18 @@ echo "Seznam kužkov:";
             $posvojen = 'Ne';
         }
         else{
+            $posvojen = 'Da';
+        }
+
+        if(is_null($row['rezervacija_id'])){
+            $rezervacija = "Ni rezervirano";
+        }
+        else{
             $sql = "SELECT * FROM rezervacija WHERE zival_id = '".$zival_id."'";
             $klic2 = mysqli_query($conn,$sql);
             $klic3 = mysqli_fetch_array($kli2);
             $datum = $klic3['datum'];
-            $posvojen = 'Da, ' + $datum;
-        }
-
-        if(is_null($row['rezervacija_id'])){
-            $rezervacija = "<a href = 'rezerviraj.php?zival_id=".$row['id']."'>Rezerviraj</a>";
-        }
-        else{
-            $rezervacija = 'Rezervirano';
+            $rezervacija = 'Da, ' + $datum;
         }
 
         echo'<tr>';
