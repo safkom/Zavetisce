@@ -11,6 +11,12 @@ if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_array($result);
     $hash = $row['geslo'];
     if (password_verify($password, $hash)) {
+        if($row['admin'] == 1){
+            setcookie('id', $row['id']);
+            setcookie('prijava', "Prijava uspešna.");
+            header('Location: admin.php');
+            exit();
+        }
         setcookie('id', $row['id']);
         setcookie('prijava', "Prijava uspešna.");
         header('Location: main.php');
