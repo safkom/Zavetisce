@@ -11,6 +11,7 @@
 <body>
   <?php
   require_once 'cookie.php';
+  require_once 'connect.php';
   $sql = "SELECT * from zivali WHERE id = '".$_GET['zival_id']."';";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result)?>
