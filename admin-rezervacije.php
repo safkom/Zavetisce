@@ -88,6 +88,6 @@ else{
     header('Location: index.php');
 }
 ?>
-<a href = "main.php">Nazaj</a>
+<a href = "admin.php">Nazaj</a>
 </body>
 </html>
