@@ -21,9 +21,10 @@ if ($query > 0) {
     $ime = $_GET['ime'];
     $date = $_GET['datum'];
     $posvojen = $_GET['posvojen'];
+    echo $posvojen;
     
-    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen."
-    WHERE id = ".$zival;
+    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." 
+    WHERE id = ".$zival.";";
     
     if ($conn->query($update_sql) === TRUE) {
         // get the ID of the newly created reservation
