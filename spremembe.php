@@ -29,21 +29,21 @@
   <input type="datalist" id="uporabnikid" name = "uporabnikid" value = "<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_array($result)) {
+      $uporabnik_id = $row['uporabnik_id'];
+      $datum_rez = $row['datum'];
+    }
+    $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
+    $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
     if($rows === 0){
       echo " ";
     }
     else{
     while ($row = mysqli_fetch_array($result)) {
-      $uporabnik_id = $row['uporabnik_id'];
-      $datum_rez = $row['datum'];
-    }
-  }
-    $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
       echo $row['email'];
     }
+  }
     ?>  
     " list="uporabniki">
   <br>  
