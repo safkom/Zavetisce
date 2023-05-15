@@ -32,6 +32,7 @@
     $rows = mysqli_num_rows($result);
     if($rows === 0){
       $rezervacija = 0;
+      echo " ";
     }
     else{
     while ($row = mysqli_fetch_array($result)) {
