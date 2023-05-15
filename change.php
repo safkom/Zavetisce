@@ -24,13 +24,11 @@ if ($query > 0) {
     if ($posvojen === null) {
         $posvojen = 0;
     }
-
-    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." 
-    WHERE id = ".$zival.";";
+    
+    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." WHERE id = ".$zival.";";
     if ($conn->query($update_sql) === TRUE) {
         // get the ID of the newly created reservation
-        $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id)
-        VALUES ('".$datum."', ".$uporabnik_id.", ".$zival.")";
+        $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id) VALUES ('".$datum."', ".$uporabnik_id.", ".$zival.")";
         if ($conn->query($insert_sql) === TRUE) {
             $rezervacija_id = mysqli_insert_id($conn);
             $update_sql2 = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
@@ -40,7 +38,7 @@ if ($query > 0) {
                     $image_name = $_FILES['slika']['name'];
                     $image_tmp = $_FILES['slika']['tmp_name'];
                     $image_path = $image_dir . $image_name;
-
+                
                     // Move the uploaded file to the desired directory
                     if (move_uploaded_file($image_tmp, $image_path)) {
                         // Image upload successful
@@ -56,33 +54,39 @@ if ($query > 0) {
                                 setcookie('prijava', "Error: " . $update_sql3 . "<br>" . $conn->error);
                                 header('Location: admin.php');
                             }
+                        
+                            } else {
+                                // Error in moving the uploaded file
+                                setcookie('prijava', "Error uploading the image.");
+                                header('Location: admin.php');
+                            }
                         } else {
-                            setcookie('prijava', "Error: " . $slika_sql . "<br>" . $conn->error);
+                            // Error in uploading the file
+                            setcookie('prijava', "Error: " . $_FILES['slika']['error']);
                             header('Location: admin.php');
                         }
                     } else {
-                        // Error in moving the uploaded file
-                        echo "Error uploading the image.";
-                        exit();
+                        // Error in updating the reservation
+                        setcookie('prijava', "Error: " . $update_sql2 . "<br>" . $conn->error);
+                        header('Location: admin.php');
                     }
                 } else {
-                    // Error in uploading the file
-                    echo "Error: " . $_FILES['slika']['error'];
-                    exit();
+                    // Error in inserting the reservation
+                    setcookie('prijava', "Error: " . $insert_sql . "<br>" . $conn->error);
+                    header('Location: admin.php');
                 }
             } else {
-                setcookie('prijava', "Error: " . $update_sql2 . "<br>" . $conn->error);
+                // Error in updating the animal
+                setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
                 header('Location: admin.php');
             }
         } else {
-            setcookie('prijava', "Error: " . $insert_sql . "<br>" . $conn->error);
+            // Error in checking admin privileges
+            setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
             header('Location: admin.php');
         }
     } else {
-        setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
-        header('Location: admin.php');
+        // Redirect to the index page if not an admin
+        header('Location: index.php');
     }
-} else {
-    header('Location: index.php');
-}
 ?>
