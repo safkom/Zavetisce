@@ -7,7 +7,7 @@ $sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
-// modify the if statement to check if id exists in database
+// modify the if statement to check if id exists in the database
 if ($query > 0) {
     $id = $_COOKIE['id'];
     $mail = $_GET['uporabnikid'];
@@ -24,7 +24,7 @@ if ($query > 0) {
     if ($posvojen === null) {
         $posvojen = 0;
     }
-    
+
     $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." 
     WHERE id = ".$zival.";";
     if ($conn->query($update_sql) === TRUE) {
@@ -40,7 +40,7 @@ if ($query > 0) {
                     $image_name = $_FILES['slika']['name'];
                     $image_tmp = $_FILES['slika']['tmp_name'];
                     $image_path = $image_dir . $image_name;
-                
+
                     // Move the uploaded file to the desired directory
                     if (move_uploaded_file($image_tmp, $image_path)) {
                         // Image upload successful
@@ -57,9 +57,8 @@ if ($query > 0) {
                                 header('Location: admin.php');
                             }
                         } else {
-                            // Error in inserting the image URL into the database
-                            echo "Error inserting image URL.";
-                            exit();
+                            setcookie('prijava', "Error: " . $slika_sql . "<br>" . $conn->error);
+                            header('Location: admin.php');
                         }
                     } else {
                         // Error in moving the uploaded file
