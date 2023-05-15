@@ -25,7 +25,7 @@
   <input type="checkbox" id="posvojen" name="posvojen" <?php if($row['posvojen']== 1){echo "checked";}?>><br>
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika"><br>
-  <label for="rezervacija">rezervacija:</label><br>
+  <label for="rezervacija">Rezervacija:</label><br>
   <input type="datalist" id="uporabnikid" name = "uporabnikid" value = "<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
