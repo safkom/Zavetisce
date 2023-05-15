@@ -21,6 +21,9 @@ if ($query > 0) {
     $ime = $_GET['ime'];
     $date = $_GET['datum'];
     $posvojen = $_GET['posvojen'];
+    if($posvojen === null){
+        $posvojen = 0;
+    }
     
     $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." 
     WHERE id = ".$zival.";";
