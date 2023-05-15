@@ -44,7 +44,6 @@
     while ($row = mysqli_fetch_array($result)) {
       echo $row['email'];
     }
-  }
     ?>  
     " list="uporabniki">
   <br>  
