@@ -28,7 +28,7 @@ if ($query > 0) {
     if ($conn->query($update_sql) === TRUE) {
         // get the ID of the newly created reservation
         $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id)
-        VALUES ('".$datum."',".$uporabnik_id.",".$zival.", )";
+        VALUES ('".$datum."', ".$uporabnik_id.", ".$zival.")";
         if ($conn->query($insert_sql) === TRUE) {
             $rezervacija_id = mysqli_insert_id($conn);
             $update_sql2 = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
