@@ -26,30 +26,33 @@
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika"><br>
   <label for="rezervacija">Rezervacija:</label><br>
-  <input type="datalist" id="uporabnikid" name = "uporabnikid" value = "<?php
+  <input type="datalist" id="uporabnikid" name="uporabnikid" value="<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
-    if($rows === 0){
-      $rezervacija = 0;
-      echo " ";
+    $rezervacija = 0;
+
+    if ($rows === 0) {
+      echo "";
+    } else {
+      while ($row = mysqli_fetch_array($result)) {
+        $uporabnik_id = $row['uporabnik_id'];
+        $datum_rez = $row['datum'];
+        $rezervacija = 1;
+      }
     }
-    else{
-    while ($row = mysqli_fetch_array($result)) {
-      $uporabnik_id = $row['uporabnik_id'];
-      $datum_rez = $row['datum'];
+
+    if ($rezervacija === 0) {
+      $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
+      $result = mysqli_query($conn, $sql);
     }
-  }
-    if($rezervacija === 0){
-    $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
-    $result = mysqli_query($conn, $sql);
+
     while ($row = mysqli_fetch_array($result)) {
       echo $row['email'];
     }
-  }
-    ?>  
-    " list="uporabniki">
-  <br>  
+    ?>" list="uporabniki">
+<br>
+
   <datalist id="zivali">
     <?php
     require_once 'connect.php';
