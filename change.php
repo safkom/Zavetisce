@@ -48,13 +48,13 @@ if ($query > 0) {
                         $slika_sql = "INSERT INTO slike (url) VALUES ('".$image_path."');";
                         if ($conn->query($slika_sql) === TRUE){
                             $slika_id = mysqli_insert_id($conn);
-                            $update_sql3 = "UPDATE zivali SET slika_id = ".$slika_id." id = ".$zival.";";
+                            $update_sql3 = "UPDATE zivali SET slika_id = ".$slika_id." WHERE id = ".$zival.";";
                             if ($conn->query($update_sql3) === TRUE) {
                                 setcookie('prijava', "Sprememba uspešna.");
                                 header('Location: admin.php');
                         }
                         else{
-                            setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
+                            setcookie('prijava', "Error: " . $update_sql3 . "<br>" . $conn->error);
                             header('Location: admin.php');
                         }
 
@@ -69,7 +69,7 @@ if ($query > 0) {
                     exit();
                 }
             } else {
-                setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
+                setcookie('prijava', "Error: " . $update_sql2 . "<br>" . $conn->error);
                 header('Location: admin.php');
             }
         } else {
