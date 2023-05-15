@@ -24,7 +24,7 @@
   <label for="posvojen">Posvojen:</label><br>
   <input type="checkbox" id="posvojen" name="posvojen" <?php if($row['posvojen']== 1){echo "checked";}?>><br>
   <label for="slika">Slika:</label><br>
-  <input type="file" id="slika" name="slika" required><br>
+  <input type="file" id="slika" name="slika"><br>
   <label for="rezervacija">rezervacija:</label><br>
   <input type="list" id="uporabnikid" name = "uporabnikid" value = "<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
