@@ -22,17 +22,17 @@ if ($query > 0) {
     $date = $_GET['datum'];
     $posvojen = $_GET['posvojen'];
     
-    $sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen."
+    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen."
     WHERE id = ".$zival.";";
     
-    if ($conn->query($sql) === TRUE) {
+    if ($conn->query($update_sql) === TRUE) {
         // get the ID of the newly created reservation
-        $sql = "INSERT INTO rezervacije (datum, uporabnik_id, zival_id)
+        $insert_sql = "INSERT INTO rezervacije (datum, uporabnik_id, zival_id)
         VALUES ('".$datum."',".$uporabnik_id.",".$zival.", )";
-        if ($conn->query($update_sql) === TRUE) {
+        if ($conn->query($insert_sql) === TRUE) {
             $rezervacija_id = mysqli_insert_id($conn);
-            $sql = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
-            if ($conn->query($update_sql) === TRUE) {
+            $update_sql2 = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
+            if ($conn->query($update_sql2) === TRUE) {
                 setcookie('prijava', "Rezervacija uspešna.");
                 header('Location: admin.php');
             } else {
