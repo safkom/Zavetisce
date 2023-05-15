@@ -26,12 +26,12 @@
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika"><br>
   <label for="rezervacija">rezervacija:</label><br>
-  <input type="list" id="uporabnikid" name = "uporabnikid" value = "<?php
+  <input type="datalist" id="uporabnikid" name = "uporabnikid" value = "<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
     if($rows === 0){
-      echo "";
+      echo " ";
     }
     else{
     while ($row = mysqli_fetch_array($result)) {
