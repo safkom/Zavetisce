@@ -16,7 +16,7 @@
   $sql = "SELECT * from zivali WHERE id = ".$_GET['zival_id'].";";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result)?>
- <form action="dela.php" method="get">
+ <form id = "spremembe" action="dela.php" method="get">
     <label for="ime">Ime:</label><br>
   <input type="text" id="ime" name="ime" value = "<?php echo $row['ime']?>" required><br>
   <label for="datum">Datum rojstva:</label><br>
@@ -66,8 +66,8 @@
 </form>
 <a href = "admin.php">Nazaj</a>
 <script>
-  document.getElementById("myForm").addEventListener("submit", function() {
-    var checkbox = document.getElementById("myCheckbox");
+  document.getElementById("spremembe").addEventListener("submit", function() {
+    var checkbox = document.getElementById("posvojen");
     if (checkbox.checked) {
       checkbox.value = "1";
     } else {
