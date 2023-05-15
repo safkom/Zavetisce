@@ -25,7 +25,7 @@ if ($query > 0) {
     $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." 
     WHERE id = ".$zival.";";
     echo $update_sql;
-    
+}
     /*if ($conn->query($update_sql) === TRUE) {
         // get the ID of the newly created reservation
         $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id)
