@@ -37,7 +37,7 @@
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
     if($rows === 0){
-      echo "";
+      echo " ";
     }
     else{
     while ($row = mysqli_fetch_array($result)) {
