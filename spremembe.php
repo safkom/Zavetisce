@@ -22,7 +22,7 @@
   <label for="datum">Datum rojstva:</label><br>
   <input type="date" id="datum" name="datum" value = "<?php echo $row['datum_r']?>" required><br>
   <label for="posvojen">Posvojen:</label><br>
-  <input type="checkbox" id="posvojen" name="posvojen" <?php if($row['posvojen']== 1){echo "checked";}?>" required><br>
+  <input type="checkbox" id="posvojen" name="posvojen" <?php if($row['posvojen']== 1){echo "checked";}?>><br>
   <label for="slika">Slika:</label><br>
   <input type="file" id="slika" name="slika" required><br>
   <label for="rezervacija">rezervacija:</label><br>
@@ -65,6 +65,15 @@
   <input type="submit" value="Pošlji">
 </form>
 <a href = "admin.php">Nazaj</a>
-
+<script>
+  document.getElementById("myForm").addEventListener("submit", function() {
+    var checkbox = document.getElementById("myCheckbox");
+    if (checkbox.checked) {
+      checkbox.value = "1";
+    } else {
+      checkbox.value = "0";
+    }
+  });
+</script>
 </body>
 </html>
