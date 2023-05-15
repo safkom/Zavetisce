@@ -13,7 +13,7 @@ if ($query > 0) {
     $mail = $_GET['uporabnikid'];
     $sql = "SELECT * FROM uporabniki WHERE email = '".$mail."';";
     $result = mysqli_query($conn, $sql);
-    $row=mysqli_fetch_array($result);
+    $row = mysqli_fetch_array($result);
     $uporabnik_id = $row['id'];
     $zival = $_COOKIE['zival_id'];
     $date = strtotime("+7 day");
@@ -21,7 +21,7 @@ if ($query > 0) {
     $ime = $_GET['ime'];
     $date = $_GET['datum'];
     $posvojen = $_GET['posvojen'];
-    if($posvojen === null){
+    if ($posvojen === null) {
         $posvojen = 0;
     }
     
@@ -46,18 +46,21 @@ if ($query > 0) {
                         // Image upload successful
                         echo "Image URL: " . $image_path;
                         $slika_sql = "INSERT INTO slike (url) VALUES ('".$image_path."');";
-                        if ($conn->query($slika_sql) === TRUE){
+                        if ($conn->query($slika_sql) === TRUE) {
                             $slika_id = mysqli_insert_id($conn);
                             $update_sql3 = "UPDATE zivali SET slika_id = ".$slika_id." WHERE id = ".$zival.";";
                             if ($conn->query($update_sql3) === TRUE) {
                                 setcookie('prijava', "Sprememba uspešna.");
                                 header('Location: admin.php');
+                            } else {
+                                setcookie('prijava', "Error: " . $update_sql3 . "<br>" . $conn->error);
+                                header('Location: admin.php');
+                            }
+                        } else {
+                            // Error in inserting the image URL into the database
+                            echo "Error inserting image URL.";
+                            exit();
                         }
-                        else{
-                            setcookie('prijava', "Error: " . $update_sql3 . "<br>" . $conn->error);
-                            header('Location: admin.php');
-                        }
-
                     } else {
                         // Error in moving the uploaded file
                         echo "Error uploading the image.";
@@ -73,15 +76,14 @@ if ($query > 0) {
                 header('Location: admin.php');
             }
         } else {
-            setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
+            setcookie('prijava', "Error: " . $insert_sql . "<br>" . $conn->error);
             header('Location: admin.php');
         }
     } else {
-        setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
+        setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
         header('Location: admin.php');
     }
 } else {
     header('Location: index.php');
-}
 }
 ?>
