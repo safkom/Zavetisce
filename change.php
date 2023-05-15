@@ -15,7 +15,7 @@ if ($query > 0) {
     $result = mysqli_query($conn, $sql);
     $row=mysqli_fetch_array($result);
     $uporabnik_id = $row['id'];
-    $zival = $_GET['zival_id'];
+    $zival = $_COOKIE['zival_id'];
     $date = strtotime("+7 day");
     $datum = date('Y-m-d', $date);
     $ime = $_GET['ime'];
