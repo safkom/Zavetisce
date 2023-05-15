@@ -16,11 +16,12 @@ if (mysqli_num_rows($result) > 0) {
             setcookie('admin', 1);
             setcookie('prijava', "Prijava uspešna.");
             header('Location: admin.php');
-            exit();
         }
+        else{
         setcookie('id', $row['id']);
         setcookie('prijava', "Prijava uspešna.");
         header('Location: main.php');
+        }
     } 
     else {
         setcookie('prijava', "Napačno geslo.");
