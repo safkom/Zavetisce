@@ -11,7 +11,7 @@ $query = mysqli_num_rows($result);
 if ($query > 0) {
     $id = $_COOKIE['id'];
     $mail = $_GET['uporabnikid'];
-    $sql = "SELECT * FROM uporabniki WHERE mail = '".$mail."';";
+    $sql = "SELECT * FROM uporabniki WHERE email = '".$mail."';";
     $result = mysqli_query($conn, $sql);
     $row=mysqli_fetch_array($result);
     $uporabnik_id = $row['id'];
