@@ -33,7 +33,7 @@ if ($query > 0) {
             $rezervacija_id = mysqli_insert_id($conn);
             $update_sql2 = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
             if ($conn->query($update_sql2) === TRUE) {
-                setcookie('prijava', "Rezervacija uspešna.");
+                setcookie('prijava', "Sprememba uspešna.");
                 header('Location: admin.php');
             } else {
                 setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
