@@ -61,10 +61,12 @@ if ($query > 0) {
                     } else {
                         // Error in moving the uploaded file
                         echo "Error uploading the image.";
+                        exit();
                     }
                 } else {
                     // Error in uploading the file
                     echo "Error: " . $_FILES['slika']['error'];
+                    exit();
                 }
             } else {
                 setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
