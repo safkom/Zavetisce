@@ -35,11 +35,18 @@
     }
     $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
     $result = mysqli_query($conn, $sql);
+    $rows = mysqli_num_rows($result);
+    if($rows === 0){
+      echo "";
+    }
+    else{
     while ($row = mysqli_fetch_array($result)) {
       echo $row['email'];
     }
+  }
     ?>  
-    " list="uporabniki"><br>  
+    " list="uporabniki">
+  <br>  
   <datalist id="zivali">
     <?php
     require_once 'connect.php';
