@@ -30,28 +30,28 @@
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
-    echo "dela 1";
     $rezervacija = 0;
 
     if ($rows === 0) {
-        echo "";
+        echo ""; // Display nothing if rezervacija doesn't exist
     } else {
         while ($row = mysqli_fetch_array($result)) {
             $uporabnik_id = $row['uporabnik_id'];
             $datum_rez = $row['datum'];
             $rezervacija = 1;
         }
-    }
-echo "dela 2";
-    if ($rezervacija === 0) {
-        $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
-        $result2 = mysqli_query($conn, $sql); // Use a different variable for the second query result
-        while ($row = mysqli_fetch_array($result2)) { // Loop through the second result
-            echo $row['email'];
+        if ($rezervacija === 1) {
+            $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
+            $result2 = mysqli_query($conn, $sql); // Use a different variable for the second query result
+            while ($row = mysqli_fetch_array($result2)) { // Loop through the second result
+                echo $row['email'];
+            }
         }
     }
 
-    ?>" list="uporabniki">
+?>" list="uporabniki">
+<br>
+
 <br>
   <datalist id="zivali">
     <?php
