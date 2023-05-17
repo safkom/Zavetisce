@@ -75,7 +75,7 @@
     setcookie('register', '');
     ?>
 </datalist>
-  <input type="submit" value="Pošlji">
+  <input type="submit" name="uploadBtn" value="Pošlji">
 </form>
 <a href = "admin.php">Nazaj</a>
 <script>
