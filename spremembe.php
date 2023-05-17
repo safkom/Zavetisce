@@ -16,7 +16,7 @@
   $sql = "SELECT * from zivali WHERE id = ".$_GET['zival_id'].";";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result)?>
- <form id = "spremembe" action="change.php" method="post">
+ <form id = "spremembe" action="change.php" method="post" enctype="multipart/form-data">
     <label for="ime">Ime:</label><br>
   <input type="text" id="ime" name="ime" value = "<?php echo $row['ime']?>" required><br>
   <label for="datum">Datum rojstva:</label><br>
