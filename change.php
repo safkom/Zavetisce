@@ -15,7 +15,7 @@ $query = mysqli_num_rows($result);
 // Modify the if statement to check if the ID exists in the database
 if ($query > 0) {
     $id = $_COOKIE['id'];
-    $mail = $_GET['uporabnikid'];
+    $mail = $_POST['uporabnikid'];
     $sql = "SELECT * FROM uporabniki WHERE email = '".$mail."';";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
@@ -23,9 +23,9 @@ if ($query > 0) {
     $zival = $_COOKIE['zival_id'];
     $date = strtotime("+7 day");
     $datum = date('Y-m-d', $date);
-    $ime = $_GET['ime'];
-    $date = $_GET['datum'];
-    $posvojen = $_GET['posvojen'];
+    $ime = $_POST['ime'];
+    $date = $_POST['datum'];
+    $posvojen = $_POST['posvojen'];
     if ($posvojen === null) {
         $posvojen = 0;
     }
