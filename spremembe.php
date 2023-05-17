@@ -79,14 +79,14 @@
 </form>
 <a href = "admin.php">Nazaj</a>
 <script>
-  document.getElementById("spremembe").addEventListener("submit", function() {
-    var checkbox = document.getElementById("posvojen");
-    if (checkbox.checked) {
-      checkbox.value = "1";
-    } else {
-      checkbox.value = "0";
-    }
-  });
-</script>
+    document.getElementById("spremembe").addEventListener("submit", function() {
+      var checkbox = document.getElementById("posvojen");
+      if (checkbox.checked) {
+        checkbox.value = "1";
+      } else {
+        checkbox.value = "0";
+      }
+    });
+  </script>
 </body>
 </html>
