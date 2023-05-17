@@ -18,7 +18,9 @@ $result = mysqli_query($conn,$sql);
 $query = mysqli_num_rows($result);
 // modify the if statement to check if id exists in database
 if($query > 0){
-echo $_COOKIE['prijava']."<br>";
+    if(isset($_COOKIE['prijava'])){
+        echo $_COOKIE['prijava']."<br>";
+    }
 setcookie('prijava', '');
 $sql = "SELECT * FROM zivali INNER JOIN rezervacija on zivali.id = rezervacija.zival_id;";
 $result = mysqli_query($conn,$sql);
