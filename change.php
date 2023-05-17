@@ -73,7 +73,7 @@ if ($query > 0) {
                         exit();
                     }
                 } else {
-                    setcookie('prijava', 'There is some error in the file upload. Please check the following error: ' . $_FILES['slika']['error']);
+                    setcookie('prijava', 'There is some error in the file upload. Please check the following error:'. $_FILES['slika']['error'].'Fix it.');
                     header('Location: admin.php');
                     exit();
                 }
