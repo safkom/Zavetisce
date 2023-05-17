@@ -27,7 +27,7 @@ $result = mysqli_query($conn,$sql);
 echo "Seznam kužkov:";
     echo '<table border ="1">';
     echo'<tr>';
-        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Preklici rezervacijo</b></td>";
+        echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td><td><b>Rezervacija - Uporabnik</b></td><td><b>Preklici rezervacijo</b></td>";
         echo'</tr>';
 
     while($row=mysqli_fetch_array($result)){
@@ -36,6 +36,7 @@ echo "Seznam kužkov:";
         $klic = mysqli_query($conn,$sql);
         $klic1 = mysqli_fetch_array($klic);
         $slika = $klic1['url'];
+        $uporabnik_id = $row['uporabnik_id'];
 
         $dateOfBirth = $row['datum_r'];
         $today = date("Y-m-d");
@@ -79,9 +80,18 @@ echo "Seznam kužkov:";
         else{
             $posvojen = 'Da';
         }
+        if($row['uporanik_id'] != null){
+            $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
+            $result = mysqli_query($conn,$sql);
+            $row=mysqli_fetch_array($result);
+            $mail = $row['email'];
+            $ime = $row['ime'];
+            $rezerviran = "Da";
+            $uporabnik = $ime. " - ". $mail;
+        }
 
         echo'<tr>';
-        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td><a href = 'preklici.php?zival_id=".$row['zival_id']."' >Preklici</td>";
+        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezerviran."</td><td>".$uporabnik."</td><td><a href = 'preklici.php?zival_id=".$row['zival_id']."' >Preklici</td>";
         echo'</tr>';
     }
     echo '</table>';
