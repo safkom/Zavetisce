@@ -9,8 +9,12 @@ $query = mysqli_num_rows($result);
 
 // modify the if statement to check if id exists in database
 if ($query > 0) {
-    $id = $_COOKIE['id'];
     $zival = $_GET['zival_id'];
+    $sql = "SELECT * FROM rezervacije WHERE id = ".$zival_id.";";
+    $result = mysqli_query($conn, $sql);
+    $query = mysqli_num_rows($result);
+    if($query == 0){
+        $id = $_COOKIE['id'];
     $date = strtotime("+7 day");
     $datum = date('Y-m-d', $date);
     
@@ -34,6 +38,12 @@ if ($query > 0) {
         setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
         header('Location: main.php');
     }
+    }
+    else{
+        setcookie('prijava', "Ta žival je že rezervirana za drugega uporabnika.");
+        header('Location: main.php');
+    }
+    
 } else {
     header('Location: index.php');
 }
