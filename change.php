@@ -54,39 +54,39 @@ if ($query > 0) {
                                 header('Location: admin.php');
                                 exit();
                             } else {
-                                setcookie('prijava', "Error: " . $update_sql3 . "<br>" . $conn->error);
+                                setcookie('prijava', "Error: " . $conn->error);
                                 header('Location: admin.php');
                                 exit();
                             }
                         } else {
-                            setcookie('prijava', "Error: " . $slika_sql . "<br>" . $conn->error);
+                            setcookie('prijava', "Error: " . $conn->error);
                             header('Location: admin.php');
                             exit();
                         } 
                     } else {
                         // Error in uploading the file
-                        echo "Error: " . $_FILES['slika']['error'];
+                        echo "Error uploading the image.";
                         exit();
                     }
                 } else {
-                    setcookie('prijava', "Error: " . $update_sql2 . "<br>" . $conn->error);
+                    setcookie('prijava', "Error: " . $conn->error);
                     header('Location: admin.php');
                     exit();
                 }
             } else {
-                setcookie('prijava', "Error: " . $insert_sql . "<br>" . $conn->error);
+                setcookie('prijava', "Error: " . $conn->error);
                 header('Location: admin.php');
                 exit();
             }
         } else {
-            setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
+            setcookie('prijava', "Error: " . $conn->error);
             header('Location: admin.php');
             exit();
         }
     } else {
+        setcookie('prijava', "Error: " . $conn->error);
         header('Location: index.php');
         exit();
     }
 }
-?>   
-                   
+?>
