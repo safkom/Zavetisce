@@ -16,6 +16,7 @@
         setcookie('prijava', '');
     }
     ?>
+<div class="container">
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label><br>
   <input type="text" id="email" name="email"><br>
@@ -24,6 +25,7 @@
   <input type="submit" value="Pošlji">
 </form>
 <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
+</div>
 
 </body>
 </html>
