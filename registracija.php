@@ -11,7 +11,9 @@
 <body>
   <?php
   require_once 'cookie.php';
-  echo '<p>'.$_COOKIE['register'].'</p>'
+  if(isset($_COOKIE['register'])){
+      echo $_COOKIE['register'];
+  }
   ?>
  <form action="register.php" method="get">
     <label for="ime">Ime:</label><br>
