@@ -22,83 +22,87 @@ if ($query > 0) {
     $date = $_POST['datum'];
     $posvojen = isset($_POST['posvojen']) ? 1 : 0;
 
-    // Get the existing reservation ID
-    $select_reservation_sql = "SELECT rezervacija_id FROM zivali WHERE id = $zival;";
-    $reservation_result = mysqli_query($conn, $select_reservation_sql);
-    $reservation_row = mysqli_fetch_assoc($reservation_result);
-    $existingReservationId = $reservation_row['rezervacija_id'];
-
     // Update the zivali table
-    $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." WHERE id = ".$zival.";";
-    if ($conn->query($update_sql) === TRUE) {
-        // Delete the existing reservation
-        if ($existingReservationId) {
-            $delete_reservation_sql = "DELETE FROM rezervacija WHERE rezervacija_id = ".$existingReservationId.";";
-            $conn->query($delete_reservation_sql);
-        }
+    $update_sql = "UPDATE zivali SET ime = ?, datum_r = ?, posvojen = ? WHERE id = ?";
+    $stmt = $conn->prepare($update_sql);
+    $stmt->bind_param('ssii', $ime, $date, $posvojen, $zival);
+    if ($stmt->execute()) {
+        // Delete the previous reservation
+        $delete_sql = "DELETE FROM rezervacija WHERE zival_id = ?";
+        $stmt2 = $conn->prepare($delete_sql);
+        $stmt2->bind_param('i', $zival);
+        if ($stmt2->execute()) {
+            // Insert a new reservation
+            $rezervacija_id = insertRezervacija($conn, $uporabnik_id, $zival);
+            if ($rezervacija_id !== false) {
+                // Update the rezervacija_id in the zivali table
+                $update_sql2 = "UPDATE zivali SET rezervacija_id = ? WHERE id = ?";
+                $stmt3 = $conn->prepare($update_sql2);
+                $stmt3->bind_param('ii', $rezervacija_id, $zival);
+                if ($stmt3->execute()) {
+                    // Handle file upload
+                    if (isset($_FILES['slika']) && $_FILES['slika']['error'] === UPLOAD_ERR_OK) {
+                        $fileTmpPath = $_FILES['slika']['tmp_name'];
+                        $fileName = $_FILES['slika']['name'];
+                        $fileSize = $_FILES['slika']['size'];
+                        $fileType = $_FILES['slika']['type'];
+                        $fileNameCmps = explode(".", $fileName);
+                        $fileExtension = strtolower(end($fileNameCmps));
 
-        // Insert a new reservation
-        $rezervacija_id = insertRezervacija($conn, $uporabnik_id, $zival);
-        if ($rezervacija_id !== false) {
-            // Update the rezervacija_id in the zivali table
-            $update_sql2 = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
-            if ($conn->query($update_sql2) === TRUE) {
-                // Handle file upload
-                if (isset($_FILES['slika']) && $_FILES['slika']['error'] === UPLOAD_ERR_OK) {
-                    $fileTmpPath = $_FILES['slika']['tmp_name'];
-                    $fileName = $_FILES['slika']['name'];
-                    $fileSize = $_FILES['slika']['size'];
-                    $fileType = $_FILES['slika']['type'];
-                    $fileNameCmps = explode(".", $fileName);
-                    $fileExtension = strtolower(end($fileNameCmps));
+                        $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
+                        if (in_array($fileExtension, $allowedfileExtensions)) {
+                            $uploadFileDir = './img/';
+                            $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+                            $dest_path = $uploadFileDir . $newFileName;
 
-                    $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
-                    if (in_array($fileExtension, $allowedfileExtensions)) {
-                        $uploadFileDir = './img/';
-                        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-                        $dest_path = $uploadFileDir . $newFileName;
-
-                        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-                            $slika_id = insertSlika($conn, $dest_path);
-                            if ($slika_id !== false) {
-                                // Update the slika_id in the zivali table
-                                $update_sql3 = "UPDATE zivali SET slika_id = ".$slika_id." WHERE id = ".$zival.";";
-                                if ($conn->query($update_sql3) === TRUE) {
-                                    setcookie('prijava', "Sprememba uspešna.");
-                                    header('Location: admin.php');
-                                    exit();
+                            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                                $slika_id = insertSlika($conn, $dest_path);
+                                if ($slika_id !== false) {
+                                    // Update the slika_id in the zivali table
+                                    $update_sql3 = "UPDATE zivali SET slika_id = ? WHERE id = ?";
+                                    $stmt4 = $conn->prepare($update_sql3);
+                                    $stmt4->bind_param('ii', $slika_id, $zival);
+                                    if ($stmt4->execute()) {
+                                        setcookie('prijava', "Sprememba uspešna.");
+                                        header('Location: admin.php');
+                                        exit();
+                                    } else {
+                                        setcookie('prijava', "Error: " . $conn->error);
+                                        header('Location: admin.php');
+                                        exit();
+                                    }
                                 } else {
-                                    setcookie('prijava', "Error: " . $conn->error);
+                                    setcookie('prijava', "Error: Failed to insert slika record.");
                                     header('Location: admin.php');
                                     exit();
                                 }
                             } else {
-                                setcookie('prijava', "Error: Failed to insert slika record.");
+                                setcookie('prijava', 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by the web server.');
                                 header('Location: admin.php');
                                 exit();
                             }
                         } else {
-                            setcookie('prijava', 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by the web server.');
+                            setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
                             header('Location: admin.php');
                             exit();
                         }
                     } else {
-                        setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
+                        setcookie('prijava', 'Sprememba uspešna.');
                         header('Location: admin.php');
                         exit();
                     }
                 } else {
-                    setcookie('prijava', 'Sprememba uspešna.');
+                    setcookie('prijava', "Error: " . $conn->error);
                     header('Location: admin.php');
                     exit();
                 }
             } else {
-                setcookie('prijava', "Error: " . $conn->error);
+                setcookie('prijava', "Error: Failed to insert rezervacija record.");
                 header('Location: admin.php');
                 exit();
             }
         } else {
-            setcookie('prijava', "Error: Failed to insert rezervacija record.");
+            setcookie('prijava', "Error: " . $conn->error);
             header('Location: admin.php');
             exit();
         }
@@ -115,9 +119,12 @@ if ($query > 0) {
 
 // Function to get uporabnik_id by email
 function getUporabnikIdByEmail($conn, $email) {
-    $sql = "SELECT id FROM uporabniki WHERE email = '".$email."';";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_array($result);
+    $sql = "SELECT id FROM uporabniki WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
     return $row['id'];
 }
 
@@ -125,9 +132,11 @@ function getUporabnikIdByEmail($conn, $email) {
 function insertRezervacija($conn, $uporabnik_id, $zival_id) {
     $date = strtotime("+7 day");
     $datum = date('Y-m-d', $date);
-    $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id) VALUES ('".$datum."', ".$uporabnik_id.", ".$zival_id.")";
-    if ($conn->query($insert_sql) === TRUE) {
-        return mysqli_insert_id($conn);
+    $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($insert_sql);
+    $stmt->bind_param('sii', $datum, $uporabnik_id, $zival_id);
+    if ($stmt->execute()) {
+        return $stmt->insert_id;
     } else {
         return false;
     }
@@ -135,9 +144,11 @@ function insertRezervacija($conn, $uporabnik_id, $zival_id) {
 
 // Function to insert a new slika record and return the inserted ID
 function insertSlika($conn, $url) {
-    $slika_sql = "INSERT INTO slike (url) VALUES ('".$url."');";
-    if ($conn->query($slika_sql) === TRUE) {
-        return mysqli_insert_id($conn);
+    $slika_sql = "INSERT INTO slike (url) VALUES (?)";
+    $stmt = $conn->prepare($slika_sql);
+    $stmt->bind_param('s', $url);
+    if ($stmt->execute()) {
+        return $stmt->insert_id;
     } else {
         return false;
     }
