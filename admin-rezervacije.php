@@ -95,7 +95,7 @@ echo "Seznam kužkov:";
         }
 
         echo'<tr>';
-        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezerviran."</td><td>".$uporabnik."</td><td><a href = 'preklici.php?zival_id=".$row['zival_id']."' >Preklici</td>";
+        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezerviran."</td><td>".$uporabnik."</td><td><a href = 'preklici.php?zival_id=".$zival_id."' >Preklici</td>";
         echo'</tr>';
     }
     echo '</table>';
