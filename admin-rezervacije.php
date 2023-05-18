@@ -37,7 +37,7 @@ echo "Seznam kužkov:";
         $klic1 = mysqli_fetch_array($klic);
         $slika = $klic1['url'];
         $uporabnik_id = $row['uporabnik_id'];
-
+        $zival_id = $row['zival_id'];
         $dateOfBirth = $row['datum_r'];
         $today = date("Y-m-d");
         $diff = date_diff(date_create($dateOfBirth), date_create($today));
