@@ -9,8 +9,10 @@
 </head>
 <body>
     <?php
+    if(isset($_COOKIE['prijava'])){
         echo $_COOKIE['prijava'];
         setcookie('prijava', '');
+    }
     ?>
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label><br>
