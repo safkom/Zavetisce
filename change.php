@@ -33,7 +33,7 @@ if ($query > 0) {
     if ($conn->query($update_sql) === TRUE) {
         // Delete the existing reservation
         if ($existingReservationId) {
-            $delete_reservation_sql = "DELETE FROM rezervacija WHERE rezervacija_id = $existingReservationId;";
+            $delete_reservation_sql = "DELETE FROM rezervacija WHERE rezervacija_id = ".$existingReservationId.";";
             $conn->query($delete_reservation_sql);
         }
 
