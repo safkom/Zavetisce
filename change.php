@@ -22,9 +22,21 @@ if ($query > 0) {
     $date = $_POST['datum'];
     $posvojen = isset($_POST['posvojen']) ? 1 : 0;
 
+    // Get the existing reservation ID
+    $select_reservation_sql = "SELECT rezervacija_id FROM zivali WHERE id = $zival;";
+    $reservation_result = mysqli_query($conn, $select_reservation_sql);
+    $reservation_row = mysqli_fetch_assoc($reservation_result);
+    $existingReservationId = $reservation_row['rezervacija_id'];
+
     // Update the zivali table
     $update_sql = "UPDATE zivali SET ime = '".$ime."', datum_r = '".$date."', posvojen = ".$posvojen." WHERE id = ".$zival.";";
     if ($conn->query($update_sql) === TRUE) {
+        // Delete the existing reservation
+        if ($existingReservationId) {
+            $delete_reservation_sql = "DELETE FROM rezervacija WHERE rezervacija_id = $existingReservationId;";
+            $conn->query($delete_reservation_sql);
+        }
+
         // Insert a new reservation
         $rezervacija_id = insertRezervacija($conn, $uporabnik_id, $zival);
         if ($rezervacija_id !== false) {
