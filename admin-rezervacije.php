@@ -80,7 +80,7 @@ echo "Seznam kužkov:";
         else{
             $posvojen = 'Da';
         }
-        if($row['rezervacija.uporabnik_id'] != null){
+        if($row['uporabnik_id'] != null){
             $sql = "SELECT * from uporabniki WHERE id = ".$uporabnik_id.";";
             $result = mysqli_query($conn,$sql);
             $row=mysqli_fetch_array($result);
