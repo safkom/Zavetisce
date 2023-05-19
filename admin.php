@@ -28,10 +28,6 @@ if($query == 0){
     header('Location: index.php');
     exit();
 }
-if(isset($_COOKIE['prijava'])){
-    echo $_COOKIE['prijava']."<br>"; 
-}
-setcookie('prijava', '');
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn,$sql);
 echo "<a href='admin-rezervacije.php'>Rezervacije</a><br>";
@@ -110,6 +106,41 @@ echo "Seznam kužkov:";
     echo '</table>';
 
 ?>
+<div id="loginWindow">
+        <?php if(isset($_COOKIE['prijava'])){
+            echo $_COOKIE['prijava'];
+            //setcookie("prijava", "", time() - 3600);
+        }?>
+    </div>
 <a href = "odjava.php">Odjava</a>
+<script>
+        // Check if the cookie 'prijava' exists
+        function checkCookie() {
+            var name = "prijava=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var cookieArray = decodedCookie.split(';');
+            
+            for (var i = 0; i < cookieArray.length; i++) {
+                var cookie = cookieArray[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(name) == 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Show the login window if the cookie exists
+        if (checkCookie()) {
+            var loginWindow = document.getElementById("loginWindow");
+            loginWindow.style.display = "block";
+            setTimeout(function() {
+                loginWindow.style.display = "none";
+            }, 5000);
+        }
+        document.cookie = 'prijava=; Max-Age=0'
+    </script>
 </body>
 </html>
