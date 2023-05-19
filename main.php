@@ -150,6 +150,5 @@ echo "Seznam kužkov:";
             }, 5000);
         }
     </script>
-    <?php setcookie('prijava', ''); ?>
 </body>
 </html>
