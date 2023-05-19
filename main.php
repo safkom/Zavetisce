@@ -115,7 +115,7 @@ echo "Seznam kužkov:";
     </div>
 
     <script>
-        window.addEventListener('load', function() {
+      window.addEventListener('load', function() {
     var info = getCookie('prijava');
     if (info) {
         var popupContent = document.getElementById('popupContent');
@@ -144,7 +144,8 @@ function getCookie(name) {
         }
     }
     return '';
-} 
+}
+
 </script>
 <a href = "odjava.php">Odjava</a>
 </body>
