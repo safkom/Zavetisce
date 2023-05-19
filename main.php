@@ -111,7 +111,9 @@ echo "Seznam kužkov:";
 <div id="infoPopup" class="popup">
         <div class="content">
             <h2>Login Confirmed</h2>
-            <?php echo $_COOKIE['prijava']; ?>
+            <?php if(isset($_COOKIE['prijava'])){
+                echo $_COOKIE['prijava'];
+            } ?>
         </div>
     </div>
     <script src="js/script.js"></script>
