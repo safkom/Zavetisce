@@ -105,7 +105,7 @@ echo "Seznam kužkov:";
         echo'</tr>';
     }
     echo '</table>';
-    
+/*    
 
 ?>
 <div id="infoPopup" class="popup">
@@ -116,7 +116,16 @@ echo "Seznam kužkov:";
             } ?>
         </div>
     </div>
-    <script src="js/script.js"></script>
+    <script src="js/script.js"></script> */
+    ?>
+    <button onclick="showPopup()">Show Login Confirmation</button>
+
+<div id="infoPopup" class="popup">
+    <h2>Login Confirmed</h2>
+    <p>Your login has been successfully confirmed.</p>
+</div>
+
+<script src="script.js"></script>
 <a href = "odjava.php">Odjava</a>
 </body>
 </html>

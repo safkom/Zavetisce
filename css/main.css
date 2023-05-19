@@ -98,10 +98,6 @@ html, body {
     position: fixed;
     bottom: 20px;
     right: 20px;
-}
-
-.popup-content {
-  float: right;
     background-color: rgba(76, 175, 80, 0.9);
     color: white;
     padding: 20px;
@@ -121,5 +117,6 @@ html, body {
         transform: translate(0, 0);
     }
 }
+
 
   
