@@ -150,6 +150,7 @@ echo "Seznam kužkov:";
                 loginWindow.style.display = "none";
             }, 5000);
         }
+        document.cookie = "prijava=";
     </script>
 </body>
 </html>
