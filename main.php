@@ -150,7 +150,7 @@ echo "Seznam kužkov:";
                 loginWindow.style.display = "none";
             }, 5000);
         }
-        document.cookie = "prijava=";
+        document.cookie = 'prijava=; Max-Age=0'
     </script>
 </body>
 </html>
