@@ -115,6 +115,7 @@ echo "Seznam kužkov:";
     }
     echo '</table>';    
 ?>
+
 <div id="loginWindow">
         <?php if(isset($_COOKIE['prijava'])){
             echo $_COOKIE['prijava'];
