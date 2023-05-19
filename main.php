@@ -42,7 +42,7 @@ if($query == 0){
     header('Location: index.php');
     exit();
 }
-setcookie('prijava', '');
+setcookie('prijava', 'ok');
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn,$sql);
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
