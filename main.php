@@ -29,10 +29,6 @@ if($query == 0){
     header('Location: index.php');
     exit();
 }
-
-if(isset($_COOKIE['prijava'])){
-    echo $_COOKIE['prijava']."<br>";
-}
 setcookie('prijava', '');
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn,$sql);
