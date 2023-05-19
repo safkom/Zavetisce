@@ -109,44 +109,12 @@ echo "Seznam kužkov:";
 
 ?>
 <div id="infoPopup" class="popup">
-        <span class="close" onclick="closePopup()">&times;</span>
-        <h2>Info Popup</h2>
-        <p id="popupContent"></p>
+        <div class="content">
+            <h2>Login Confirmed</h2>
+            <?php echo $_COOKIE['prijava']; ?>
+        </div>
     </div>
-
-    <script>
-      window.addEventListener('load', function() {
-    var info = getCookie('prijava');
-    if (info) {
-        var popupContent = document.getElementById('popupContent');
-        popupContent.textContent = info;
-        showPopup();
-        setTimeout(closePopup, 5000);
-    }
-});
-
-function showPopup() {
-    var popup = document.getElementById('infoPopup');
-    popup.style.display = 'block';
-}
-
-function closePopup() {
-    var popup = document.getElementById('infoPopup');
-    popup.style.display = 'none';
-}
-
-function getCookie(name) {
-    var cookies = document.cookie.split(';');
-    for (var i = 0; i < cookies.length; i++) {
-        var cookie = cookies[i].trim();
-        if (cookie.startsWith(name + '=')) {
-            return cookie.substring(name.length + 1);
-        }
-    }
-    return '';
-}
-
-</script>
+    <script src="js/script.js"></script>
 <a href = "odjava.php">Odjava</a>
 </body>
 </html>
