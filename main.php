@@ -118,7 +118,7 @@ echo "Seznam kužkov:";
 <div id="loginWindow">
         <?php if(isset($_COOKIE['prijava'])){
             echo $_COOKIE['prijava'];
-            setcookie("prijava", "", time() - 3600);
+            //setcookie("prijava", "", time() - 3600);
         }?>
     </div>
     
