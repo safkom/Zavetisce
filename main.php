@@ -104,9 +104,7 @@ echo "Seznam kužkov:";
         echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezervacija."</td>";
         echo'</tr>';
     }
-    echo '</table>';
-/*    
-
+    echo '</table>';    
 ?>
 <div id="infoPopup" class="popup">
         <div class="content">
@@ -116,16 +114,7 @@ echo "Seznam kužkov:";
             } ?>
         </div>
     </div>
-    <script src="js/script.js"></script> */
-    ?>
-    <button onclick="showPopup()">Show Login Confirmation</button>
-
-<div id="infoPopup" class="popup">
-    <h2>Login Confirmed</h2>
-    <p>Your login has been successfully confirmed.</p>
-</div>
-
-<script src="script.js"></script>
+    <script src="js/script.js"></script>
 <a href = "odjava.php">Odjava</a>
 </body>
 </html>
