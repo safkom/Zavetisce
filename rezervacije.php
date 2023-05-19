@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
-    <link rel="stylesheet" type="text/css" href="stil.css" />
+    <link rel="stylesheet" type="text/css" href="css/rezervacije.css" />
     <title>Zavetišče</title>
 </head>
 <body>
