@@ -106,12 +106,10 @@ echo "Seznam kužkov:";
     }
     echo '</table>';    
 ?>
-<div id="infoPopup" class="popup">
-        <div class="content">
-            <?php if(isset($_COOKIE['prijava'])){
-                echo $_COOKIE['prijava'];
-            } ?>
-        </div>
+<div id="loginWindow">
+        <?php if(isset($_COOKIE['prijava'])){
+            echo $_COOKIE['prijava'];
+        }?>
     </div>
     <script src="js/script.js"></script>
 <a href = "odjava.php">Odjava</a>
