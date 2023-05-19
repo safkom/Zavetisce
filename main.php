@@ -8,17 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <title>Zavetišče</title>
     <style>
-        #loginWindow {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            width: 200px;
-            height: 100px;
-            background-color: lightgreen;
-            display: none;
-            padding: 10px;
-            border-radius: 5px;
-        }
+        
     </style>
 </head>
 <body>
