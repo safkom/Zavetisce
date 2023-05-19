@@ -93,7 +93,7 @@ html, body {
     text-decoration: underline;
   }
 
-  .popup {
+  #infoPopup {
     display: none;
     position: fixed;
     bottom: 20px;
