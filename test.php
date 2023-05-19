@@ -16,6 +16,7 @@
     </style>
 </head>
 <body>
+    <?php setcookie('prijava', 'Uspešno'); ?>
     <div id="loginWindow">
         <h3>Login Confirmed!</h3>
     </div>
