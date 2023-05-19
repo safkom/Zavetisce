@@ -10,7 +10,7 @@ $query = mysqli_num_rows($result);
 // modify the if statement to check if id exists in database
 if ($query > 0) {
     $zival = $_GET['zival_id'];
-    $sql = "SELECT * FROM rezervacije WHERE id = ".$zival.";";
+    $sql = "SELECT * FROM rezervacija WHERE id = ".$zival.";";
     $result = mysqli_query($conn, $sql);
     $query = mysqli_num_rows($result);
     if($query == 0){
