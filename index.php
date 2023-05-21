@@ -15,10 +15,6 @@
         echo $_COOKIE['prijava'];
         setcookie('prijava', '');
     }
-    if(isset($_COOKIE['id'])){
-        header('Location: index.php');
-        exit();
-    }
     ?>
 <div class="container">
  <form action="preveri.php" method="get">
