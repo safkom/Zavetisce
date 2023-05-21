@@ -22,7 +22,7 @@ if($query > 0){
         echo $_COOKIE['prijava']."<br>";
     }   
 setcookie('prijava', '');
-$sql = "    ";
+$sql = "SELECT * FROM zivali INNER JOIN rezervacija on zivali.id = rezervacija.zival_id WHERE rezervacija.uporabnik_id = ".$id.";";
 $result = mysqli_query($conn,$sql);
 echo "Seznam kužkov:";
     echo '<table border ="1">';
