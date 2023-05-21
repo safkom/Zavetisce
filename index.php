@@ -16,7 +16,7 @@
         setcookie('prijava', '');
     }
     if(isset($_COOKIE['id'])){
-        header("Loaction: main.php");
+        header('Location: index.php');
         exit();
     }
     ?>
