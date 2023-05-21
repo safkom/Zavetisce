@@ -51,7 +51,7 @@ if ($query > 0) {
 
                         $allowedfileExtensions = array('jpg', 'gif', 'png', 'zip', 'txt', 'xls', 'doc');
                         if (in_array($fileExtension, $allowedfileExtensions)) {
-                            $uploadFileDir = './img/';
+                            $uploadFileDir = 'img/';
                             $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
                             $dest_path = $uploadFileDir . $newFileName;
 
