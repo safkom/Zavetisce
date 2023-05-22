@@ -106,13 +106,13 @@ echo "Seznam kužkov:";
 ?>
 
 <div id="loginWindow">
-        <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
+        <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] === 1){
             echo $_COOKIE['prijava'];
             //setcookie("prijava", "", time() - 3600);
         }?>
 </div>
 <div id="loginWindow2">
-        <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 0){
+        <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] === 0){
             echo $_COOKIE['prijava'];
             //setcookie("prijava", "", time() - 3600);
         }?>
