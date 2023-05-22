@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="sl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Miha Šafranko"/>
-	<meta name="author" content="Miha Šafranko" />
-    <link rel="stylesheet" type="text/css" href="css/change.css" />
-    <title>Zavetišče</title>
-</head>
-<body>
+
 <?php
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -165,5 +155,3 @@ function insertSlika($conn, $url) {
     }
 }
 ?>
-</body>
-</html>
