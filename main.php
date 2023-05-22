@@ -109,14 +109,12 @@ echo "Seznam kužkov:";
     <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
         echo $_COOKIE['prijava'];
         setcookie("prijava", "", time() - 3600);
-        setcookie("good", "", time() - 3600);
     }?>
 </div>
 <div id="loginWindow2" style="display: none;">
-    <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 0){
+    <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] != 1){
         echo $_COOKIE['prijava'];
         setcookie("prijava", "", time() - 3600);
-        setcookie("good", "", time() - 3600);
     }?>
 </div>
 
@@ -141,13 +139,22 @@ echo "Seznam kužkov:";
         return false;
     }
 
-    // Show the login window if the cookie exists
+    // Show the appropriate login window based on the cookie value
     if (checkCookie()) {
         var loginWindow = document.getElementById("loginWindow");
-        loginWindow.style.display = "block";
-        setTimeout(function() {
-            loginWindow.style.display = "none";
-        }, 5000);
+        var loginWindow2 = document.getElementById("loginWindow2");
+        
+        if (document.cookie.indexOf("good=1") !== -1) {
+            loginWindow.style.display = "block";
+            setTimeout(function() {
+                loginWindow.style.display = "none";
+            }, 5000);
+        } else {
+            loginWindow2.style.display = "block";
+            setTimeout(function() {
+                loginWindow2.style.display = "none";
+            }, 5000);
+        }
     }
     
     document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
