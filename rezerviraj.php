@@ -29,22 +29,27 @@ if ($query > 0) {
         $update_sql = "UPDATE zivali SET rezervacija_id = ".$rezervacija_id." WHERE id = ".$zival.";";
         if ($conn->query($update_sql) === TRUE) {
             setcookie('prijava', "Rezervacija uspešna.");
+            setcookie('good', 1);
             header('Location: main.php');
         } else {
             setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
             header('Location: main.php');
+            setcookie('good', 0);
         }
     } else {
         setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
+        setcookie('good', 0);
         header('Location: main.php');
     }
     }
     else{
         setcookie('prijava', "Ta žival je že rezervirana za drugega uporabnika.");
+        setcookie('good', 0);
         header('Location: main.php');
     }
     
 } else {
     header('Location: index.php');
+    setcookie('good', 0);
 }
 ?>
