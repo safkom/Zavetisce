@@ -72,6 +72,9 @@ echo "Seznam kužkov:";
         if($ageInMonths > 4){
             $age = $leta . $ageInMonths . ' mescov';
         }
+        if($ageInMonths < 1){
+            $age = "Mlajši od 1 meseca.";
+        }
 
         if($row['posvojen'] == 0){
             $posvojen = 'Ne';
