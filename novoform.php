@@ -20,7 +20,7 @@
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<label for="ime">Ime:</label><br>
-                    <input type="text" id="ime" name="ime" value = required><br>
+                    <input type="text" id="ime" name="ime" required><br>
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>
