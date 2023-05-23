@@ -37,11 +37,6 @@
 					<label for="slika">Slika:</label><br>
                     <input type="file" id="slika" class="login_input" name="slika"><br>
 				</div>
-                <div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<label for="rezervacija">Rezervacija:</label><br>
-  <input type="datalist" id="uporabnikid" class="login_input" name="uporabnikid"  list="uporabniki">
-<br>
 
 <br>
   <datalist id="zivali">
