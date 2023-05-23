@@ -4,8 +4,6 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once 'connect.php';
 require_once 'cookie.php';
-
-
 $ime = $_POST['ime'];
 $date = $_POST['datum'];
 $posvojen = isset($_POST['posvojen']) ? 1 : 0;
