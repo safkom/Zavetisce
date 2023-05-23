@@ -54,7 +54,7 @@ if ($conn->query($insert_sql) === TRUE) {
         }
 } 
 else {
-    echo 'register', "Error: " . $sql . "<br>" . $conn->error;
+    echo 'register', "Error: " . $insert_sql . "<br>" . $conn->error;
 }
 }
 else{
