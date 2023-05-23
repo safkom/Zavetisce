@@ -97,7 +97,7 @@ function insertSlika($conn, $url)
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login" id="spremembe" action="novo.php" method="post" enctype="multipart/form-data">
+			<form class="login" id="spremembe" action="neki.php" method="post" enctype="multipart/form-data">
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
 					<label for="ime">Ime:</label><br>
