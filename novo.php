@@ -31,16 +31,13 @@ if ($conn->query($insert_sql) === TRUE) {
                 $slika_id = insertSlika($conn, $dest_path);
                 if ($slika_id !== false) {
                     // Update the slika_id in the zivali table
-                    $update_sql2 = "UPDATE zivali SET slika_id = ? WHERE id = ?";
-                    $stmt4 = $conn->prepare($update_sql2);
+                    $update_sql3 = "UPDATE zivali SET slika_id = ? WHERE id = ?";
+                    $stmt4 = $conn->prepare($update_sql3);
                     $stmt4->bind_param('ii', $slika_id, $zival);
                     if ($stmt4->execute()) {
-                        echo "Vnos slike uspešen!";
-                        exit();
+                        echo "Uspešen vnos slike";
                     } else {
-                        setcookie('prijava', "Error: " . $conn->error);
-                        header('Location: admin.php');
-                        exit();
+                        echo "Vnos ni uspel";
                     }
                 } else {
                     echo "Error: Failed to insert slika record.";
