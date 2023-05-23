@@ -38,10 +38,9 @@ if ($conn->query($insert_sql) === TRUE) {
                         echo "Uspešen vnos slike";
                     } else {
                         echo "Vnos ni uspel";
-                    }
-                } else {
-                    echo "Error: Failed to insert slika record.";
+                    
                 }
+            } 
             } else {
                 echo 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by the web server.';
                 
