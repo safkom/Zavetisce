@@ -10,7 +10,7 @@ $posvojen = isset($_POST['posvojen']) ? 1 : 0;
 echo $ime, $date, $posvojen;
 
 // Update the zivali table
-$insert_sql = "INSERT INTO zivali (ime, datum_r, posvojen) VALUES ('".$ime."', '".$date."', '".$posvojen."'))";
+$insert_sql = "INSERT INTO zivali (ime, datum_r, posvojen) VALUES ('".$ime."', '".$date."', '".$posvojen."');";
 if ($conn->query($insert_sql) === TRUE) {
     echo "Vnos uspešen!";
     if (isset($_FILES['slika']) && $_FILES['slika']['error'] === UPLOAD_ERR_OK) {
