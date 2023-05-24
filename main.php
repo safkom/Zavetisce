@@ -99,7 +99,15 @@ echo "Seznam kužkov:";
         }
 
         echo'<tr>';
-        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezervacija."</td>";
+        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td>";
+        
+        if ($slika_id !== null) {
+            echo "<img src='".$slika."'>";
+        } else {
+            echo "Ni slike";
+        }
+        
+        echo "</td><td>".$rezervacija."</td>";
         echo'</tr>';
     }
     echo '</table>';    
