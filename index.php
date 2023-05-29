@@ -10,6 +10,71 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+        /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);	
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .container input[type="text"],
+.container input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+  background-color: #45a049;
+}
+  
+  a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 600px) {
+    .container {
+      max-width: 100%;
+      margin: 20px;
+      box-shadow: none;
+    }
+  }
+  
     </style>
 
     <title>Zavetišče</title>
