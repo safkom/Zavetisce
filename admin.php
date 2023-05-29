@@ -49,7 +49,7 @@ Seznam kužkov:
     while ($row = mysqli_fetch_array($result)) {
         $zival_id = $row['id'];
         $slikaid = $row['slika_id'];
-        $sql = "SELECT * FROM slike WHERE id = $slikaid;";
+        $sql = "SELECT * FROM slike WHERE id = '$slikaid';";
         $klic = mysqli_query($conn, $sql);
         $klic1 = mysqli_fetch_array($klic);
         $slika = $klic1['url'];
@@ -75,6 +75,8 @@ Seznam kužkov:
             $age = $leta . $ageInMonths . ' meseca';
         } elseif ($ageInMonths > 4) {
             $age = $leta . $ageInMonths . ' mesecev';
+        } else {
+            $age = $leta . $ageInMonths . ' mesec';
         }
 
         if ($row['posvojen'] == 0) {
