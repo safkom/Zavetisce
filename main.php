@@ -12,7 +12,6 @@
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
         .container {
-            max-width: 400px;
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
