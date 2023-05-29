@@ -43,8 +43,8 @@ echo '</tr>';
 
 while($row = mysqli_fetch_array($result)){
     $slikaid = $row['slika_id'];
-    $sql = "SELECT * FROM slike WHERE id = " . mysqli_real_escape_string($conn, $slikaid) . ";";
-    $klic = mysqli_query($conn, $sql);
+    $sql1 = "SELECT * FROM slike WHERE id = ".$slikaid.";";
+    $klic = mysqli_query($conn,$sql1);
     $klic1 = mysqli_fetch_array($klic);
     $slika = $klic1['url'];
 
