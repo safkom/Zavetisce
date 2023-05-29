@@ -53,7 +53,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
-echo "Seznam kužkov:";
+echo "<p>Seznam kužkov:</p>";
 echo '<table border="1">';
 echo '<tr>';
 echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviraj</b></td>";
