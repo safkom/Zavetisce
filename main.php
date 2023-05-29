@@ -96,10 +96,6 @@ if ($query == 0) {
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
-
-
-
-
     <p>Seznam kužkov:</p>
     <table border="1">
         <tr>
