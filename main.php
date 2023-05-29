@@ -18,63 +18,10 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
-        .dropdown {
-        position: relative;
-        display: inline-block;
-        float: right;
-        margin-right: 20px;
-        margin-top: 10px;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 120px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-    }
-
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
-
-    .dropdown-content a:hover {
-        background-color: #f1f1f1;
-    }
-
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    .dropbtn {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    .dropbtn:hover {
-        background-color: #45a049;
-    }
     </style>
 </head>
 
 <body>
-<div class="dropdown">
-    <button id="dropdownBtn" class="dropbtn">Menu</button>
-    <div id="dropdownContent" class="dropdown-content">
-        <a href="rezervacije.php">Rezervacije</a>
-        <a href="odjava.php">Odjava</a>
-    </div>
-</div>
-
-
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -202,21 +149,6 @@ $result = mysqli_query($conn, $sql);
 <a href="odjava.php">Odjava</a>
 
 <script>
-
-var dropdownBtn = document.getElementById("dropdownBtn");
-    var dropdownContent = document.getElementById("dropdownContent");
-
-    dropdownBtn.addEventListener("click", function() {
-        dropdownContent.classList.toggle("show");
-    });
-
-    window.addEventListener("click", function(event) {
-        if (!event.target.matches("#dropdownBtn")) {
-            if (dropdownContent.classList.contains("show")) {
-                dropdownContent.classList.remove("show");
-            }
-        }
-    });
     // Check if the cookie 'prijava' exists
     function checkCookie() {
         var name = "prijava=";
