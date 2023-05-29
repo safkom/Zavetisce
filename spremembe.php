@@ -78,19 +78,19 @@
     <div class="container">
         <h1>Spremembe</h1>
         <form class="login" id="spremembe" action="change.php" method="post" enctype="multipart/form-data">
-            <label for="ime">Ime:</label><br>
-            <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br>
+            <label for="ime">Ime:</label>
+            <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br><br>
 
-            <label for="datum">Datum rojstva:</label><br>
-            <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br>
+            <label for="datum">Datum rojstva:</label>
+            <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br><br>
 
-            <label for="posvojen">Posvojen:</label><br>
-            <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen'] == 1){echo "checked";} ?>><br>
+            <label for="posvojen">Posvojen:</label>
+            <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen'] == 1){echo "checked";} ?>><br><br>
 
-            <label for="slika">Slika:</label><br>
-            <input type="file" id="slika" class="login_input" name="slika"><br>
+            <label for="slika">Slika:</label>
+            <input type="file" id="slika" class="login_input" name="slika"><br><br>
 
-            <label for="rezervacija">Rezervacija:</label><br>
+            <label for="rezervacija">Rezervacija:</label>
             <input type="datalist" id="uporabnikid" class="login_input" name="uporabnikid"
             value="<?php
                 $sql = "SELECT * FROM rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
@@ -114,7 +114,7 @@
                         }
                     }
                 }
-            ?>" list="uporabniki"><br>
+            ?>" list="uporabniki"><br><br>
 
             <br>
             <datalist id="zivali">
