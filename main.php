@@ -52,7 +52,9 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
-echo "<div class = 'container'>";
+?>
+<div class = "container">
+<?php
 echo "Seznam kužkov:";
 echo '<table border="1">';
 echo '<tr>';
@@ -125,10 +127,10 @@ while ($row = mysqli_fetch_array($result)) {
     echo '</tr>';
 }
 
-echo '</table>';
 echo "</div>";
 
 ?>
+</div>
 
 <div id="loginWindow" style="display: none;">
     <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
