@@ -44,6 +44,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
+echo "<div class = 'container'>";
 echo "Seznam kužkov:";
 echo '<table border="1">';
 echo '<tr>';
@@ -117,6 +118,7 @@ while ($row = mysqli_fetch_array($result)) {
 }
 
 echo '</table>';
+echo "</div>";
 
 ?>
 
