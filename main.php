@@ -11,7 +11,7 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
-        .container {
+        #container {
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -22,7 +22,6 @@
 </head>
 
 <body>
-    <div id = "container">
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -53,6 +52,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
+echo "<div id = 'container'>"
 echo "<p>Seznam kužkov:</p>";
 echo '<table border="1">';
 echo '<tr>';
@@ -143,7 +143,6 @@ echo "</div>";
 </div>
 
 <a href="odjava.php">Odjava</a>
-</div>
 
 <script>
     // Check if the cookie 'prijava' exists
