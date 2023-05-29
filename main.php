@@ -58,6 +58,7 @@
 </head>
 
 <body>
+<div id="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
     <div id="menuContent" class="menu-content">
@@ -98,7 +99,7 @@ $result = mysqli_query($conn, $sql);
 
 
 
-<div id="container">
+
     <p>Seznam kužkov:</p>
     <table border="1">
         <tr>
