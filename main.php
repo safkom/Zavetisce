@@ -11,6 +11,15 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+        .container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px; /* Adding rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+}
+
     </style>
 </head>
 <body>
