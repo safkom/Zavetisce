@@ -18,49 +18,62 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
-        #menuButton {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index: 999;
-}
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        float: right;
+        margin-right: 20px;
+        margin-top: 10px;
+    }
 
-#menu {
-  position: fixed;
-  top: 40px;
-  right: 10px;
-  background-color: #fff;
-  padding: 10px;
-  border: 1px solid #ccc;
-  display: none;
-}
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
 
-#menu ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
-#menu ul li {
-  margin-bottom: 10px;
-}
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
 
-.hidden {
-  display: none;
-}
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    .dropbtn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .dropbtn:hover {
+        background-color: #45a049;
+    }
     </style>
 </head>
 
 <body>
-<header>
-    <button id="menuButton">Menu</button>
-    <nav id="menu" class="hidden">
-      <ul>
-        <li><a href="reservations.html">Reservations</a></li>
-        <li><a href="logout.html">Log out</a></li>
-      </ul>
-    </nav>
-  </header>
+<div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <a href="rezervacije.php">Rezervacije</a>
+        <a href="odjava.php">Odjava</a>
+    </div>
+</div>
+
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -188,13 +201,6 @@ $result = mysqli_query($conn, $sql);
 <a href="odjava.php">Odjava</a>
 
 <script>
-    const menuButton = document.getElementById('menuButton');
-    const menu = document.getElementById('menu');
-
-    menuButton.addEventListener('click', function() {
-    menu.classList.toggle('hidden');
-    });
-
     // Check if the cookie 'prijava' exists
     function checkCookie() {
         var name = "prijava=";
