@@ -71,8 +71,8 @@
         exit();
     }
 
-    if (isset($_COOKIE['admin'])) {
-        header('Location: admin.php');
+    if (!isset($_COOKIE['admin'])) {
+        header('Location: main.php');
         exit();
     }
 
