@@ -30,71 +30,86 @@ if ($query == 0) {
 }
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
-echo "<a href='admin-rezervacije.php'>Rezervacije</a><br>";
-echo "Seznam kužkov:";
-echo '<table border="1">';
-echo '<tr>';
-echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td><td><b>Spremeni</b></td>";
-echo '</tr>';
 
-while ($row = mysqli_fetch_array($result)) {
-    $zival_id = $row['id'];
-    $slikaid = $row['slika_id'];
-    $sql = "SELECT * FROM slike WHERE id = $slikaid;";
-    $klic = mysqli_query($conn, $sql);
-    $klic1 = mysqli_fetch_array($klic);
-    $slika = $klic1['url'];
-
-    $dateOfBirth = $row['datum_r'];
-    $today = date("Y-m-d");
-    $diff = date_diff(date_create($dateOfBirth), date_create($today));
-    $ageInMonths = $diff->format('%m');
-    $ageInYears = $diff->format('%y');
-    $leta = '';
-
-    if ($ageInYears == 1) {
-        $leta = $ageInYears . ' leto in ';
-    } elseif ($ageInYears >= 2 && $ageInYears <= 4) {
-        $leta = $ageInYears . ' leti in ';
-    } elseif ($ageInYears > 4) {
-        $leta = $ageInYears . ' let in ';
-    }
-
-    if ($ageInMonths == 1) {
-        $age = $leta . '1 mesec';
-    } elseif ($ageInMonths >= 2 && $ageInMonths <= 4) {
-        $age = $leta . $ageInMonths . ' meseca';
-    } elseif ($ageInMonths > 4) {
-        $age = $leta . $ageInMonths . ' mesecev';
-    }
-
-    if ($row['posvojen'] == 0) {
-        $posvojen = 'Ne';
-    } else {
-        $posvojen = 'Da';
-    }
-
-    if (is_null($row['rezervacija_id'])) {
-        $rezervacija = "Ni rezervirano";
-    } else {
-        $sql = "SELECT * FROM rezervacija WHERE zival_id = '$zival_id'";
-        $klic2 = mysqli_query($conn, $sql);
-        $klic3 = mysqli_fetch_array($klic2);
-        $datum = $klic3['datum'];
-        $rezervacija = 'Da, ' . $datum;
-    }
-
-    echo '<tr>';
-    echo '<td>' . $row['ime'] . '</td><td>' . $age . '</td><td>' . $posvojen . '</td><td><img src="' . $slika . '"></td><td>' . $rezervacija . '</td><td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
-    echo '</tr>';
-}
-echo '</table>';
 ?>
+
+<a href="admin-rezervacije.php">Rezervacije</a><br>
+Seznam kužkov:
+<table border="1">
+    <tr>
+        <td><b>Ime</b></td>
+        <td><b>Starost</b></td>
+        <td><b>Posvojen</b></td>
+        <td><b>Slika</b></td>
+        <td><b>Rezerviran</b></td>
+        <td><b>Spremeni</b></td>
+    </tr>
+
+    <?php
+    while ($row = mysqli_fetch_array($result)) {
+        $zival_id = $row['id'];
+        $slikaid = $row['slika_id'];
+        $sql = "SELECT * FROM slike WHERE id = $slikaid;";
+        $klic = mysqli_query($conn, $sql);
+        $klic1 = mysqli_fetch_array($klic);
+        $slika = $klic1['url'];
+
+        $dateOfBirth = $row['datum_r'];
+        $today = date("Y-m-d");
+        $diff = date_diff(date_create($dateOfBirth), date_create($today));
+        $ageInMonths = $diff->format('%m');
+        $ageInYears = $diff->format('%y');
+        $leta = '';
+
+        if ($ageInYears == 1) {
+            $leta = $ageInYears . ' leto in ';
+        } elseif ($ageInYears >= 2 && $ageInYears <= 4) {
+            $leta = $ageInYears . ' leti in ';
+        } elseif ($ageInYears > 4) {
+            $leta = $ageInYears . ' let in ';
+        }
+
+        if ($ageInMonths == 1) {
+            $age = $leta . '1 mesec';
+        } elseif ($ageInMonths >= 2 && $ageInMonths <= 4) {
+            $age = $leta . $ageInMonths . ' meseca';
+        } elseif ($ageInMonths > 4) {
+            $age = $leta . $ageInMonths . ' mesecev';
+        }
+
+        if ($row['posvojen'] == 0) {
+            $posvojen = 'Ne';
+        } else {
+            $posvojen = 'Da';
+        }
+
+        if (is_null($row['rezervacija_id'])) {
+            $rezervacija = "Ni rezervirano";
+        } else {
+            $sql = "SELECT * FROM rezervacija WHERE zival_id = $zival_id";
+            $klic2 = mysqli_query($conn, $sql);
+            $klic3 = mysqli_fetch_array($klic2);
+            $datum = $klic3['datum'];
+            $rezervacija = 'Da, ' . $datum;
+        }
+
+        echo '<tr>';
+        echo '<td>' . $row['ime'] . '</td>';
+        echo '<td>' . $age . '</td>';
+        echo '<td>' . $posvojen . '</td>';
+        echo '<td><img src="' . $slika . '"></td>';
+        echo '<td>' . $rezervacija . '</td>';
+        echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
+        echo '</tr>';
+    }
+    ?>
+</table>
+
 <div id="loginWindow">
     <?php
     if (isset($_COOKIE['prijava'])) {
         echo $_COOKIE['prijava'];
-        //setcookie("prijava", "", time() - 3600);
+        // setcookie("prijava", "", time() - 3600);
     }
     ?>
 </div>
