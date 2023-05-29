@@ -63,6 +63,17 @@ body {
 .container input[type="submit"]:hover {
   background-color: lightblue;
 }
+#loginWindow {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    height: 100px;
+    background-color: lightgreen;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+}
   
   a {
     color: lightblue;
@@ -83,12 +94,6 @@ body {
     <title>Zavetišče</title>
 </head>
 <body>
-    <?php
-    if(isset($_COOKIE['prijava'])){
-        echo $_COOKIE['prijava'];
-        setcookie('prijava', '');
-    }
-    ?>
 <div class="container">
   <h1>Prijava</h1>
  <form action="preveri.php" method="get">
