@@ -52,7 +52,11 @@ Seznam kužkov:
         $sql = "SELECT * FROM slike WHERE id = '$slikaid';";
         $klic = mysqli_query($conn, $sql);
         $klic1 = mysqli_fetch_array($klic);
+    if ($klic1 !== null) {
         $slika = $klic1['url'];
+    } else {
+        $slika = ''; // or any default value you prefer
+    }
 
         $dateOfBirth = $row['datum_r'];
         $today = date("Y-m-d");
