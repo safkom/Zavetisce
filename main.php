@@ -8,51 +8,52 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-        body {
+        body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
-            margin: 0;
-            padding-top: 50px;
         }
-
         #container {
-            margin: 100px auto;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px; /* Adding rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
 
         .dropdown {
-            position: relative;
-            display: inline-block;
-        }
+        position: relative;
+        display: inline-block;
+    }
 
-        .menu-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+    .menu-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
 
-        .menu-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 120px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
+    .menu-content {
+        display: none;
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
 
-        .menu-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
+    .menu-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
     </style>
 </head>
 
@@ -194,56 +195,56 @@ $result = mysqli_query($conn, $sql);
 <script>
 
 var menuBtn = document.getElementById("menuBtn");
-var menuContent = document.getElementById("menuContent");
+    var menuContent = document.getElementById("menuContent");
 
-menuBtn.addEventListener("click", function() {
-    menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
-});
+    menuBtn.addEventListener("click", function() {
+        menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
+    });
 
-window.addEventListener("click", function(event) {
-    if (!event.target.matches("#menuBtn")) {
-        if (menuContent.style.display === "block") {
-            menuContent.style.display = "none";
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches("#menuBtn")) {
+            if (menuContent.style.display === "block") {
+                menuContent.style.display = "none";
+            }
+        }
+    });
+    // Check if the cookie 'prijava' exists
+    function checkCookie() {
+        var name = "prijava=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var cookieArray = decodedCookie.split(';');
+
+        for (var i = 0; i < cookieArray.length; i++) {
+            var cookie = cookieArray[i];
+            while (cookie.charAt(0) == ' ') {
+                cookie = cookie.substring(1);
+            }
+            if (cookie.indexOf(name) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Show the appropriate login window based on the cookie value
+    if (checkCookie()) {
+        var loginWindow = document.getElementById("loginWindow");
+        var loginWindow2 = document.getElementById("loginWindow2");
+
+        if (document.cookie.indexOf("good=1") !== -1) {
+            loginWindow.style.display = "block";
+            setTimeout(function() {
+                loginWindow.style.display = "none";
+            }, 5000);
+        } else {
+            loginWindow2.style.display = "block";
+            setTimeout(function() {
+                loginWindow2.style.display = "none";
+            }, 5000);
         }
     }
-});
-// Check if the cookie 'prijava' exists
-function checkCookie() {
-    var name = "prijava=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var cookieArray = decodedCookie.split(';');
 
-    for (var i = 0; i < cookieArray.length; i++) {
-        var cookie = cookieArray[i];
-        while (cookie.charAt(0) == ' ') {
-            cookie = cookie.substring(1);
-        }
-        if (cookie.indexOf(name) == 0) {
-            return true;
-        }
-    }
-    return false;
-}
-
-// Show the appropriate login window based on the cookie value
-if (checkCookie()) {
-    var loginWindow = document.getElementById("loginWindow");
-    var loginWindow2 = document.getElementById("loginWindow2");
-
-    if (document.cookie.indexOf("good=1") !== -1) {
-        loginWindow.style.display = "block";
-        setTimeout(function() {
-            loginWindow.style.display = "none";
-        }, 5000);
-    } else {
-        loginWindow2.style.display = "block";
-        setTimeout(function() {
-            loginWindow2.style.display = "none";
-        }, 5000);
-    }
-}
-
-document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 </script>
 
 </body>
