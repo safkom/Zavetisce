@@ -161,7 +161,7 @@ Seznam kužkov:
         echo '<td>' . $row['ime'] . '</td>';
         echo '<td>' . $age . '</td>';
         echo '<td>' . $posvojen . '</td>';
-        echo '<td><img src="' . $slika . '"></td>';
+        echo '<td>'.$slika.'</td>';
         echo '<td>' . $rezervacija . '</td>';
         echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
         echo '</tr>';
