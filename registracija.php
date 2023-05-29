@@ -91,18 +91,18 @@ body {
   ?>
   <div class = "container">
  <form action="register.php" method="get">
-    <label for="ime">Ime:</label><br>
-  <input type="text" id="ime" name="ime" required><br>
-  <label for="priimek">Priimek:</label><br>
-  <input type="text" id="priimek" name="priimek" required><br>
-  <label for="email">Mail:</label><br>
-  <input type="text" id="email" name="email" required><br>
-  <label for="geslo">Geslo:</label><br>
-  <input type="password" id="geslo" name="geslo" required><br>
-  <label for="naslov">Naslov:</label><br>
-  <input type="text" id="naslov" name="naslov" required><br>
-  <label for="kraji">Kraj:</label><br>
-  <input type="text" id="kraj" name = "kraj" list="kraji" required><br>  
+  <label for="ime">Ime:</label>
+  <input type="text" id="ime" name="ime" required><br><br>
+  <label for="priimek">Priimek:</label>
+  <input type="text" id="priimek" name="priimek" required><br><br>
+  <label for="email">Mail:</label>
+  <input type="text" id="email" name="email" required><br><br>
+  <label for="geslo">Geslo:</label>
+  <input type="password" id="geslo" name="geslo" required><br><br>
+  <label for="naslov">Naslov:</label>
+  <input type="text" id="naslov" name="naslov" required><br><br>
+  <label for="kraji">Kraj:</label>
+  <input type="text" id="kraj" name = "kraj" list="kraji" required><br><br>
   <datalist id="kraji">
     <?php
     require_once 'connect.php';
