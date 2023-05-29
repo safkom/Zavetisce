@@ -50,7 +50,7 @@ body {
 .container input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #ffffff;
+  background-color: blue;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -58,11 +58,11 @@ body {
 }
 
 .container input[type="submit"]:hover {
-  background-color: #f1f1f1;
+  background-color: lightblue;
 }
   
   a {
-    color: #ffffff;
+    color: lightblue;
     text-decoration: none;
   }
   
