@@ -8,7 +8,9 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-        
+        body{
+            background: linear-gradient(90deg, #C7C5F4, #776BCC);
+        }
     </style>
 </head>
 <body>

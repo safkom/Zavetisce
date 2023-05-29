@@ -6,6 +6,11 @@
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
     <link rel="stylesheet" type="text/css" href="css/rezervacije.css" />
+    <style>
+        body{
+            background: linear-gradient(90deg, #C7C5F4, #776BCC);
+        }
+    </style>
     <title>Zavetišče</title>
 </head>
 <body>

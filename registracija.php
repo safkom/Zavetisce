@@ -7,6 +7,11 @@
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
     <title>Zavetišče</title>
+    <style>
+        body{
+            background: linear-gradient(90deg, #C7C5F4, #776BCC);
+        }
+    </style>
 </head>
 <body>
   <?php

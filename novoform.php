@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
-
+	<style>
+        body{
+            background: linear-gradient(90deg, #C7C5F4, #776BCC);
+        }
+    </style>
     <title>Vnos</title>
 </head>
 <body>
