@@ -54,7 +54,7 @@ if (mysqli_num_rows($result) > 0) {
         mysqli_stmt_execute($stmt);
         $klic = mysqli_stmt_get_result($stmt);
         $klic1 = mysqli_fetch_array($klic);
-        if($klic1['url'] != null){
+        if($klic1['url'] !== null){
             $slika = "<img src='" . $klic1['url'] . "'>";
         }
         else{
