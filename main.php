@@ -96,7 +96,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
 
-<a href='rezervacije.php'>Rezervacije</a>
+
 
 <div id="container">
     <p>Seznam kužkov:</p>
@@ -190,7 +190,7 @@ $result = mysqli_query($conn, $sql);
     }?>
 </div>
 
-<a href="odjava.php">Odjava</a>
+
 
 <script>
 
