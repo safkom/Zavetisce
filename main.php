@@ -19,7 +19,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
 
-.dropdown {
+        .dropdown {
         position: relative;
         display: inline-block;
     }
