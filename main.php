@@ -28,7 +28,7 @@
         position: fixed;
         top: 20px;
         right: 20px;
-        background-color: #4CAF50;
+        background-color: blue;
         color: white;
         padding: 10px;
         font-size: 16px;
@@ -95,9 +95,6 @@ if ($query == 0) {
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
-
-<a href='rezervacije.php'>Rezervacije</a>
-
 <div id="container">
     <p>Seznam kužkov:</p>
     <table border="1">
@@ -189,9 +186,6 @@ $result = mysqli_query($conn, $sql);
         setcookie("prijava", "", time() - 3600);
     }?>
 </div>
-
-<a href="odjava.php">Odjava</a>
-
 <script>
 
 var menuBtn = document.getElementById("menuBtn");
