@@ -18,8 +18,7 @@ body {
 	min-height: 100vh;
 }
 
-.screen {		
-	background: linear-gradient(90deg, #5D54A4, #7C78B8);		
+.screen {			
 	position: relative;	
 	height: 600px;
 	width: 360px;	
