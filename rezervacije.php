@@ -36,11 +36,6 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
-    if (isset($_COOKIE['prijava'])) {
-        echo $_COOKIE['prijava'] . "<br>";
-    }
-    setcookie('prijava', '');
-
     // Fetch reserved animals
     $sql = "SELECT zivali.ime, zivali.datum_r, zivali.posvojen, zivali.slika_id, rezervacija.zival_id FROM zivali INNER JOIN rezervacija ON zivali.id = rezervacija.zival_id WHERE rezervacija.uporabnik_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
