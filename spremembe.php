@@ -91,6 +91,46 @@ body {
       box-shadow: none;
     }
   }
+  .login {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login label {
+    font-weight: bold;
+}
+
+.login_input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login_input[type="checkbox"] {
+    margin-top: 5px;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
         </style>
 </head>
 <body>
@@ -103,17 +143,22 @@ body {
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_array($result)?>
 <div class="container">
-			<form class="login" id = "spremembe" action="change.php" method="post" enctype="multipart/form-data">
-					<label for="ime">Ime:</label><br>
-                    <input type="text" id="ime" name="ime" value = "<?php echo $row['ime']?>" required><br>
-					<label for="datum">Datum rojstva:</label><br>
-                    <input type="date" id="datum" name="datum" class = login_input value = "<?php echo $row['datum_r']?>" required><br>
-					<label for="posvojen">Posvojen:</label><br>
-                    <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen']== 1){echo "checked";}?>><br>
-					<label for="slika">Slika:</label><br>
-                    <input type="file" id="slika" class="login_input" name="slika"><br>
-					<label for="rezervacija">Rezervacija:</label><br>
-  <input type="datalist" id="uporabnikid" class="login_input" name="uporabnikid" value="<?php
+<form class="login" id="spremembe" action="change.php" method="post" enctype="multipart/form-data">
+    <label for="ime">Ime:</label><br>
+    <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br>
+
+    <label for="datum">Datum rojstva:</label><br>
+    <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br>
+
+    <label for="posvojen">Posvojen:</label><br>
+    <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen'] == 1){echo "checked";} ?>><br>
+
+    <label for="slika">Slika:</label><br>
+    <input type="file" id="slika" class="login_input" name="slika"><br>
+
+    <label for="rezervacija">Rezervacija:</label><br>
+    <input type="datalist" id="uporabnikid" class="login_input" name="uporabnikid"
+ value="<?php
     $sql = "SELECT * from rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_num_rows($result);
