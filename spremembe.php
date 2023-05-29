@@ -38,6 +38,8 @@
   }
   
   .container input[type="text"],
+  .container input[type="date"],
+  .container input[type="file"],
 .container input[type="password"] {
   width: 100%;
   box-sizing: border-box;
