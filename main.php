@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-       body {
+        body {
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
             margin: 0;
             padding-top: 50px;
@@ -194,56 +194,56 @@ $result = mysqli_query($conn, $sql);
 <script>
 
 var menuBtn = document.getElementById("menuBtn");
-    var menuContent = document.getElementById("menuContent");
+var menuContent = document.getElementById("menuContent");
 
-    menuBtn.addEventListener("click", function() {
-        menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
-    });
+menuBtn.addEventListener("click", function() {
+    menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
+});
 
-    window.addEventListener("click", function(event) {
-        if (!event.target.matches("#menuBtn")) {
-            if (menuContent.style.display === "block") {
-                menuContent.style.display = "none";
-            }
-        }
-    });
-    // Check if the cookie 'prijava' exists
-    function checkCookie() {
-        var name = "prijava=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var cookieArray = decodedCookie.split(';');
-
-        for (var i = 0; i < cookieArray.length; i++) {
-            var cookie = cookieArray[i];
-            while (cookie.charAt(0) == ' ') {
-                cookie = cookie.substring(1);
-            }
-            if (cookie.indexOf(name) == 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // Show the appropriate login window based on the cookie value
-    if (checkCookie()) {
-        var loginWindow = document.getElementById("loginWindow");
-        var loginWindow2 = document.getElementById("loginWindow2");
-
-        if (document.cookie.indexOf("good=1") !== -1) {
-            loginWindow.style.display = "block";
-            setTimeout(function() {
-                loginWindow.style.display = "none";
-            }, 5000);
-        } else {
-            loginWindow2.style.display = "block";
-            setTimeout(function() {
-                loginWindow2.style.display = "none";
-            }, 5000);
+window.addEventListener("click", function(event) {
+    if (!event.target.matches("#menuBtn")) {
+        if (menuContent.style.display === "block") {
+            menuContent.style.display = "none";
         }
     }
+});
+// Check if the cookie 'prijava' exists
+function checkCookie() {
+    var name = "prijava=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var cookieArray = decodedCookie.split(';');
 
-    document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    for (var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i];
+        while (cookie.charAt(0) == ' ') {
+            cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Show the appropriate login window based on the cookie value
+if (checkCookie()) {
+    var loginWindow = document.getElementById("loginWindow");
+    var loginWindow2 = document.getElementById("loginWindow2");
+
+    if (document.cookie.indexOf("good=1") !== -1) {
+        loginWindow.style.display = "block";
+        setTimeout(function() {
+            loginWindow.style.display = "none";
+        }, 5000);
+    } else {
+        loginWindow2.style.display = "block";
+        setTimeout(function() {
+            loginWindow2.style.display = "none";
+        }, 5000);
+    }
+}
+
+document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 </script>
 
 </body>
