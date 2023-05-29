@@ -110,7 +110,7 @@ Seznam kužkov:
     if ($klic1 !== null) {
         $slika = $klic1['url'];
     } else {
-        $slika = ''; // or any default value you prefer
+        $slika = 'Ni slike.'; // or any default value you prefer
     }
 
         $dateOfBirth = $row['datum_r'];
