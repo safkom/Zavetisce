@@ -15,27 +15,32 @@
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
+
 if (!isset($_COOKIE['id'])) {
     header('Location: index.php');
     exit();
 }
+
 if (isset($_COOKIE['admin'])) {
     header('Location: admin.php');
     exit();
 }
-$id = $_COOKIE['id'];
-// Sanitize the user input to prevent SQL injection
-$id = mysqli_real_escape_string($conn, $id);
-$sql = "SELECT * FROM uporabniki WHERE id = $id;";
+
+$id = mysqli_real_escape_string($conn, $_COOKIE['id']);
+
+$sql = "SELECT * FROM uporabniki WHERE id = '$id';";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
+
 // Modify the if statement to check if id exists in the database
 if ($query == 0) {
     header('Location: index.php');
     exit();
 }
+
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
+
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
 echo "Seznam kužkov:";
 echo '<table border="1">';
@@ -48,31 +53,35 @@ while ($row = mysqli_fetch_array($result)) {
     $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
     $klic = mysqli_query($conn, $sql1);
     $klic1 = mysqli_fetch_array($klic);
-    $slika = $klic1['url'];
+    
+    if ($klic1 !== null) {
+        $slika = $klic1['url'];
+    } else {
+        $slika = null;
+    }
 
     $dateOfBirth = $row['datum_r'];
     $today = date("Y-m-d");
     $diff = date_diff(date_create($dateOfBirth), date_create($today));
     $ageInMonths = $diff->format('%m');
     $ageInYears = $diff->format('%y');
+
     if ($ageInYears == 1) {
-        $leta = $ageInYears. ' leto in ';
-    } elseif ($ageInYears == 2) {
-        $leta = $ageInYears. ' leti in ';
-    } elseif ($ageInYears == 3 || $ageInYears == 4) {
-        $leta = $ageInYears. ' leta in ';
-    } elseif ($ageInYears > 4) {
-        $leta = $ageInYears. ' let in ';
+        $leta = $ageInYears . ' leto in ';
+    } elseif ($ageInYears > 1 && $ageInYears < 5) {
+        $leta = $ageInYears . ' leti in ';
+    } elseif ($ageInYears >= 5) {
+        $leta = $ageInYears . ' let in ';
     } else {
         $leta = '';
     }
 
     if ($ageInMonths == 1) {
-        $age = $leta. '1 mesec';
-    } elseif ($ageInMonths == 2 || $ageInMonths == 3 || $ageInMonths == 4) {
-        $age = $leta. $ageInMonths . ' meseci';
-    } elseif ($ageInMonths > 4) {
-        $age = $leta . $ageInMonths . ' mescov';
+        $age = $leta . '1 mesec';
+    } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+        $age = $leta . $ageInMonths . ' meseci';
+    } elseif ($ageInMonths >= 5) {
+        $age = $leta . $ageInMonths . ' mesecev';
     } else {
         $age = '';
     }
@@ -101,17 +110,19 @@ while ($row = mysqli_fetch_array($result)) {
     echo "</td><td>".$rezervacija."</td>";
     echo '</tr>';
 }
+
 echo '</table>';
+
 ?>
 
 <div id="loginWindow" style="display: none;">
-    <?php if (isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1) {
+    <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
         echo htmlspecialchars($_COOKIE['prijava']);
         setcookie("prijava", "", time() - 3600);
     }?>
 </div>
 <div id="loginWindow2" style="display: none;">
-    <?php if (isset($_COOKIE['prijava']) && $_COOKIE['good'] != 1) {
+    <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] != 1){
         echo htmlspecialchars($_COOKIE['prijava']);
         setcookie("prijava", "", time() - 3600);
     }?>
