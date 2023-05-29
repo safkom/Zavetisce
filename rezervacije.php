@@ -54,7 +54,13 @@ if (mysqli_num_rows($result) > 0) {
         mysqli_stmt_execute($stmt);
         $klic = mysqli_stmt_get_result($stmt);
         $klic1 = mysqli_fetch_array($klic);
-        $slika = $klic1['url'];
+        if($klic1['url'] != null){
+            $slika = "<img src='" . $klic1['url'] . "'>";
+        }
+        else{
+            $slika = "Ni slike.";
+        }
+        
 
         $dateOfBirth = $row['datum_r'];
         $today = date("Y-m-d");
@@ -91,7 +97,7 @@ if (mysqli_num_rows($result) > 0) {
         $posvojen = ($row['posvojen'] == 0) ? 'Ne' : 'Da';
 
         echo '<tr>';
-        echo '<td>' . $row['ime'] . "</td><td> " . $age . "</td><td> " . $posvojen . "</td><td><img src='" . $slika . "'></td><td><a href='preklici.php?zival_id=" . $row['zival_id'] . "'>Preklici</td>";
+        echo '<td>' . $row['ime'] . "</td><td> " . $age . "</td><td> " . $posvojen . "</td><td>".$slika."</td><td><a href='preklici.php?zival_id=" . $row['zival_id'] . "'>Preklici</td>";
         echo '</tr>';
     }
     echo '</table>';
