@@ -25,6 +25,9 @@
     }
 
     .menu-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
         background-color: #4CAF50;
         color: white;
         padding: 10px;
