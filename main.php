@@ -128,7 +128,6 @@ while ($row = mysqli_fetch_array($result)) {
 echo "</div>";
 
 ?>
-</div>
 
 <div id="loginWindow" style="display: none;">
     <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
@@ -144,6 +143,7 @@ echo "</div>";
 </div>
 
 <a href="odjava.php">Odjava</a>
+</div>
 
 <script>
     // Check if the cookie 'prijava' exists
