@@ -108,9 +108,9 @@ Seznam kužkov:
         $klic = mysqli_query($conn, $sql);
         $klic1 = mysqli_fetch_array($klic);
     if ($klic1 !== null) {
-        $slika = $klic1['url'];
+        $slika = "<img src='" . $klic1['url'] . "'>";
     } else {
-        $slika = 'Ni slike.'; // or any default value you prefer
+        $slika = "Ni slike." // or any default value you prefer
     }
 
         $dateOfBirth = $row['datum_r'];
