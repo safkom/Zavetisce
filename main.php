@@ -8,15 +8,46 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-        body{
+         body {
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+        
         #container {
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
-            border-radius: 10px; /* Adding rounded corners */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+            border-radius: 10px;
+            /* Adding rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            /* Increasing the box shadow */
+        }
+        
+        .container {
+            display: inline-block;
+            cursor: pointer;
+        }
+        
+        .bar1, .bar2, .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        
+        /* Rotate first bar */
+        .change .bar1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+        
+        /* Fade out the second bar */
+        .change .bar2 {
+            opacity: 0;
+        }
+        
+        /* Rotate last bar */
+        .change .bar3 {
+            transform: translate(0, -11px) rotate(45deg);
         }
     </style>
 </head>
@@ -147,6 +178,11 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 <a href="odjava.php">Odjava</a>
+<div class="container" onclick="myFunction(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+</div>
 
 <script>
     // Check if the cookie 'prijava' exists
@@ -186,6 +222,10 @@ $result = mysqli_query($conn, $sql);
     }
 
     document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+
+    function myFunction(x) {
+        x.classList.toggle("change");
+    }
 </script>
 
 </body>
