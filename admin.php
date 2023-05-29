@@ -71,12 +71,15 @@ Seznam kužkov:
 
         if ($ageInMonths == 1) {
             $age = $leta . '1 mesec';
-        } elseif ($ageInMonths >= 2 && $ageInMonths <= 4) {
-            $age = $leta . $ageInMonths . ' meseca';
-        } elseif ($ageInMonths > 4) {
+        } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+            $age = $leta . $ageInMonths . ' meseci';
+        } elseif ($ageInMonths >= 5) {
             $age = $leta . $ageInMonths . ' mesecev';
-        } else {
-            $age = $leta . $ageInMonths . ' mesec';
+        } elseif($ageInMonths == 0 && $ageInYears == 0) {
+            $age = 'Manj kot 1 mesec.';
+        }
+        else{
+            $age = '';
         }
 
         if ($row['posvojen'] == 0) {
