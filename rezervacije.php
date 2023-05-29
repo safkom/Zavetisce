@@ -10,10 +10,18 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+        #container {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px; /* Adding rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+        }
     </style>
     <title>Zavetišče</title>
 </head>
 <body>
+    <div id = "container">
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -107,5 +115,6 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 <a href="main.php">Nazaj</a>
+</div>
 </body>
 </html>
