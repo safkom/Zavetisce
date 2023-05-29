@@ -54,6 +54,7 @@ $result = mysqli_query($conn, $sql);
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
 ?>
 <div class = "container">
+    <p>Tuki bi mogu bit div pa ga ni </p>
 <?php
 echo "Seznam kužkov:";
 echo '<table border="1">';
