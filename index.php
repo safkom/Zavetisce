@@ -91,7 +91,7 @@ body {
   <label for="fname">Mail:</label><br>
   <input type="text" id="email" name="email"><br>
   <label for="lname">Geslo:</label><br>
-  <input type="password" id="geslo" name="geslo"><br>
+  <input type="password" id="geslo" name="geslo"><br><br>
   <input type="submit" value="Pošlji">
 </form>
 <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
