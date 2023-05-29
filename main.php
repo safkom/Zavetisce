@@ -8,52 +8,51 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-        body{
+       body {
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
+            margin: 0;
+            padding-top: 50px;
         }
+
         #container {
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px; /* Adding rounded corners */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+            margin: 100px auto;
         }
 
         .dropdown {
-        position: relative;
-        display: inline-block;
-    }
+            position: relative;
+            display: inline-block;
+        }
 
-    .menu-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        font-size: 16px;
-        border: none;
-        cursor: pointer;
-        border-radius: 4px;
-    }
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
 
-    .menu-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: #f9f9f9;
-        min-width: 120px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
+        .menu-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
 
-    .menu-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
+        .menu-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
     </style>
 </head>
 
