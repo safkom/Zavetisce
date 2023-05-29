@@ -90,6 +90,7 @@ body {
     }
     ?>
 <div class="container">
+  <h1>Prijava</h1>
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label>
   <input type="text" id="email" name="email"><br><br>
