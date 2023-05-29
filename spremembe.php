@@ -138,7 +138,7 @@
                 }
                 ?>
             </datalist>
-            <button type="submit">Shrani</button>
+            <input type="submit" value="Pošlji">
         </form>
     </div>
 </body>
