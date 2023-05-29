@@ -90,6 +90,7 @@ body {
   }
   ?>
   <div class = "container">
+    <h1>Registracija<h1>
  <form action="register.php" method="get">
   <label for="ime">Ime:</label>
   <input type="text" id="ime" name="ime" required><br><br>
