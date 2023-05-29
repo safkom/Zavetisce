@@ -50,84 +50,88 @@ if ($query == 0) {
 
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
-
-echo "<a href='rezervacije.php'>Rezervacije</a>";
-echo "<div id = 'container'>";
-echo "<p>Seznam kužkov:</p>";
-echo '<table border="1">';
-echo '<tr>';
-echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviraj</b></td>";
-echo '</tr>';
-
-while ($row = mysqli_fetch_array($result)) {
-    $slikaid = $row['slika_id'];
-    $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
-    $klic = mysqli_query($conn, $sql1);
-    $klic1 = mysqli_fetch_array($klic);
-    
-    if ($klic1 !== null) {
-        $slika = $klic1['url'];
-    } else {
-        $slika = null;
-    }
-
-    $dateOfBirth = $row['datum_r'];
-    $today = date("Y-m-d");
-    $diff = date_diff(date_create($dateOfBirth), date_create($today));
-    $ageInMonths = $diff->format('%m');
-    $ageInYears = $diff->format('%y');
-
-    if ($ageInYears == 1) {
-        $leta = $ageInYears . ' leto in ';
-    } elseif ($ageInYears > 1 && $ageInYears < 5) {
-        $leta = $ageInYears . ' leti in ';
-    } elseif ($ageInYears >= 5) {
-        $leta = $ageInYears . ' let in ';
-    } else {
-        $leta = '';
-    }
-
-    if ($ageInMonths == 1) {
-        $age = $leta . '1 mesec';
-    } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
-        $age = $leta . $ageInMonths . ' meseci';
-    } elseif ($ageInMonths >= 5) {
-        $age = $leta . $ageInMonths . ' mesecev';
-    } elseif($ageInMonths == 0 && $ageInYears == 0) {
-        $age = 'Manj kot 1 mesec.';
-    }
-    else{
-        $age = '';
-    }
-
-    if ($row['posvojen'] == 0) {
-        $posvojen = 'Ne';
-    } else {
-        $posvojen = 'Da';
-    }
-
-    if (is_null($row['rezervacija_id'])) {
-        $rezervacija = "<a href='rezerviraj.php?zival_id=".$row['id']."'>Rezerviraj</a>";
-    } else {
-        $rezervacija = 'Rezervirano';
-    }
-
-    echo '<tr>';
-    echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
-    
-    if (!empty($slika)) {
-        echo "<img src='".$slika."'>";
-    } else {
-        echo "Ni slike";
-    }
-    
-    echo "</td><td>".$rezervacija."</td>";
-    echo '</tr>';
-}
-
-echo "</div>";
-
 ?>
+
+<a href='rezervacije.php'>Rezervacije</a>
+
+<div id="container">
+    <p>Seznam kužkov:</p>
+    <table border="1">
+        <tr>
+            <td><b>Ime</b></td>
+            <td><b>Starost</b></td>
+            <td><b>Posvojen</b></td>
+            <td><b>Slika</b></td>
+            <td><b>Rezerviraj</b></td>
+        </tr>
+        <?php
+        while ($row = mysqli_fetch_array($result)) {
+            $slikaid = $row['slika_id'];
+            $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+            $klic = mysqli_query($conn, $sql1);
+            $klic1 = mysqli_fetch_array($klic);
+
+            if ($klic1 !== null) {
+                $slika = $klic1['url'];
+            } else {
+                $slika = null;
+            }
+
+            $dateOfBirth = $row['datum_r'];
+            $today = date("Y-m-d");
+            $diff = date_diff(date_create($dateOfBirth), date_create($today));
+            $ageInMonths = $diff->format('%m');
+            $ageInYears = $diff->format('%y');
+
+            if ($ageInYears == 1) {
+                $leta = $ageInYears . ' leto in ';
+            } elseif ($ageInYears > 1 && $ageInYears < 5) {
+                $leta = $ageInYears . ' leti in ';
+            } elseif ($ageInYears >= 5) {
+                $leta = $ageInYears . ' let in ';
+            } else {
+                $leta = '';
+            }
+
+            if ($ageInMonths == 1) {
+                $age = $leta . '1 mesec';
+            } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+                $age = $leta . $ageInMonths . ' meseci';
+            } elseif ($ageInMonths >= 5) {
+                $age = $leta . $ageInMonths . ' mesecev';
+            } elseif ($ageInMonths == 0 && $ageInYears == 0) {
+                $age = 'Manj kot 1 mesec.';
+            } else {
+                $age = '';
+            }
+
+            if ($row['posvojen'] == 0) {
+                $posvojen = 'Ne';
+            } else {
+                $posvojen = 'Da';
+            }
+
+            if (is_null($row['rezervacija_id'])) {
+                $rezervacija = "<a href='rezerviraj.php?zival_id=".$row['id']."'>Rezerviraj</a>";
+            } else {
+                $rezervacija = 'Rezervirano';
+            }
+
+            echo '<tr>';
+            echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
+
+            if (!empty($slika)) {
+                echo "<img src='".$slika."'>";
+            } else {
+                echo "Ni slike";
+            }
+
+            echo "</td><td>".$rezervacija."</td>";
+            echo '</tr>';
+        }
+        ?>
+    </table>
+</div>
 
 <div id="loginWindow" style="display: none;">
     <?php if(isset($_COOKIE['prijava']) && $_COOKIE['good'] == 1){
@@ -150,7 +154,7 @@ echo "</div>";
         var name = "prijava=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var cookieArray = decodedCookie.split(';');
-        
+
         for (var i = 0; i < cookieArray.length; i++) {
             var cookie = cookieArray[i];
             while (cookie.charAt(0) == ' ') {
@@ -167,7 +171,7 @@ echo "</div>";
     if (checkCookie()) {
         var loginWindow = document.getElementById("loginWindow");
         var loginWindow2 = document.getElementById("loginWindow2");
-        
+
         if (document.cookie.indexOf("good=1") !== -1) {
             loginWindow.style.display = "block";
             setTimeout(function() {
@@ -180,7 +184,7 @@ echo "</div>";
             }, 5000);
         }
     }
-    
+
     document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 </script>
 
