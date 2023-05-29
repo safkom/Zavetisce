@@ -2,13 +2,12 @@
 html, body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(90deg, #C7C5F4, #776BCC);	
   }
   
   /* Global styles */
   body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background: linear-gradient(90deg, #C7C5F4, #776BCC);	
     color: #333333;
     line-height: 1.6;
     padding: 20px;
