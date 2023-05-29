@@ -8,64 +8,15 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Zavetišče</title>
     <style>
-        body {
+        body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
         }
-        
-        .container {
-            display: inline-block;
-            cursor: pointer;
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 999;
-        }
-        
-        .bar1,
-        .bar2,
-        .bar3 {
-            width: 35px;
-            height: 5px;
-            background-color: #333;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-        
-        /* Rotate first bar */
-        .change .bar1 {
-            transform: translate(0, 11px) rotate(-45deg);
-        }
-        
-        /* Fade out the second bar */
-        .change .bar2 {
-            opacity: 0;
-        }
-        
-        /* Rotate last bar */
-        .change .bar3 {
-            transform: translate(0, -11px) rotate(45deg);
-        }
-        
-        .dropdown {
-            position: absolute;
-            top: 40px;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-            z-index: 999;
-            display: none;
-        }
-        
-        .dropdown-content {
-            padding: 12px 16px;
-        }
-        
-        .dropdown:hover .dropdown-content {
-            display: block;
+        #container {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px; /* Adding rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
     </style>
 </head>
@@ -195,17 +146,7 @@ $result = mysqli_query($conn, $sql);
     }?>
 </div>
 
-<div class="container" onclick="myFunction(this)">
-    <div class="bar1"></div>
-    <div class="bar2"></div>
-    <div class="bar3"></div>
-    <div class="dropdown">
-        <div class="dropdown-content">
-            <a href="rezervacije.php">Rezervacije</a>
-            <a href="odjava.php">Odjava</a>
-        </div>
-    </div>
-</div>
+<a href="odjava.php">Odjava</a>
 
 <script>
     // Check if the cookie 'prijava' exists
@@ -245,10 +186,6 @@ $result = mysqli_query($conn, $sql);
     }
 
     document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-
-    function myFunction(x) {
-        x.classList.toggle("change");
-    }
 </script>
 
 </body>
