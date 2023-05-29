@@ -18,10 +18,49 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
+
+        .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .menu-btn {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .menu-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 120px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .menu-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
     </style>
 </head>
 
 <body>
+<div class="dropdown">
+    <button id="menuBtn" class="menu-btn">Menu</button>
+    <div id="menuContent" class="menu-content">
+        <a href="rezervacije.php">Rezervacije</a>
+        <a href="odjava.php">Odjava</a>
+    </div>
+</div>
+
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -149,6 +188,21 @@ $result = mysqli_query($conn, $sql);
 <a href="odjava.php">Odjava</a>
 
 <script>
+
+var menuBtn = document.getElementById("menuBtn");
+    var menuContent = document.getElementById("menuContent");
+
+    menuBtn.addEventListener("click", function() {
+        menuContent.style.display = (menuContent.style.display === "block") ? "none" : "block";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches("#menuBtn")) {
+            if (menuContent.style.display === "block") {
+                menuContent.style.display = "none";
+            }
+        }
+    });
     // Check if the cookie 'prijava' exists
     function checkCookie() {
         var name = "prijava=";
