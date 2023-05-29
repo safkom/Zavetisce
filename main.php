@@ -82,7 +82,10 @@ while ($row = mysqli_fetch_array($result)) {
         $age = $leta . $ageInMonths . ' meseci';
     } elseif ($ageInMonths >= 5) {
         $age = $leta . $ageInMonths . ' mesecev';
-    } else {
+    } elseif($ageInMonths == 0 && $ageInYears == 0) {
+        $age = 'Manj kot 1 mesec.';
+    }
+    else{
         $age = '';
     }
 
