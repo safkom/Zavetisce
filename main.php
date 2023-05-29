@@ -11,6 +11,7 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
+        
         #container {
             margin: 50px auto;
             padding: 20px;
@@ -18,41 +19,72 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
+        
+        .menu {
+            display: inline-block;
+            cursor: pointer;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 999;
+        }
+        
+        .bar1,
+        .bar2,
+        .bar3 {
+            width: 35px;
+            height: 5px;
+            background-color: #333;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+        
+        .change .bar1 {
+            transform: translate(0, 11px) rotate(-45deg);
+        }
+        
+        .change .bar2 {
+            opacity: 0;
+        }
+        
+        .change .bar3 {
+            transform: translate(0, -11px) rotate(45deg);
+        }
+        
+        .dropdown {
+            position: absolute;
+            top: 40px;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            display: none;
+        }
+        
+        .dropdown-content {
+            padding: 12px 16px;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
     </style>
 </head>
 
 <body>
-<?php
-require_once 'cookie.php';
-require_once 'connect.php';
-
-if (!isset($_COOKIE['id'])) {
-    header('Location: index.php');
-    exit();
-}
-
-if (isset($_COOKIE['admin'])) {
-    header('Location: admin.php');
-    exit();
-}
-
-$id = mysqli_real_escape_string($conn, $_COOKIE['id']);
-
-$sql = "SELECT * FROM uporabniki WHERE id = '$id';";
-$result = mysqli_query($conn, $sql);
-$query = mysqli_num_rows($result);
-
-// Modify the if statement to check if id exists in the database
-if ($query == 0) {
-    header('Location: index.php');
-    exit();
-}
-
-$sql = "SELECT * FROM zivali;";
-$result = mysqli_query($conn, $sql);
-?>
-
-<a href='rezervacije.php'>Rezervacije</a>
+<!-- User menu button -->
+<div class="menu" onclick="myFunction(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+    <div class="dropdown">
+        <div class="dropdown-content">
+            <a href="rezervacije.php">Rezervacije</a>
+            <a href="odjava.php">Odjava</a>
+        </div>
+    </div>
+</div>
 
 <div id="container">
     <p>Seznam kužkov:</p>
@@ -146,8 +178,6 @@ $result = mysqli_query($conn, $sql);
     }?>
 </div>
 
-<a href="odjava.php">Odjava</a>
-
 <script>
     // Check if the cookie 'prijava' exists
     function checkCookie() {
@@ -185,8 +215,3 @@ $result = mysqli_query($conn, $sql);
         }
     }
 
-    document.cookie = 'prijava=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-</script>
-
-</body>
-</html>
