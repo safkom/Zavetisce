@@ -18,10 +18,49 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
+        #menuButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+}
+
+#menu {
+  position: fixed;
+  top: 40px;
+  right: 10px;
+  background-color: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: none;
+}
+
+#menu ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu ul li {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
     </style>
 </head>
 
 <body>
+<header>
+    <button id="menuButton">Menu</button>
+    <nav id="menu" class="hidden">
+      <ul>
+        <li><a href="reservations.html">Reservations</a></li>
+        <li><a href="logout.html">Log out</a></li>
+      </ul>
+    </nav>
+  </header>
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -149,6 +188,13 @@ $result = mysqli_query($conn, $sql);
 <a href="odjava.php">Odjava</a>
 
 <script>
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+
+    menuButton.addEventListener('click', function() {
+    menu.classList.toggle('hidden');
+    });
+
     // Check if the cookie 'prijava' exists
     function checkCookie() {
         var name = "prijava=";
