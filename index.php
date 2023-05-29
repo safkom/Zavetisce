@@ -92,7 +92,7 @@ body {
 <div class="container">
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label>
-  <input type="text" id="email" name="email"><br>
+  <input type="text" id="email" name="email"><br><br>
   <label for="lname">Geslo:</label>
   <input type="password" id="geslo" name="geslo"><br><br>
   <input type="submit" value="Pošlji">
