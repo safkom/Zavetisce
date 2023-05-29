@@ -52,7 +52,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 echo "<a href='rezervacije.php'>Rezervacije</a><br>";
-echo "<div id = 'container'>"
+echo "<div id = 'container'>";
 echo "<p>Seznam kužkov:</p>";
 echo '<table border="1">';
 echo '<tr>';
