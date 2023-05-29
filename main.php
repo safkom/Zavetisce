@@ -67,12 +67,13 @@
 
 <body>
 <div class="dropdown">
-    <button class="dropbtn">Menu</button>
-    <div class="dropdown-content">
+    <button id="dropdownBtn" class="dropbtn">Menu</button>
+    <div id="dropdownContent" class="dropdown-content">
         <a href="rezervacije.php">Rezervacije</a>
         <a href="odjava.php">Odjava</a>
     </div>
 </div>
+
 
 <?php
 require_once 'cookie.php';
@@ -201,6 +202,21 @@ $result = mysqli_query($conn, $sql);
 <a href="odjava.php">Odjava</a>
 
 <script>
+
+var dropdownBtn = document.getElementById("dropdownBtn");
+    var dropdownContent = document.getElementById("dropdownContent");
+
+    dropdownBtn.addEventListener("click", function() {
+        dropdownContent.classList.toggle("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if (!event.target.matches("#dropdownBtn")) {
+            if (dropdownContent.classList.contains("show")) {
+                dropdownContent.classList.remove("show");
+            }
+        }
+    });
     // Check if the cookie 'prijava' exists
     function checkCookie() {
         var name = "prijava=";
