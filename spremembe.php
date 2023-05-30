@@ -144,7 +144,13 @@
             <input type="submit" value="Pošlji">
         </form>
         <form class="delete" id ="delete" action="delete.php" method="post" enctype="multipart/form-data">
-        <input type="submit" value="Izbriši vnos">
+        <input type="submit" value="Izbriši vnos" style = "width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">
     </div>
 </body>
 </html>
