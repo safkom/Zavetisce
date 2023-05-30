@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $sql);
             <td><b>Starost</b></td>
             <td><b>Posvojen</b></td>
             <td><b>Slika</b></td>
-            <td><b>Rezerviraj</b></td>
+            <td><b>Rezerviraj za ogled</b></td>
         </tr>
         <?php
         while ($row = mysqli_fetch_array($result)) {
@@ -172,6 +172,10 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </table>
+</div>
+<div id="gumbi">
+    <button id="Gumb" class="gumb">Sponzorstva</button>
+    <button id="Gumb" class="gumb">Sprehajanje psov</button>
 </div>
 
 <div id="loginWindow">
