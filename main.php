@@ -55,11 +55,9 @@
         display: block;
     }
     #gumbi {
-        display: flex;
+        width:100%;
+  display: flex;
   justify-content: center;
-  align-items: center;
-  height: 200px;
-  border: 3px solid green;
 }
     </style>    
 </head>
