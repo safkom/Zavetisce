@@ -177,7 +177,7 @@ $result = mysqli_query($conn, $sql);
 <div id="loginWindow">
     <?php
     if (isset($_COOKIE['prijava'])) {
-        echo $_COOKIE['prijava'];
+        echo "<p id = prijavaText>".$_COOKIE['prijava']."</p>";
         // setcookie("prijava", "", time() - 3600);
     }
     ?>
