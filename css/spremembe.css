@@ -52,7 +52,7 @@ body {
   cursor: pointer;
 }
 
-.delete input[type="submit"] {
+#delete input[type="submit"] {
   width: 100%;
   padding: 10px;
   background-color: red;
@@ -61,7 +61,7 @@ body {
   border-radius: 4px;
   cursor: pointer;
 }
-.delete input[type="submit"]:hover {
+#delete input[type="submit"]:hover {
   background-color: lightblue;
 }
 
