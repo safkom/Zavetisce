@@ -55,8 +55,8 @@
         display: block;
     }
     #gumbi {
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
 }
     </style>    
 </head>
