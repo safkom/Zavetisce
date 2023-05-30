@@ -143,6 +143,8 @@
             </datalist>
             <input type="submit" value="Pošlji">
         </form>
+        <form class="delete" id="spremembe" action="delete.php" method="post" enctype="multipart/form-data">
+        <input type="submit" value="Zbriši vnos">
     </div>
 </body>
 </html>
