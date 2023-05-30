@@ -55,9 +55,12 @@
         display: block;
     }
     #gumbi {
-        width:100%;
-  display: flex;
+        display: flex;
   justify-content: center;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 }
     </style>    
 </head>
