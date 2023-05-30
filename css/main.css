@@ -92,22 +92,11 @@ html, body {
     bottom: 10px;
     right: 10px;
     width: 200px;
-    height: 100px;
+    height: 50px;
     background-color: lightgreen;
     display: none;
     padding: 10px;
     border-radius: 5px;
-}
-#loginWindow2 {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  width: 200px;
-  height: 100px;
-  background-color: rgb(195, 41, 10);
-  display: none;
-  padding: 10px;
-  border-radius: 5px;
 }
 
 
