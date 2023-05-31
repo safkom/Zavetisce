@@ -174,14 +174,8 @@ $result = mysqli_query($conn, $sql);
                 $age = '';
             }
 
-            if (is_null($row['rezervacija_id'])) {
-                $rezervacija = "<a href='rezerviraj.php?zival_id=".$row['id']."'>Rezerviraj</a>";
-            } else {
-                $rezervacija = 'Rezervirano';
-            }
-
             echo '<tr>';
-            echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
+            echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
 
             if (!empty($slika)) {
                 echo "<img src='".$slika."'>";
