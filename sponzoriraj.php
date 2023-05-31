@@ -85,63 +85,23 @@
             <label for="ime">Ime:</label>
             <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br><br>
 
-            <label for="datum">Datum rojstva:</label>
+            <label for="datum">Datum začetka:</label>
             <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br><br>
 
-            <label for="posvojen">Posvojen:</label>
-            <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen'] == 1){echo "checked";} ?>><br><br>
+            <label for="cas">Čas sponzorstva:</label>
+            <input type="date" id="cas" name="cas" class="login_input"><br><br>
 
-            <label for="slika">Slika:</label>
-            <input type="file" id="slika" class="login_input" name="slika"><br><br>
-
-            <label for="rezervacija">Rezervacija:</label>
-            <input type="datalist" id="uporabnikid" class="login_input" name="uporabnikid"
-            value="<?php
-                $sql = "SELECT * FROM rezervacija WHERE zival_id = ".$_GET['zival_id'].";";
-                $result = mysqli_query($conn, $sql);
-                $rows = mysqli_num_rows($result);
-                $rezervacija = 0;
-
-                if ($rows === 0) {
-                    echo ""; // Display nothing if rezervacija doesn't exist
-                } else {
-                    while ($row = mysqli_fetch_array($result)) {
-                        $uporabnik_id = $row['uporabnik_id'];
-                        $datum_rez = $row['datum'];
-                        $rezervacija = 1;
-                    }
-                    if ($rezervacija === 1) {
-                        $sql = "SELECT * FROM uporabniki WHERE id = ".$uporabnik_id.";";
-                        $result2 = mysqli_query($conn, $sql); // Use a different variable for the second query result
-                        while ($row = mysqli_fetch_array($result2)) { // Loop through the second result
-                            echo $row['email'];
-                        }
-                    }
-                }
-            ?>" list="uporabniki"><br><br>
-
-            <br>
-            <datalist id="zivali">
-                <?php
-                require_once 'connect.php';
-                $sql = "SELECT * FROM zivali";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<option value='".$row['ime']."'>";
-                }
-                ?>
+            <label for="slika">Vrsta sponzorstva:</label>
+            <input type="datalist" id="vrsta" class="login_input" name="vrsta" datalist = "vrsta"><br><br>
+            <datalist id="vrsta">
+                <option value="Hrana">
+                <option value="Zdravljenje">
+                <option value="Splošno oskrbovanje">
+                <option value="Nega">
+                <option value="Vse našteto">
             </datalist>
 
-            <datalist id="uporabniki">
-                <?php
-                require_once 'connect.php';
-                $sql = "SELECT * FROM uporabniki";
-                $result = mysqli_query($conn, $sql);
-                while ($row = mysqli_fetch_array($result)) {
-                    echo "<option value='".$row['email']."'>";
-                }
-                ?>
-            </datalist>
+           <br><br>
             <input type="submit" value="Pošlji">
         </form>
         <form class="delete" id ="delete" action="sponzorstva.php" method="post" enctype="multipart/form-data">
