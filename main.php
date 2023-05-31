@@ -57,6 +57,8 @@
     #gumbi {
         display: flex;
         justify-content: space-between;
+    }
+    .gumbstyle{
         background-color: blue;
         color: white;
         padding: 10px;
@@ -185,8 +187,8 @@ $result = mysqli_query($conn, $sql);
     </table>
     <br>
     <div id="gumbi">
-    <button id="Gumb" class="gumb">Sponzorstva</button>
-    <button id="Gumb" class="gumb">Sprehajanje psov</button>
+    <button class="gumbstyle">Sponzorstva</button>
+    <button class="gumbstyle">Sprehajanje psov</button>
     </div>  
 </div>
 
