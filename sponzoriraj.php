@@ -94,11 +94,11 @@
             <label for="vrsta">Vrsta sponzorstva:</label>
             <input list="vrsta" id="vrsta" name="vrsta" class = "login_input"><br><br>
             <datalist id="vrsta">
-                <option value="Hrana">
-                <option value="Zdravljenje">
-                <option value="Splošno oskrbovanje">
-                <option value="Nega">
-                <option value="Vse">
+                <option value="Hrana"></option>
+                <option value="Zdravljenje"></option>
+                <option value="Splošno oskrbovanje"></option>
+                <option value="Nega"></option>
+                <option value="Vse"></option>
             </datalist>
 
            <br><br>
