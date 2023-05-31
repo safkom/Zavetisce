@@ -92,7 +92,7 @@
             <input type="date" id="cas" name="cas" class="login_input"><br><br>
 
             <label for="slika">Vrsta sponzorstva:</label>
-            <input type="datalist" id="vrsta" class="login_input" name="vrsta" datalist = "vrsta"><br><br>
+            <input type="datalist" id="vrsta" class="login_input" name="vrsta" list = "vrsta"><br><br>
             <datalist id="vrsta">
                 <option value="Hrana">
                 <option value="Zdravljenje">
