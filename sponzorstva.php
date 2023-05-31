@@ -185,7 +185,7 @@ $result = mysqli_query($conn, $sql);
             if (is_null($row['sponzorstvo_id'])) {
                 $sponzorstvo = "<a href='sponzoriraj.php?zival_id=".$row['id']."'>Sponzoriraj</a>";
             } else {
-                $Sponzorstvo = 'Sponzorstvo je že urejeno.';
+                $sponzorstvo = 'Sponzorstvo je že urejeno.';
             }
 
             echo "</td><td>".$sponzorstvo."</td>";
