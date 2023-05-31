@@ -6,7 +6,7 @@
     <meta name="description" content="Miha Šafranko"/>
     <meta name="author" content="Miha Šafranko" />
     <link rel="stylesheet" href="css/login.css">
-    <title>Spremembe</title>
+    <title>Nova žival</title>
     <style>
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -74,7 +74,7 @@
     require_once 'connect.php';
     ?>
     <div class="container">
-        <h1>Spremembe</h1>
+        <h1>Nov vnos</h1>
         <form class="login" id="spremembe" action="novo.php" method="post" enctype="multipart/form-data">
             <label for="ime">Ime:</label>
             <input type="text" id="ime" name="ime"  required><br><br>
