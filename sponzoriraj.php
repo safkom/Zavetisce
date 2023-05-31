@@ -89,18 +89,15 @@
             <input type="date" id="datum" name="datum" class="login_input" required><br><br>
 
             <label for="cas">Čas sponzorstva:</label>
-            <input type="date" id="cas" name="cas" class="login_input"><br><br>
+            <input type="date" id="cas" name="cas" class="login_input" required><br><br>
 
-            <label for="slika">Vrsta sponzorstva:</label>
-<input list="vrsta" id="vrsta" name="vrsta" class="login_input"><br><br>
-<datalist id="vrsta">
-  <option value="Hrana"></option>
-  <option value="Zdravljenje"></option>
-  <option value="Splošno oskrbovanje"></option>
-  <option value="Nega"></option>
-  <option value="Vse"></option>
-</datalist>
-
+            
+            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba">
+            <label for="zdravljenje">Splošna oskrba</label><br>
+            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje">
+            <label for="css">Zdravljenje</label><br>
+            <input type="radio" id="prehrana" name="prehrana" value="Prehrana">
+            <label for="prehrana">Prehrana</label>
 
            <br><br>
             <input type="submit" value="Pošlji">
