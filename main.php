@@ -55,7 +55,9 @@
         display: block;
     }
     #gumbi {
-}
+        display: flex;
+        justify-content: space-between;
+    }
     </style>    
 </head>
 
