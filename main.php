@@ -57,7 +57,6 @@
     #gumbi {
         display: flex;
   justify-content: center;
-  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
@@ -180,10 +179,11 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </table>
-</div>
-<div id="gumbi">
+    <br>
+    <div id="gumbi">
     <button id="Gumb" class="gumb">Sponzorstva</button>
     <button id="Gumb" class="gumb">Sprehajanje psov</button>
+    </div>  
 </div>
 
 <div id="loginWindow">
