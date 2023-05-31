@@ -92,11 +92,11 @@
             <input type="date" id="cas" name="cas" class="login_input" required><br><br>
             <p>Vrsta sponzorstva:</p>
             <p>Splošna oskrba:
-            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba"></p>
+            <input type="radio" id="oskrba" name="sponzorstvo" value="Splošna oskrba"></p>
             <p>Zdravljenje:
-            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje"></p>
+            <input type="radio" id="zdravljenje" name="sponzorstvo" value="Zdravljenje"></p>
             <p>Prehrana:
-            <input type="radio" id="prehrana" name="prehrana" value="Prehrana"></p>
+            <input type="radio" id="prehrana" name="sponzorstvoa" value="Prehrana"></p>
             
 
            <br><br>
