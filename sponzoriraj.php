@@ -90,14 +90,14 @@
 
             <label for="cas">Čas sponzorstva:</label>
             <input type="date" id="cas" name="cas" class="login_input" required><br><br>
-
-            
-            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba">
+            <p>Vrsta sponzorstva:
             <label for="zdravljenje">Splošna oskrba</label><br>
-            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje">
+            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba">
             <label for="css">Zdravljenje</label><br>
-            <input type="radio" id="prehrana" name="prehrana" value="Prehrana">
+            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje">
             <label for="prehrana">Prehrana</label>
+            <input type="radio" id="prehrana" name="prehrana" value="Prehrana">
+            
 
            <br><br>
             <input type="submit" value="Pošlji">
