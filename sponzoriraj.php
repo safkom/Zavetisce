@@ -93,10 +93,10 @@
             <p>Vrsta sponzorstva:</p><br>
             <p>Splošna oskrba:
             <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba"></p>
-            <label for="css">Zdravljenje</label>
-            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje">
-            <label for="prehrana">Prehrana</label>
-            <input type="radio" id="prehrana" name="prehrana" value="Prehrana">
+            <p>Zdravljenje:
+            <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje"></p>
+            <p>Prehrana:
+            <input type="radio" id="prehrana" name="prehrana" value="Prehrana"></p>
             
 
            <br><br>
