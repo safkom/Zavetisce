@@ -78,11 +78,11 @@
         <h1>Sponzorstvo</h1>
         <p>Tukaj uredi vse podatke, da sponzoriraš žival</p>
         <form class="login" id="spremembe" action="sponsor.php" method="post" enctype="multipart/form-data">
-            <label for="ime">Ime:</label>
-            <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br><br>
+            <label for="ime">Ime zivali:</label>
+            <input type="text" id="ime" name="ime" readonly><br><br>
 
             <label for="datum">Datum začetka:</label>
-            <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br><br>
+            <input type="date" id="datum" name="datum" class="login_input" required><br><br>
 
             <label for="cas">Čas sponzorstva:</label>
             <input type="date" id="cas" name="cas" class="login_input"><br><br>
