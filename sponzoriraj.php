@@ -71,15 +71,19 @@
 <body>
     <?php
     require_once 'cookie.php';
+    require_once 'connect.php';
     $zival = $_GET['zival_id'];
     setcookie('zival_id', $zival);
+    $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
     ?>
     <div class="container">
         <h1>Sponzorstvo</h1>
         <p>Tukaj uredi vse podatke, da sponzoriraš žival</p>
         <form class="login" id="spremembe" action="sponsor.php" method="post" enctype="multipart/form-data">
-            <label for="ime">Ime zivali:</label>
-            <input type="text" id="ime" name="ime" readonly><br><br>
+            <label for="ime">Ime:</label>
+            <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" readonly><br><br>
 
             <label for="datum">Datum začetka:</label>
             <input type="date" id="datum" name="datum" class="login_input" required><br><br>
@@ -94,7 +98,7 @@
                 <option value="Zdravljenje">
                 <option value="Splošno oskrbovanje">
                 <option value="Nega">
-                <option value="Vse našteto">
+                <option value="Vse">
             </datalist>
 
            <br><br>
