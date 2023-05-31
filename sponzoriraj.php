@@ -96,7 +96,7 @@
             <p>Zdravljenje:
             <input type="radio" id="zdravljenje" name="sponzorstvo" value="Zdravljenje"></p>
             <p>Prehrana:
-            <input type="radio" id="prehrana" name="sponzorstvoa" value="Prehrana"></p>
+            <input type="radio" id="prehrana" name="sponzorstvo" value="Prehrana"></p>
             
 
            <br><br>
