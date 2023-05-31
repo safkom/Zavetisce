@@ -90,9 +90,9 @@
 
             <label for="cas">Čas sponzorstva:</label>
             <input type="date" id="cas" name="cas" class="login_input" required><br><br>
-            <p>Vrsta sponzorstva:
-            <label for="zdravljenje">Splošna oskrba</label>
-            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba">
+            <p>Vrsta sponzorstva:</p><br>
+            <p>Splošna oskrba:
+            <input type="radio" id="oskrba" name="oskrba" value="Splošna oskrba"></p>
             <label for="css">Zdravljenje</label>
             <input type="radio" id="zdravljenje" name="zdravljenje" value="Zdravljenje">
             <label for="prehrana">Prehrana</label>
