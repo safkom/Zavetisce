@@ -69,7 +69,6 @@
   -moz-border-radius: 28;
   border-radius: 28px;
   font-family: Arial;
-  color: #ffffff;
   font-size: 20px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
