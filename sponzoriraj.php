@@ -91,15 +91,16 @@
             <label for="cas">Čas sponzorstva:</label>
             <input type="date" id="cas" name="cas" class="login_input"><br><br>
 
-            <label for="vrsta">Vrsta sponzorstva:</label>
-            <input list="vrsta" id="vrsta" name="vrsta" class = "login_input"><br><br>
-            <datalist id="vrsta">
-                <option value="Hrana"></option>
-                <option value="Zdravljenje"></option>
-                <option value="Splošno oskrbovanje"></option>
-                <option value="Nega"></option>
-                <option value="Vse"></option>
-            </datalist>
+            <label for="slika">Vrsta sponzorstva:</label>
+<input list="vrsta" id="vrsta" name="vrsta" class="login_input"><br><br>
+<datalist id="vrsta">
+  <option value="Hrana"></option>
+  <option value="Zdravljenje"></option>
+  <option value="Splošno oskrbovanje"></option>
+  <option value="Nega"></option>
+  <option value="Vse"></option>
+</datalist>
+
 
            <br><br>
             <input type="submit" value="Pošlji">
