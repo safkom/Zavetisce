@@ -57,6 +57,13 @@
     #gumbi {
         display: flex;
         justify-content: space-between;
+        background-color: blue;
+        color: white;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
     }
     </style>    
 </head>
