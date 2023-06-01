@@ -53,12 +53,28 @@ body {
   -webkit-transform: translateY(-4rem);
   transform: translateY(-4rem);
 }
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px; /* Adding rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+}
+
 
     </style>
 </head>
 <body>
+<div class="container">
+  <h1>Prijava</h1>
 <div class="form__group">
-  <input type="text" class="form__input" id="name" placeholder="Full name" required="" />
-  <label for="name" class="form__label">Full Name</label>
+  <input type="text" class="form__input" id="name" placeholder="Mail" required="" />
+  <label for="name" class="form__label">Mail</label>
+  <input type="text" class="form__input" id="name" placeholder="Geslo" required="" />
+  <label for="name" class="form__label">Geslo</label>
+  <input type="submit" value="Pošlji">
+  <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
+</div>
 </div>
 </body>
