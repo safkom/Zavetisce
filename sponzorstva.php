@@ -264,7 +264,7 @@ $result = mysqli_query($conn, $sql);
                 echo "Ni slike";
             }
             if (is_null($row['sponzorstvo_id'])) {
-                $sponzorstvo = "<a href='sponzoriraj.php?sponzorstvo_id=".$row['s.id']."'>Sponzoriraj</a>";
+                $sponzorstvo = "<a href='sponzoriraj.php?sponzorstvo_id=".$row['id']."'>Sponzoriraj</a>";
             } else {
                 $sponzorstvo = 'Sponzorstvo je že urejeno.';
             }
