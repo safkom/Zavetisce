@@ -49,7 +49,6 @@ body {
 .container input[type="password"] {
   width: 100%;
   padding: 10px;
-	background: lightgray;
 	font: inherit;
 	box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
 	border: 0;
