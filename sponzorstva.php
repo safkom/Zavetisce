@@ -106,7 +106,6 @@ echo "<td><b>Prekliči sponzorstvo</b></td>";
 echo "</tr>";
 
 while ($row = mysqli_fetch_array($result)) {
-    print_r($row);
     $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['s.id']."'>Prekliči</a>";
     $slikaid = $row['z.slika_id'];
     $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
