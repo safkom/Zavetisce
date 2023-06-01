@@ -30,6 +30,7 @@ body {
   display: block;
   transition: all 0.3s;
   transform: translateY(0rem);
+  color: black;
 }
 
 .form__input {
@@ -41,7 +42,7 @@ body {
   border-radius: 0.2rem;
   background-color: rgb(255, 255, 255);
   border: none;
-  width: 90%;
+  width: 70%;
   display: block;
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
@@ -78,6 +79,9 @@ a {
     color: lightblue;
     text-decoration: none;
   }
+#register{
+    color: black;
+}
 
 
     </style>
@@ -91,7 +95,7 @@ a {
   <input type="text" class="form__input" id="name" placeholder="Geslo" required="" />
   <label for="name" class="form__label">Geslo</label>
   <input type="submit" value="Pošlji">
-  <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
+  <p id = "register">Niste še uporabnik? <a href = "registracija.php">Pridobite dostop</a>
 </div>
 </div>
 </body>
