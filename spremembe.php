@@ -151,6 +151,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;">
+  </form>
   <br>
   <br>
     <form class="delete" id ="delete" action="admin.php" method="post" enctype="multipart/form-data">
@@ -161,6 +162,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;">
+  </form>
   </div>
     </div>
 </body>
