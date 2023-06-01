@@ -203,7 +203,7 @@ if ($query == 0) {
     exit();
 }
 
-$sql = "SELECT * FROM zivali;";
+$sql = "SELECT * FROM z zivali INNER JOIN sponzorstva s ON s.id = z.sponzorstvo_id;";
 $result = mysqli_query($conn, $sql);
 ?>
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
