@@ -123,7 +123,7 @@ if ($query > 0) {
             exit();
         }
     } else {
-        setcookie('prijava', 'UporabnikId is empty. Reservation not created.');
+        setcookie('prijava', 'Sprememba uspešna.');
         setcookie('good', 0);
         header('Location: admin.php');
         exit();
