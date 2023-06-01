@@ -155,13 +155,10 @@ if($query > 0){
 
             echo "</td><td>".$sponzorstvo."</td>";
             echo '</tr>';
+            echo "</table>";
+            echo "</div>";
         }
         ?>
-    </table>
-}
-?>
-</div>
-
 
 <div class="container">
 <div class="dropdown">
