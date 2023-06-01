@@ -14,7 +14,7 @@ body {
   height: 100vh;
 	width: 100%;
   background: #0f2027; /* fallback for old browsers */
-  background: linear-gradient(to right,#2c5364, #203a43, #0f2027);
+  background: linear-gradient(90deg, #C7C5F4, #776BCC);
   display: flex;
   justify-content: center;
   align-items: center;
