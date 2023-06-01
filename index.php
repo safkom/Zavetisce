@@ -48,13 +48,17 @@ body {
   .container input[type="text"],
 .container input[type="password"] {
   width: 100%;
-  box-sizing: border-box;
+  padding: 10px;
+	font: inherit;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+	border-color: gray;
+	outline: 0;
 }
 
 .container input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: blue;
+  background-color: lightblue;
   color: #fff;
   border: none;
   border-radius: 4px;
