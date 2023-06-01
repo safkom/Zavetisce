@@ -157,7 +157,7 @@ while ($row = mysqli_fetch_array($result)) {
     $sponzorstvo = ""; // Initialize the $sponzorstvo variable
     
     if (!is_null($row['sponzorstvo_id'])) {
-        $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['s.id']."'>Prekliči</a>";
+        $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
     }
 
     echo "</td><td>".$sponzorstvo."</td>";
