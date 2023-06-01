@@ -91,10 +91,10 @@ a {
   <h1>Prijava</h1>
 <div class="form__group">
   <input type="text" class="form__input" id="name" placeholder="Mail" required="" />
-  <label for="name" class="form__label">Mail</label>
+  <label for="name" class="form__label">Mail</label><br>
   <input type="text" class="form__input" id="name" placeholder="Geslo" required="" />
-  <label for="name" class="form__label">Geslo</label>
-  <input type="submit" value="Pošlji">
+  <label for="name" class="form__label">Geslo</label><br>
+  <input type="submit" value="Pošlji"><br>
   <p id = "register">Niste še uporabnik? <a href = "registracija.php">Pridobite dostop</a>
 </div>
 </div>
