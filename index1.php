@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/index1.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
         body{
@@ -27,69 +27,6 @@ body {
   border-radius: 10px; /* Adding rounded corners */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
 }
-
-
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .container input[type="text"],
-.container input[type="password"] {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.container input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: blue;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.container input[type="submit"]:hover {
-  background-color: lightblue;
-}
-#loginWindow {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    width: 200px;
-    height: 100px;
-    background-color: lightgreen;
-    display: none;
-    padding: 10px;
-    border-radius: 5px;
-}
-  
-  a {
-    color: lightblue;
-    text-decoration: none;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 600px) {
-    .container {
-      max-width: 100%;
-      margin: 20px;
-      box-shadow: none;
-    }
-  }
-  
     </style>
 
     <title>Zavetišče</title>
