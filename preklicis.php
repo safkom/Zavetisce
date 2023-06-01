@@ -15,11 +15,12 @@ if (isset($_COOKIE['admin'])) {
     if ($stmt->execute()) {
         setcookie('prijava', "Preklic uspešen.");
         header('Location: admin.php');
+        exit(); // Add an exit() after redirecting to prevent further code execution
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
         header('Location: admin.php');
+        exit(); // Add an exit() after redirecting to prevent further code execution
     }
-    exit();
 }
 
 $sql = "DELETE FROM sponzorstva WHERE uporabnik_id = ? AND zival_id = ?;";
@@ -28,9 +29,11 @@ $stmt->bind_param("ii", $id, $zival);
 if ($stmt->execute()) {
     setcookie('prijava', "Preklic uspešen.");
     header('Location: main.php');
+    exit(); // Add an exit() after redirecting to prevent further code execution
 } else {
     setcookie('prijava', "Error: " . $stmt->error);
     header('Location: main.php');
+    exit(); // Add an exit() after redirecting to prevent further code execution
 }
 
 $stmt->close();
