@@ -106,8 +106,8 @@ echo "<td><b>Prekliči sponzorstvo</b></td>";
 echo "</tr>";
 
 while ($row = mysqli_fetch_array($result)) {
-    $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['s.id']."'>Prekliči</a>";
-    $slikaid = $row['z.slika_id'];
+    $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
+    $slikaid = $row['slika_id'];
     $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
     $klic = mysqli_query($conn, $sql1);
     $klic1 = mysqli_fetch_array($klic);
@@ -118,7 +118,7 @@ while ($row = mysqli_fetch_array($result)) {
         $slika = null;
     }
 
-    $dateOfBirth = $row['z.datum_r'];
+    $dateOfBirth = $row['datum_r'];
     $today = date("Y-m-d");
     $diff = date_diff(date_create($dateOfBirth), date_create($today));
     $ageInMonths = $diff->format('%m');
@@ -147,7 +147,7 @@ while ($row = mysqli_fetch_array($result)) {
     }
 
     echo '<tr>';
-    echo '<td>'.$row['z.ime']."</td><td>".$age."</td><td>";
+    echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
 
     if (!empty($slika)) {
         echo "<img src='".$slika."'>";
