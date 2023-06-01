@@ -158,6 +158,7 @@ if($query > 0){
             echo "</table>";
             echo "</div>";
         }
+    }
         ?>
 
 <div class="container">
