@@ -106,6 +106,7 @@ echo "<td><b>Prekliči sponzorstvo</b></td>";
 echo "</tr>";
 
 while ($row = mysqli_fetch_array($result)) {
+    $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
     $slikaid = $row['slika_id'];
     $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
     $klic = mysqli_query($conn, $sql1);
@@ -153,12 +154,6 @@ while ($row = mysqli_fetch_array($result)) {
     } else {
         echo "Ni slike";
     }
-    
-    $sponzorstvo = ""; // Initialize the $sponzorstvo variable
-    
-    if (!is_null($row['sponzorstvo_id'])) {
-        $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
-    }
 
     echo "</td><td>".$sponzorstvo."</td>";
     echo '</tr>';
@@ -167,8 +162,8 @@ while ($row = mysqli_fetch_array($result)) {
 echo "</table>";
 echo "</div>";
 
-        }
-        ?>
+}
+?>
 
 <div class="container">
 <div class="dropdown">
@@ -203,7 +198,7 @@ if ($query == 0) {
     exit();
 }
 
-$sql = "SELECT *, s.id AS 's.id' FROM sponzorstva s INNER JOIN zivali z ON s.id = z.sponzorstvo_id";
+$sql = "SELECT * FROM zivali";
 $result = mysqli_query($conn, $sql);
 ?>
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
