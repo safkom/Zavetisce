@@ -9,7 +9,7 @@ echo "<br>";
 echo $zival;
 
 if (isset($_COOKIE['admin'])) {
-    $sql = "DELETE FROM sponzorstva WHERE zival_id = ?;";
+    $sql = "DELETE FROM sponzorstva WHERE id = ?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $zival);
     if ($stmt->execute()) {
@@ -23,9 +23,9 @@ if (isset($_COOKIE['admin'])) {
     }
 }
 
-$sql = "DELETE FROM sponzorstva WHERE uporabnik_id = ? AND zival_id = ?;";
+$sql = "DELETE FROM sponzorstva WHERE id = ?;";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ii", $id, $zival);
+$stmt->bind_param("i", $zival);
 if ($stmt->execute()) {
     setcookie('prijava', "Preklic uspešen.");
     header('Location: main.php');
