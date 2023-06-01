@@ -49,7 +49,7 @@ body {
 .container input[type="password"] {
   width: 360px;
 		background: #fff;
-		color: $input-text-color;
+		color: gray;
 		font: inherit;
 		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
 		border: 0;
