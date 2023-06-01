@@ -3,7 +3,7 @@ require_once 'connect.php';
 require_once 'cookie.php';
 
 $id = $_COOKIE['id'];
-$zival = $_GET['zival_id'];
+$zival = $_GET['sponzorstvo_id'];
 echo $id;
 echo "<br>";
 echo $zival;
