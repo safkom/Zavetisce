@@ -32,7 +32,7 @@ body {
     <title>Zavetišče</title>
 </head>
 <body>
-<div class="container">
+<div class="form__group">
   <h1>Prijava</h1>
  <form action="preveri.php" method="get">
   <label for="fname">Mail:</label>
