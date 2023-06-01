@@ -93,16 +93,14 @@ $sql = "SELECT * FROM sponzorstva s INNER JOIN zivali z ON s.id = z.sponzorstvo_
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 if($query > 0){
-    ?>
-    <p>Tukaj so živali, ki jih sponzoriraš:</p>
-    <table border="1">
-        <tr>
-            <td><b>Ime</b></td>
-            <td><b>Starost</b></td>
-            <td><b>Slika</b></td>
-            <td><b>Prekliči sponzorstvo</b></td>
-        </tr>
-        <?php
+    echo "<p>Tukaj so živali, ki jih sponzoriraš:</p>";
+    echo "<table border='1'>";
+    echo "<tr>";
+    echo "<td><b>Ime</b></td>";
+    echo "<td><b>Starost</b></td>";
+    echo "<td><b>Slika</b></td>";
+    echo "<td><b>Prekliči sponzorstvo</b></td>";
+    echo "</tr>";
         while ($row = mysqli_fetch_array($result)) {
             $slikaid = $row['slika_id'];
             $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
