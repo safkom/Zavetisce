@@ -152,6 +152,7 @@
   border-radius: 4px;
   cursor: pointer;">
   <br>
+  <br>
     <form class="delete" id ="delete" action="admin.php" method="post" enctype="multipart/form-data">
         <input type="submit" value="Nazaj" style = "width: 100%;
   padding: 10px;
