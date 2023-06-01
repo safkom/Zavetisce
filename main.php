@@ -54,7 +54,36 @@
         text-decoration: none;
         display: block;
     }
-    </style>
+    #gumbi {
+        display: flex;
+        justify-content: space-between;
+    }
+    .gumbstyle{
+        background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+    }
+    .gumbstyle:hover {
+        background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+    }
+    </style>    
 </head>
 
 <body>
@@ -103,7 +132,7 @@ $result = mysqli_query($conn, $sql);
             <td><b>Starost</b></td>
             <td><b>Posvojen</b></td>
             <td><b>Slika</b></td>
-            <td><b>Rezerviraj</b></td>
+            <td><b>Rezerviraj za ogled</b></td>
         </tr>
         <?php
         while ($row = mysqli_fetch_array($result)) {
@@ -172,11 +201,17 @@ $result = mysqli_query($conn, $sql);
         }
         ?>
     </table>
+    <br>
+    <div id="gumbi">
+    <button class="gumbstyle" onclick="location.href = 'sponzorstva.php';">Sponzorstva</button>
+    <button class="gumbstyle" onclick="location.href = 'sprehajanje.php';">Sprehajanje psov</button>
+    </div>  
 </div>
 
 <div id="loginWindow">
     <?php
     if (isset($_COOKIE['prijava'])) {
+        echo "✅ ";
         echo $_COOKIE['prijava'];
         // setcookie("prijava", "", time() - 3600);
     }

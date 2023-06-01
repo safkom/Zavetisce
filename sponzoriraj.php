@@ -6,7 +6,7 @@
     <meta name="description" content="Miha Šafranko"/>
     <meta name="author" content="Miha Šafranko" />
     <link rel="stylesheet" href="css/login.css">
-    <title>Nova žival</title>
+    <title>Spremembe</title>
     <style>
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -72,27 +72,38 @@
     <?php
     require_once 'cookie.php';
     require_once 'connect.php';
+    $zival = $_GET['zival_id'];
+    setcookie('zival_id', $zival);
+    $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_array($result);
     ?>
     <div class="container">
-        <h1>Nov vnos</h1>
-        <form class="login" id="spremembe" action="novo.php" method="post" enctype="multipart/form-data">
-            <label for="ime">Ime:</label>
-            <input type="text" id="ime" name="ime"  required><br><br>
+        <h1>Sponzorstvo</h1>
+        <p>Tukaj uredi vse podatke, da sponzoriraš žival</p>
+        <form class="login" id="spremembe" action="sponsor.php" method="post" enctype="multipart/form-data">
+            <label for="ime">Ime živali:</label>
+            <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" readonly><br><br>
 
-            <label for="datum">Datum rojstva:</label>
-            <input type="date" id="datum" name="datum" class="login_input"  required><br><br>
+            <label for="datum">Datum začetka:</label>
+            <input type="date" id="datum" name="datum" class="login_input" required><br><br>
 
-            <label for="posvojen">Posvojen:</label>
-            <input type="checkbox" id="posvojen" name="posvojen" class="login_input"><br><br>
+            <label for="cas">Čas sponzorstva:</label>
+            <input type="date" id="cas" name="cas" class="login_input" required><br><br>
+            <p>Vrsta sponzorstva:</p>
+            <p>Splošna oskrba:
+            <input type="radio" id="oskrba" name="sponzorstvo" value="Splošna oskrba"></p>
+            <p>Zdravljenje:
+            <input type="radio" id="zdravljenje" name="sponzorstvo" value="Zdravljenje"></p>
+            <p>Prehrana:
+            <input type="radio" id="prehrana" name="sponzorstvo" value="Prehrana"></p>
+            
 
-            <label for="slika">Slika:</label>
-            <input type="file" id="slika" class="login_input" name="slika"><br><br>
-
-            <br>
+           <br><br>
             <input type="submit" value="Pošlji">
         </form>
-        <form class="delete" id ="delete" action="admin.php" method="post" enctype="multipart/form-data">
-        <input type="submit" value="Nazaj" style = "width: 100%;
+        <form class="delete" id ="delete" action="sponzorstva.php" method="post" enctype="multipart/form-data">
+        <input type="submit" value="Prekliči" style = "width: 100%;
   padding: 10px;
   background-color: red;
   color: #fff;

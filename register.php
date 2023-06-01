@@ -10,17 +10,24 @@ $geslo = password_hash($geslo1, PASSWORD_DEFAULT);
 $naslov = $_GET['naslov'];
 $kraj = $_GET['kraj'];
 
-$sql = "SELECT * FROM uporabniki WHERE email = '$mail';";
-$result = mysqli_query($conn, $sql);
+// Prepare the SELECT statement
+$sql = "SELECT * FROM uporabniki WHERE email = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $mail);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if (mysqli_num_rows($result) == 0) {
+if ($result->num_rows == 0) {
+    // Prepare the INSERT statement
     $sql = "INSERT INTO uporabniki (ime, priimek, email, geslo, naslov, kraj_id)
-    VALUES ('$ime', '$priimek', '$mail', '$geslo', '$naslov', (SELECT id from kraji WHERE kraj = '$kraj'));";
-    if ($conn->query($sql) === TRUE) {
+    VALUES (?, ?, ?, ?, ?, (SELECT id from kraji WHERE kraj = ?))";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssss", $ime, $priimek, $mail, $geslo, $naslov, $kraj);
+    if ($stmt->execute()) {
         setcookie('prijava', "Registracija uspešna.");
         header('Location: preveri.php');
     } else {
-        setcookie('register', "Error: " . $sql . "<br>" . $conn->error);
+        setcookie('register', "Error: " . $stmt->error);
         header('Location: registracija.php');
     }
 } else {
@@ -28,4 +35,6 @@ if (mysqli_num_rows($result) == 0) {
     header('Location: registracija.php');
 }
 
+$stmt->close();
+$conn->close();
 ?>

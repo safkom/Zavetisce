@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko">
     <meta name="author" content="Miha Šafranko">
-    <link rel="stylesheet" type="text/css" href="css/admin.css">
-    <title>Zavetišče</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <title>Sponzorstva</title>
     <style>
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
@@ -83,124 +83,121 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
     }
-    </style>
+    </style>    
 </head>
+
 <body>
 <div id="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
     <div id="menuContent" class="menu-content">
-        <a href="admin-rezervacije.php">Rezervacije</a>
+        <a href="rezervacije.php">Rezervacije</a>
         <a href="odjava.php">Odjava</a>
     </div>
 </div>
 
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 require_once 'cookie.php';
 require_once 'connect.php';
+
 if (!isset($_COOKIE['id'])) {
     header('Location: index.php');
     exit();
 }
-$id = $_COOKIE['id'];
-$sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
+
+if (isset($_COOKIE['admin'])) {
+    header('Location: admin.php');
+    exit();
+}
+
+$id = mysqli_real_escape_string($conn, $_COOKIE['id']);
+
+$sql = "SELECT * FROM uporabniki WHERE id = '$id';";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
-// modify the if statement to check if id exists in the database
+
+// Modify the if statement to check if id exists in the database
 if ($query == 0) {
     header('Location: index.php');
     exit();
 }
+
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
-
 ?>
-Seznam kužkov:
-<table border="1">
-    <tr>
-        <td><b>Ime</b></td>
-        <td><b>Starost</b></td>
-        <td><b>Posvojen</b></td>
-        <td><b>Slika</b></td>
-        <td><b>Rezerviran</b></td>
-        <td><b>Spremeni</b></td>
-    </tr>
+    <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
+    <table border="1">
+        <tr>
+            <td><b>Ime</b></td>
+            <td><b>Starost</b></td>
+            <td><b>Slika</b></td>
+            <td><b>Sponzoriraj</b></td>
+        </tr>
+        <?php
+        while ($row = mysqli_fetch_array($result)) {
+            $slikaid = $row['slika_id'];
+            $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+            $klic = mysqli_query($conn, $sql1);
+            $klic1 = mysqli_fetch_array($klic);
 
-    <?php
-    while ($row = mysqli_fetch_array($result)) {
-        $zival_id = $row['id'];
-        $slikaid = $row['slika_id'];
-        $sql = "SELECT * FROM slike WHERE id = '$slikaid';";
-        $klic = mysqli_query($conn, $sql);
-        $klic1 = mysqli_fetch_array($klic);
-    if ($klic1 !== null) {
-        $slika = "<img src='" . $klic1['url'] . "'>";
-    } else {
-        $slika = "Ni slike."; // or any default value you prefer
-    }
+            if ($klic1 !== null) {
+                $slika = $klic1['url'];
+            } else {
+                $slika = null;
+            }
 
-        $dateOfBirth = $row['datum_r'];
-        $today = date("Y-m-d");
-        $diff = date_diff(date_create($dateOfBirth), date_create($today));
-        $ageInMonths = $diff->format('%m');
-        $ageInYears = $diff->format('%y');
-        $leta = '';
+            $dateOfBirth = $row['datum_r'];
+            $today = date("Y-m-d");
+            $diff = date_diff(date_create($dateOfBirth), date_create($today));
+            $ageInMonths = $diff->format('%m');
+            $ageInYears = $diff->format('%y');
 
-        if ($ageInYears == 1) {
-            $leta = $ageInYears . ' leto in ';
-        } elseif ($ageInYears >= 2 && $ageInYears <= 4) {
-            $leta = $ageInYears . ' leti in ';
-        } elseif ($ageInYears > 4) {
-            $leta = $ageInYears . ' let in ';
+            if ($ageInYears == 1) {
+                $leta = $ageInYears . ' leto in ';
+            } elseif ($ageInYears > 1 && $ageInYears < 5) {
+                $leta = $ageInYears . ' leti in ';
+            } elseif ($ageInYears >= 5) {
+                $leta = $ageInYears . ' let in ';
+            } else {
+                $leta = '';
+            }
+
+            if ($ageInMonths == 1) {
+                $age = $leta . '1 mesec';
+            } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+                $age = $leta . $ageInMonths . ' meseci';
+            } elseif ($ageInMonths >= 5) {
+                $age = $leta . $ageInMonths . ' mesecev';
+            } elseif ($ageInMonths == 0 && $ageInYears == 0) {
+                $age = 'Manj kot 1 mesec.';
+            } else {
+                $age = '';
+            }
+
+            echo '<tr>';
+            echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
+
+            if (!empty($slika)) {
+                echo "<img src='".$slika."'>";
+            } else {
+                echo "Ni slike";
+            }
+            if (is_null($row['sponzorstvo_id'])) {
+                $sponzorstvo = "<a href='sponzoriraj.php?zival_id=".$row['id']."'>Sponzoriraj</a>";
+            } else {
+                $sponzorstvo = 'Sponzorstvo je že urejeno.';
+            }
+
+            echo "</td><td>".$sponzorstvo."</td>";
+            echo '</tr>';
         }
-
-        if ($ageInMonths == 1) {
-            $age = $leta . '1 mesec';
-        } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
-            $age = $leta . $ageInMonths . ' meseci';
-        } elseif ($ageInMonths >= 5) {
-            $age = $leta . $ageInMonths . ' mesecev';
-        } elseif($ageInMonths == 0 && $ageInYears == 0) {
-            $age = 'Manj kot 1 mesec.';
-        }
-        else{
-            $age = '';
-        }
-
-        if ($row['posvojen'] == 0) {
-            $posvojen = 'Ne';
-        } else {
-            $posvojen = 'Da';
-        }
-
-        if (is_null($row['rezervacija_id'])) {
-            $rezervacija = "Ni rezervirano";
-        } else {
-            $sql = "SELECT * FROM rezervacija WHERE zival_id = $zival_id";
-            $klic2 = mysqli_query($conn, $sql);
-            $klic3 = mysqli_fetch_array($klic2);
-            $datum = $klic3['datum'];
-            $rezervacija = 'Da, ' . $datum;
-        }
-
-        echo '<tr>';
-        echo '<td>' . $row['ime'] . '</td>';
-        echo '<td>' . $age . '</td>';
-        echo '<td>' . $posvojen . '</td>';
-        echo '<td>'.$slika.'</td>';
-        echo '<td>' . $rezervacija . '</td>';
-        echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
-        echo '</tr>';
-    }
-    ?>
-</table>
-<br>
+        ?>
+    </table>
+    <br>
     <div id="gumbi">
-    <button class="gumbstyle" onclick="location.href = 'novoform.php';">Dodaj žival</button>
-    </div> 
+    <button class="gumbstyle" onclick="location.href = 'main.php';">Nazaj</button>
+    </div>  
+</div>
 
 <div id="loginWindow">
     <?php
@@ -211,8 +208,11 @@ Seznam kužkov:
     }
     ?>
 </div>
+
+
 <script>
-    var menuBtn = document.getElementById("menuBtn");
+
+var menuBtn = document.getElementById("menuBtn");
     var menuContent = document.getElementById("menuContent");
 
     menuBtn.addEventListener("click", function() {
@@ -254,5 +254,6 @@ Seznam kužkov:
     }
     document.cookie = 'prijava=; Max-Age=0';
 </script>
+
 </body>
 </html>

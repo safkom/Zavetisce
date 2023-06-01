@@ -4,33 +4,35 @@ require_once 'connect.php';
 $email = $_GET['email'];
 $password = $_GET['geslo'];
 
-$sql = "SELECT * FROM uporabniki WHERE email = '$email';";
-$result = mysqli_query($conn, $sql);
+$sql = "SELECT * FROM uporabniki WHERE email = ?;";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
 
-if (mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_array($result);
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
     $hash = $row['geslo'];
     if (password_verify($password, $hash)) {
-        if($row['admin'] == 1){
+        if ($row['admin'] == 1) {
             setcookie('id', $row['id']);
             setcookie('admin', 1);
             setcookie('prijava', "Prijava uspešna.");
             header('Location: admin.php');
+        } else {
+            setcookie('id', $row['id']);
+            setcookie('prijava', "Prijava uspešna.");
+            header('Location: main.php');
         }
-        else{
-        setcookie('id', $row['id']);
-        setcookie('prijava', "Prijava uspešna.");
-        header('Location: main.php');
-        }
-    } 
-    else {
+    } else {
         setcookie('prijava', "Napačno geslo.");
         header('Location: index.php');
     }
-} 
-else {
+} else {
     setcookie('prijava', "Uporabnik z tem mailom ne obstaja.");
     header('Location: index.php');
 }
 
+$stmt->close();
+$conn->close();
 ?>

@@ -43,7 +43,8 @@ if ($stmt->execute()) {
                     $stmt4 = $conn->prepare($update_sql3);
                     $stmt4->bind_param('ii', $slika_id, $zival_id);
                     if ($stmt4->execute()) {
-                        echo "Uspešen vnos slike";
+                        setcookie('prijava',"Vnos uspešen.");
+                        header('Location: admin.php');
                     } else {
                         echo "Vnos ni uspel";
                     }
@@ -57,7 +58,8 @@ if ($stmt->execute()) {
             echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
         }
     } else {
-        echo "Vnos brez slike uspešen";
+        setcookie('prijava',"Vnos brez slike uspešen.");
+        header('Location: admin.php');
     }
 } else {
     echo "ne dela";
