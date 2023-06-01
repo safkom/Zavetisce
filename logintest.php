@@ -47,13 +47,13 @@ body {
   
   .container input[type="text"],
 .container input[type="password"] {
-  width: 360px;
-		background: lightgray;
-		font: inherit;
-		box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
-		border: 0;
-		outline: 0;
-		padding: 22px 18px;
+  width: 100%;
+  padding: 10px;
+	background: lightgray;
+	font: inherit;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
+	border: 0;
+	outline: 0;
 }
 
 .container input[type="submit"] {
