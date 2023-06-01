@@ -61,6 +61,23 @@ body {
   border-radius: 10px; /* Adding rounded corners */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
 }
+.container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: blue;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.container input[type="submit"]:hover {
+  background-color: lightblue;
+}
+a {
+    color: lightblue;
+    text-decoration: none;
+  }
 
 
     </style>
