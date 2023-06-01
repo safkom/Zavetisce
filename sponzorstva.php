@@ -88,7 +88,7 @@
 
 <body>
 
-<div class="container">
+
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
@@ -96,6 +96,7 @@ $sql = "SELECT z.ime, z.datum_r, z.slika_id, s.id FROM sponzorstva s INNER JOIN 
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 if($query > 0){
+    echo "<div class='container'>";
     echo "<p>Tukaj so živali, ki jih sponzoriraš:</p>";
 echo "<table border='1'>";
 echo "<tr>";
