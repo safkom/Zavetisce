@@ -88,7 +88,10 @@
 
 <body>
 
-<div class="container"><?php
+<div class="container">
+<?php
+require_once 'cookie.php';
+require_once 'connect.php';
 $sql = "SELECT * FROM sponzorstva s INNER JOIN zivali z ON s.id = z.sponzorstvo_id WHERE s.uporabnik_id = ".$_COOKIE['id'].";";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
@@ -171,8 +174,6 @@ if($query > 0){
 </div>
 
 <?php
-require_once 'cookie.php';
-require_once 'connect.php';
 
 if (!isset($_COOKIE['id'])) {
     header('Location: index.php');
