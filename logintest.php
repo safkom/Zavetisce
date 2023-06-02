@@ -98,10 +98,6 @@ body {
   <input type="submit" value="Pošlji">
 </form>
 <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
-
-<form action = "brezprijave.php">
-    <input type = "submit" value = "Dostop, brez prijave">
-</form>
 </div>
 
 <div id="loginWindow">

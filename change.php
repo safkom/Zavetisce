@@ -1,21 +1,22 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once 'connect.php';
+require_once 'cookie.php';
 
-    <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    require_once 'connect.php';
-    require_once 'cookie.php';
+$id = $_COOKIE['id'];
+$sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
+$result = mysqli_query($conn, $sql);
+$query = mysqli_num_rows($result);
 
-    $id = $_COOKIE['id'];
-    $sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
-    $result = mysqli_query($conn, $sql);
-    $query = mysqli_num_rows($result);
+// Check if the user is an admin
+if ($query > 0) {
+    $zival = $_COOKIE['zival_id'];
+    $uporabnikEmail = $_POST['uporabnikid'];
 
-    // Check if the user is an admin
-    if ($query > 0) {
-        $zival = $_COOKIE['zival_id'];
-        $uporabnikEmail = $_POST['uporabnikid'];
-
+    // Check if uporabnikId is empty
+    if (!empty($uporabnikEmail)) {
         // Get the uporabnik_id from the email
         $uporabnik_id = getUporabnikIdByEmail($conn, $uporabnikEmail);
 
@@ -122,46 +123,52 @@
             exit();
         }
     } else {
-        setcookie('prijava', 'Only admins can perform this action.');
+        setcookie('prijava', 'Sprememba uspešna.');
         setcookie('good', 0);
         header('Location: admin.php');
         exit();
     }
+} else {
+    setcookie('prijava', 'Only admins can perform this action.');
+    setcookie('good', 0);
+    header('Location: admin.php');
+    exit();
+}
 
-    // Function to get uporabnik_id by email
-    function getUporabnikIdByEmail($conn, $email) {
-        $sql = "SELECT id FROM uporabniki WHERE email = ?";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        return $row['id'];
-    }
+// Function to get uporabnik_id by email
+function getUporabnikIdByEmail($conn, $email) {
+    $sql = "SELECT id FROM uporabniki WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    return $row['id'];
+}
 
-    // Function to insert a new rezervacija record and return the inserted ID
-    function insertRezervacija($conn, $uporabnik_id, $zival_id) {
-        $date = strtotime("+7 day");
-        $datum = date('Y-m-d', $date);
-        $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($insert_sql);
-        $stmt->bind_param('sii', $datum, $uporabnik_id, $zival_id);
-        if ($stmt->execute()) {
-            return $stmt->insert_id;
-        } else {
-            return false;
-        }
+// Function to insert a new rezervacija record and return the inserted ID
+function insertRezervacija($conn, $uporabnik_id, $zival_id) {
+    $date = strtotime("+7 day");
+    $datum = date('Y-m-d', $date);
+    $insert_sql = "INSERT INTO rezervacija (datum, uporabnik_id, zival_id) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($insert_sql);
+    $stmt->bind_param('sii', $datum, $uporabnik_id, $zival_id);
+    if ($stmt->execute()) {
+        return $stmt->insert_id;
+    } else {
+        return false;
     }
+}
 
-    // Function to insert a new slika record and return the inserted ID
-    function insertSlika($conn, $url) {
-        $slika_sql = "INSERT INTO slike (url) VALUES (?)";
-        $stmt = $conn->prepare($slika_sql);
-        $stmt->bind_param('s', $url);
-        if ($stmt->execute()) {
-            return $stmt->insert_id;
-        } else {
-            return false;
-        }
+// Function to insert a new slika record and return the inserted ID
+function insertSlika($conn, $url) {
+    $slika_sql = "INSERT INTO slike (url) VALUES (?)";
+    $stmt = $conn->prepare($slika_sql);
+    $stmt->bind_param('s', $url);
+    if ($stmt->execute()) {
+        return $stmt->insert_id;
+    } else {
+        return false;
     }
-    ?>
+}
+?>

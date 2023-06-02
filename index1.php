@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
 	<meta name="author" content="Miha Šafranko" />
-    <link rel="stylesheet" href="css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <style>
         body{
@@ -26,63 +25,38 @@ body {
   background-color: #fff;
   border-radius: 10px; /* Adding rounded corners */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
+  }
+
+  .form__label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
 }
-
-
-  
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
-  
-  .container input[type="text"],
-.container input[type="password"] {
-  width: 100%;
-  padding: 10px;
-	font: inherit;
-	box-shadow: 0 6px 10px 0 rgba(0, 0, 0 , .1);
-	border-color: gray;
-	outline: 0;
-}
-
-.container input[type="submit"] {
-  width: 100%;
-  padding: 10px;
-  background-color: lightblue;
-  color: #fff;
+.form__input {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 1.2rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(255, 255, 255);
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  width: 90%;
+  display: block;
+  border-bottom: 0.3rem solid transparent;
+  transition: all 0.3s;
 }
 
-.container input[type="submit"]:hover {
-  background-color: lightblue;
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
 }
-  
-  a {
-    color: lightblue;
-    text-decoration: none;
-  }
-  
-  /* Responsive Styles */
-  @media (max-width: 600px) {
-    .container {
-      max-width: 100%;
-      margin: 20px;
-      box-shadow: none;
-    }
-  }
-  
     </style>
 
     <title>Zavetišče</title>
@@ -91,23 +65,18 @@ body {
 <div class="container">
   <h1>Prijava</h1>
  <form action="preveri.php" method="get">
-  <label for="fname">Mail:</label>
-  <input type="text" id="email" name="email"><br><br>
-  <label for="lname">Geslo:</label>
-  <input type="password" id="geslo" name="geslo"><br><br>
+  <label for="fname" class="form__label">Mail:</label>
+  <input type="text" id="email" name="email" class="form__input" placeholder="Mail"><br><br>
+  <label for="lname" class="form__label">Geslo:</label>
+  <input type="password" id="geslo" name="geslo" class="form__input" placeholder="Geslo"><br><br>
   <input type="submit" value="Pošlji">
 </form>
 <p>Niste še uporabnik? <a href = "registracija.php">Pridobite dostop </a>
-
-<form action = "brezprijave.php">
-    <input type = "submit" value = "Dostop, brez prijave">
-</form>
 </div>
 
 <div id="loginWindow">
     <?php
     if (isset($_COOKIE['prijava'])) {
-        echo "✅ ";
         echo $_COOKIE['prijava'];
         // setcookie("prijava", "", time() - 3600);
     }

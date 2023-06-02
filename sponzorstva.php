@@ -87,7 +87,86 @@
 </head>
 
 <body>
-<div id="container">
+
+
+<?php
+require_once 'cookie.php';
+require_once 'connect.php';
+$sql = "SELECT z.ime, z.datum_r, z.slika_id, s.id FROM sponzorstva s INNER JOIN zivali z ON s.id = z.sponzorstvo_id WHERE s.uporabnik_id = ".$_COOKIE['id'].";";
+$result = mysqli_query($conn, $sql);
+$query = mysqli_num_rows($result);
+if($query > 0){
+    echo "<div class='container'>";
+    echo "<p>Tukaj so živali, ki jih sponzoriraš:</p>";
+echo "<table border='1'>";
+echo "<tr>";
+echo "<td><b>Ime</b></td>";
+echo "<td><b>Starost</b></td>";
+echo "<td><b>Slika</b></td>";
+echo "<td><b>Prekliči sponzorstvo</b></td>";
+echo "</tr>";
+
+while ($row = mysqli_fetch_array($result)) {
+    $sponzorstvo = "<a href='preklicis.php?sponzorstvo_id=".$row['id']."'>Prekliči</a>";
+    $slikaid = $row['slika_id'];
+    $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+    $klic = mysqli_query($conn, $sql1);
+    $klic1 = mysqli_fetch_array($klic);
+
+    if ($klic1 !== null) {
+        $slika = $klic1['url'];
+    } else {
+        $slika = null;
+    }
+
+    $dateOfBirth = $row['datum_r'];
+    $today = date("Y-m-d");
+    $diff = date_diff(date_create($dateOfBirth), date_create($today));
+    $ageInMonths = $diff->format('%m');
+    $ageInYears = $diff->format('%y');
+
+    if ($ageInYears == 1) {
+        $leta = $ageInYears . ' leto in ';
+    } elseif ($ageInYears > 1 && $ageInYears < 5) {
+        $leta = $ageInYears . ' leti in ';
+    } elseif ($ageInYears >= 5) {
+        $leta = $ageInYears . ' let in ';
+    } else {
+        $leta = '';
+    }
+
+    if ($ageInMonths == 1) {
+        $age = $leta . '1 mesec';
+    } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+        $age = $leta . $ageInMonths . ' meseci';
+    } elseif ($ageInMonths >= 5) {
+        $age = $leta . $ageInMonths . ' mesecev';
+    } elseif ($ageInMonths == 0 && $ageInYears == 0) {
+        $age = 'Manj kot 1 mesec.';
+    } else {
+        $age = '';
+    }
+
+    echo '<tr>';
+    echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
+
+    if (!empty($slika)) {
+        echo "<img src='".$slika."'>";
+    } else {
+        echo "Ni slike";
+    }
+
+    echo "</td><td>".$sponzorstvo."</td>";
+    echo '</tr>';
+}
+
+echo "</table>";
+echo "</div>";
+
+}
+?>
+
+<div class="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
     <div id="menuContent" class="menu-content">
@@ -97,8 +176,6 @@
 </div>
 
 <?php
-require_once 'cookie.php';
-require_once 'connect.php';
 
 if (!isset($_COOKIE['id'])) {
     header('Location: index.php');
@@ -125,7 +202,7 @@ $sponzorstva_sql = "SELECT * FROM sponzorstva WHERE uporabnik_id = '$id';";
 $sponzorstva_result = mysqli_query($conn, $sponzorstva_sql);
 $sponzorstva_count = mysqli_num_rows($sponzorstva_result);
 
-$sql = "SELECT * FROM zivali z INNER JOIN sponzorstva s on s.id = z.sponzorstva_id;";
+$sql = "SELECT * FROM zivali";
 $result = mysqli_query($conn, $sql);
 
 
