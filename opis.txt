@@ -1,0 +1,3 @@
+Stran prikazuje živali, ki so v zavetišču. Vsi uporabniki lahko stran gledajo, prijavljeni uporabniki pa lahko rezervirajo živali,
+ki so za oddajo oz. si določijo datum ogleda. Prijavljeni uporabniki lahko postanejo sponzorji (donatorji za hrano, zdravila,...)
+za eno ali več živali. Prijavljeni uporabniki se lahko prijavijo za sprehajalce psov.

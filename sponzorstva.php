@@ -11,7 +11,7 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
-        #container {
+        .container {
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -121,10 +121,85 @@ if ($query == 0) {
     header('Location: index.php');
     exit();
 }
+$sponzorstva_sql = "SELECT * FROM sponzorstva WHERE uporabnik_id = '$id';";
+$sponzorstva_result = mysqli_query($conn, $sponzorstva_sql);
+$sponzorstva_count = mysqli_num_rows($sponzorstva_result);
 
-$sql = "SELECT * FROM zivali;";
+$sql = "SELECT * FROM zivali z INNER JOIN sponzorstva s on s.id = z.sponzorstva_id;";
 $result = mysqli_query($conn, $sql);
-?>
+
+
+    if ($sponzorstva_count > 0) {
+        echo '<div class="container">'; ?>
+        <table border="1">
+        <tr>
+            <td><b>Ime</b></td>
+            <td><b>Starost</b></td>
+            <td><b>Slika</b></td>
+            <td><b>Prekliči sponzorstvo</b></td>
+        </tr>
+        <?php
+        while ($row = mysqli_fetch_array($result)) {
+            $slikaid = $row['slika_id'];
+            $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+            $klic = mysqli_query($conn, $sql1);
+            $klic1 = mysqli_fetch_array($klic);
+
+            if ($klic1 !== null) {
+                $slika = $klic1['url'];
+            } else {
+                $slika = null;
+            }
+
+            $dateOfBirth = $row['datum_r'];
+            $today = date("Y-m-d");
+            $diff = date_diff(date_create($dateOfBirth), date_create($today));
+            $ageInMonths = $diff->format('%m');
+            $ageInYears = $diff->format('%y');
+
+            if ($ageInYears == 1) {
+                $leta = $ageInYears . ' leto in ';
+            } elseif ($ageInYears > 1 && $ageInYears < 5) {
+                $leta = $ageInYears . ' leti in ';
+            } elseif ($ageInYears >= 5) {
+                $leta = $ageInYears . ' let in ';
+            } else {
+                $leta = '';
+            }
+
+            if ($ageInMonths == 1) {
+                $age = $leta . '1 mesec';
+            } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
+                $age = $leta . $ageInMonths . ' meseci';
+            } elseif ($ageInMonths >= 5) {
+                $age = $leta . $ageInMonths . ' mesecev';
+            } elseif ($ageInMonths == 0 && $ageInYears == 0) {
+                $age = 'Manj kot 1 mesec.';
+            } else {
+                $age = '';
+            }
+
+            echo '<tr>';
+            echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
+
+            if (!empty($slika)) {
+                echo "<img src='".$slika."'>";
+            } else {
+                echo "Ni slike";
+            }
+            if (is_null($row['sponzorstvo_id'])) {
+                $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
+            } else {
+                $sponzorstvo = "<a href='preklicis.php?zival_id=".$row['id']."'>Prekliči</a>";
+            }
+
+            echo "</td><td>".$sponzorstvo."</td>";
+            echo '</tr>';
+        }
+        echo "</div>";
+         }
+        ?> 
+<div id = "container">
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
     <table border="1">
         <tr>
@@ -257,3 +332,4 @@ var menuBtn = document.getElementById("menuBtn");
 
 </body>
 </html>
+
