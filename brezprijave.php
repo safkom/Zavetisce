@@ -94,6 +94,7 @@ require_once 'connect.php';
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
+<div id = "container">
     <p>Seznam kužkov:</p>
     <table border="1">
         <tr>
@@ -164,7 +165,6 @@ $result = mysqli_query($conn, $sql);
     <br>
     <div id="gumbi">
     <button class="gumbstyle" onclick="location.href = 'index.php';">Prijava</button>
-    <div>
 </div>
 </div>
 </script>
