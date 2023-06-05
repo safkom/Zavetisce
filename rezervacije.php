@@ -138,6 +138,7 @@ if (mysqli_num_rows($result) > 0) {
     exit();
 }
 ?>
+<br>
 <div id="gumbi">
     <button class="gumbstyle" onclick="location.href = 'main.php';">Nazaj</button>
     </div>  
