@@ -149,6 +149,7 @@ else{
     header('Location: index.php');
 }
 ?>
+<br>
 <div id="gumbi">
     <button class="gumbstyle" onclick="location.href = 'admin.php';">Nazaj</button>
     </div> 
