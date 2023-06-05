@@ -56,13 +56,18 @@ if ($stmt->execute()) {
             }
         } else {
             echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+            setcookie('error', 1);
+            header('Location: admin.php');
         }
     } else {
         setcookie('prijava',"Vnos brez slike uspešen.");
+        setcookie('warning', 1);
         header('Location: admin.php');
     }
 } else {
-    echo "ne dela";
+    setcookie('prijava',"Prišlo je do neznane napake.");
+    setcookie('error', 1);
+    header('Location: admin.php');
 }
 
 // Function to insert a new slika record and return the inserted ID

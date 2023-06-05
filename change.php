@@ -66,72 +66,70 @@ if ($query > 0) {
                                         $stmt4->bind_param('ii', $slika_id, $zival);
                                         if ($stmt4->execute()) {
                                             setcookie('prijava', "Sprememba uspešna.");
-                                            setcookie('good', 1);
                                             header('Location: admin.php');
                                             exit();
                                         } else {
                                             setcookie('prijava', "Error: " . $conn->error);
+                                            setcookie('error', 1);
                                             header('Location: admin.php');
                                             exit();
                                         }
                                     } else {
                                         setcookie('prijava', "Error: Failed to insert slika record.");
-                                        setcookie('good', 0);
+                                        setcookie('error', 1);
                                         header('Location: admin.php');
                                         exit();
                                     }
                                 } else {
                                     setcookie('prijava', 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by the web server.');
-                                    setcookie('good', 0);
+                                    setcookie('error', 1);
                                     header('Location: admin.php');
                                     exit();
                                 }
                             } else {
                                 setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
-                                setcookie('good', 0);
+                                setcookie('error', 1);
                                 header('Location: admin.php');
                                 exit();
                             }
                         } else {
                             setcookie('prijava', 'Sprememba uspešna.');
-                            setcookie('good', 1);
                             header('Location: admin.php');
                             exit();
                         }
                     } else {
                         setcookie('prijava', "Error: " . $conn->error);
-                        setcookie('good', 0);
+                        setcookie('error', 1);
                         header('Location: admin.php');
                         exit();
                     }
                 } else {
                     setcookie('prijava', "Error: Failed to insert rezervacija record.");
-                    setcookie('good', 0);
+                    setcookie('error', 1);
                     header('Location: admin.php');
                     exit();
                 }
             } else {
                 setcookie('prijava', "Error: " . $conn->error);
-                setcookie('good', 0);
+                setcookie('error', 1);
                 header('Location: admin.php');
                 exit();
             }
         } else {
             setcookie('prijava', "Error: " . $conn->error);
-            setcookie('good', 0);
+            setcookie('error', 1);
             header('Location: admin.php');
             exit();
         }
     } else {
         setcookie('prijava', 'Sprememba uspešna.');
-        setcookie('good', 0);
         header('Location: admin.php');
         exit();
     }
 } else {
     setcookie('prijava', 'Only admins can perform this action.');
-    setcookie('good', 0);
-    header('Location: admin.php');
+    setcookie('error', 1);
+    header('Location: main.php');
     exit();
 }
 

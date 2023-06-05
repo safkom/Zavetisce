@@ -27,11 +27,13 @@ if ($result->num_rows == 0) {
         setcookie('prijava', "Registracija uspešna.");
         header('Location: preveri.php');
     } else {
-        setcookie('register', "Error: " . $stmt->error);
+        setcookie('prijava', "Error: " . $stmt->error);
+        setcookie('error', 1);
         header('Location: registracija.php');
     }
 } else {
-    setcookie('register', "Error: Uporabnik z tem mailom že obstaja.");
+    setcookie('prijava', "Uporabnik z tem mailom že obstaja.");
+    setcookie('warning', 1);
     header('Location: registracija.php');
 }
 

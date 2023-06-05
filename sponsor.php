@@ -25,10 +25,12 @@ if ($stmt->execute()) {
         header('Location: main.php');
     } else {
         setcookie('prijava', "Error updating zivali: " . $update_stmt->error);
+        setcookie('error', 1);
         header('Location: main.php');
     }
 } else {
     setcookie('register', "Error creating sponzorstvo: " . $stmt->error);
+    setcookie('error', 1);
     header('Location: main.php');
 }
 

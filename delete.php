@@ -10,6 +10,7 @@ $sql = "DELETE FROM zivali WHERE id = $id;";
         header('Location: admin.php');
     } else {
         setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
+        setcookie('error', 1);
         header('Location: admin.php');
     }
 ?>

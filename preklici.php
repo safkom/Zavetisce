@@ -17,6 +17,7 @@ if (isset($_COOKIE['admin'])) {
         header('Location: admin.php');
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
+        setcookie('error', 1);
         header('Location: admin.php');
     }
     exit();
@@ -30,6 +31,7 @@ if ($stmt->execute()) {
     header('Location: main.php');
 } else {
     setcookie('prijava', "Error: " . $stmt->error);
+    setcookie('error', 1);
     header('Location: main.php');
 }
 

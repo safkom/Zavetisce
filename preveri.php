@@ -26,10 +26,12 @@ if ($result->num_rows > 0) {
         }
     } else {
         setcookie('prijava', "Napačno geslo.");
+        setcookie('error', 1);
         header('Location: index.php');
     }
 } else {
     setcookie('prijava', "Uporabnik z tem mailom ne obstaja.");
+    setcookie('error', 1);
     header('Location: index.php');
 }
 

@@ -83,6 +83,28 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
     }
+    #errorWindow {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  min-height: 30px;
+  background-color: lightcoral;
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+#warningWindow {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  min-height: 30px;
+  background-color: lightblue;
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+}
     </style>
 </head>
 <body>
@@ -202,7 +224,7 @@ Seznam kužkov:
     <button class="gumbstyle" onclick="location.href = 'novoform.php';">Dodaj žival</button>
     </div> 
 
-<div id="loginWindow">
+    <div id="loginWindow">
     <?php
     if (isset($_COOKIE['prijava'])) {
         echo "✅ ";
@@ -211,6 +233,23 @@ Seznam kužkov:
     }
     ?>
 </div>
+<div id="errorWindow">
+    <?php
+    if (isset($_COOKIE['prijava'])) {
+        echo "⛔ ";
+        echo $_COOKIE['prijava'];
+        // setcookie("prijava", "", time() - 3600);
+    }
+    ?>
+</div>
+<div id="warningWindow">
+    <?php
+    if (isset($_COOKIE['prijava'])) {
+        echo "⚠️ ";
+        echo $_COOKIE['prijava'];
+        // setcookie("prijava", "", time() - 3600);
+    }
+    ?>
 <script>
     var menuBtn = document.getElementById("menuBtn");
     var menuContent = document.getElementById("menuContent");
@@ -226,33 +265,48 @@ Seznam kužkov:
             }
         }
     });
-    // Check if the cookie 'prijava' exists
-    function checkCookie() {
-        var name = "prijava=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var cookieArray = decodedCookie.split(';');
+     // Hide all the div elements initially
+document.getElementById("errorWindow").style.display = "none";
+document.getElementById("warningWindow").style.display = "none";
+document.getElementById("loginWindow").style.display = "none";
 
-        for (var i = 0; i < cookieArray.length; i++) {
-            var cookie = cookieArray[i];
-            while (cookie.charAt(0) === ' ') {
-                cookie = cookie.substring(1);
-            }
-            if (cookie.indexOf(name) === 0) {
-                return true;
-            }
-        }
-        return false;
-    }
+// Check if cookie error is set to 1
+if (getCookie("error") === "1") {
+  document.getElementById("errorWindow").style.display = "block";
+  setTimeout(function() {
+    document.getElementById("errorWindow").style.display = "none";
+  }, 5000); // Hide errorWindow after 5 seconds (adjust the time as needed)
+}
+// Check if cookie warning is set to 1
+else if (getCookie("warning") === "1") {
+  document.getElementById("warningWindow").style.display = "block";
+  setTimeout(function() {
+    document.getElementById("warningWindow").style.display = "none";
+  }, 5000); // Hide warningWindow after 5 seconds (adjust the time as needed)
+}
+// If neither cookie is set to 1, show loginWindow
+else {
+  document.getElementById("loginWindow").style.display = "block";
+  setTimeout(function() {
+    document.getElementById("loginWindow").style.display = "none";
+  }, 5000); // Hide loginWindow after 5 seconds (adjust the time as needed)
+}
 
-    // Show the login window if the cookie exists
-    if (checkCookie()) {
-        var loginWindow = document.getElementById("loginWindow");
-        loginWindow.style.display = "block";
-        setTimeout(function () {
-            loginWindow.style.display = "none";
-        }, 5000);
+// Function to get cookie value by name
+function getCookie(name) {
+  const cookies = document.cookie.split("; ");
+  for (let i = 0; i < cookies.length; i++) {
+    const cookie = cookies[i].split("=");
+    if (cookie[0] === name) {
+      return cookie[1];
     }
+  }
+  return "";
+}
+
     document.cookie = 'prijava=; Max-Age=0';
+    document.cookie = 'error=; Max-Age=0';
+    document.cookie = 'warning=; Max-Age=0';
 </script>
 </body>
 </html>

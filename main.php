@@ -83,6 +83,17 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
     }
+    #loginWindow {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    min-height: 30px;
+    background-color: lightgreen;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+}
     #errorWindow {
   position: fixed;
   bottom: 10px;

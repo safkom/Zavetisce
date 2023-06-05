@@ -37,25 +37,25 @@ if ($query > 0) {
             mysqli_stmt_bind_param($stmt, "ss", $rezervacija_id, $zival);
             if (mysqli_stmt_execute($stmt)) {
                 setcookie('prijava', "Rezervacija uspešna.");
-                setcookie('good', 1);
                 header('Location: main.php');
             } else {
                 setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
                 header('Location: main.php');
-                setcookie('good', 0);
+                setcookie('error', 1);
             }
         } else {
             setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
-            setcookie('good', 0);
+            setcookie('error', 1);
             header('Location: main.php');
         }
     } else {
         setcookie('prijava', "Ta žival je že rezervirana za drugega uporabnika.");
-        setcookie('good', 0);
+        setcookie('warning', 1);
         header('Location: main.php');
     }
 } else {
+    setcookie('prijava', 'Niste prijavljeni.');
+    setcookie('warning', 1);
     header('Location: index.php');
-    setcookie('good', 0);
 }
 ?>
