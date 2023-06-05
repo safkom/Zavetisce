@@ -166,14 +166,12 @@ echo "</div>";
 }
 ?>
 
-<div class="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
     <div id="menuContent" class="menu-content">
         <a href="rezervacije.php">Rezervacije</a>
         <a href="odjava.php">Odjava</a>
     </div>
-</div>
 
 <?php
 
