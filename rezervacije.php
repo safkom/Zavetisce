@@ -17,6 +17,35 @@
             border-radius: 10px; /* Adding rounded corners */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increasing the box shadow */
         }
+        #gumbi {
+        display: flex;
+        justify-content: space-between;
+    }
+    .gumbstyle{
+        background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+    }
+    .gumbstyle:hover {
+        background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+    }
     </style>
     <title>Zavetišče</title>
 </head>
@@ -109,7 +138,9 @@ if (mysqli_num_rows($result) > 0) {
     exit();
 }
 ?>
-<a href="main.php">Nazaj</a>
+<div id="gumbi">
+    <button class="gumbstyle" onclick="location.href = 'main.php';">Nazaj</button>
+    </div>  
 </div>
 </body>
 </html>
