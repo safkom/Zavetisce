@@ -83,6 +83,28 @@
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
     }
+    #errorWindow {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  min-height: 30px;
+  background-color: lightcoral;
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+#warningWindow {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 200px;
+  min-height: 30px;
+  background-color: lightblue;
+  display: none;
+  padding: 10px;
+  border-radius: 5px;
+}
     </style>    
 </head>
 
@@ -253,7 +275,12 @@ var menuBtn = document.getElementById("menuBtn");
             }
         }
     });
-    // Check if cookie error is set to 1
+    // Hide all the div elements initially
+document.getElementById("errorWindow").style.display = "none";
+document.getElementById("warningWindow").style.display = "none";
+document.getElementById("loginWindow").style.display = "none";
+
+// Check if cookie error is set to 1
 if (getCookie("error") === "1") {
   document.getElementById("errorWindow").style.display = "block";
   setTimeout(function() {
