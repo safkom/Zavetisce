@@ -102,6 +102,7 @@ echo "<table border='1'>";
 echo "<tr>";
 echo "<td><b>Ime</b></td>";
 echo "<td><b>Starost</b></td>";
+echo "<td><b>Vrsta sponzorstva</b></td>";
 echo "<td><b>Slika</b></td>";
 echo "<td><b>Prekliči sponzorstvo</b></td>";
 echo "</tr>";
@@ -148,7 +149,7 @@ while ($row = mysqli_fetch_array($result)) {
     }
 
     echo '<tr>';
-    echo '<td>'.$row['ime']."</td><td>".$age."</td><td>";
+    echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$row['vrsta']."</td><td>";
 
     if (!empty($slika)) {
         echo "<img src='".$slika."'>";
