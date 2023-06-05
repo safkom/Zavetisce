@@ -18,10 +18,12 @@ if ($result->num_rows > 0) {
             setcookie('id', $row['id']);
             setcookie('admin', 1);
             setcookie('prijava', "Prijava uspešna.");
+            setcookie('good', 1);
             header('Location: admin.php');
         } else {
             setcookie('id', $row['id']);
             setcookie('prijava', "Prijava uspešna.");
+            setcookie('good', 1);
             header('Location: main.php');
         }
     } else {

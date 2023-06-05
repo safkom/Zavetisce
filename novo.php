@@ -44,6 +44,7 @@ if ($stmt->execute()) {
                     $stmt4->bind_param('ii', $slika_id, $zival_id);
                     if ($stmt4->execute()) {
                         setcookie('prijava',"Vnos uspešen.");
+                        setcookie('good', 1);
                         header('Location: admin.php');
                     } else {
                         echo "Vnos ni uspel";

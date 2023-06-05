@@ -22,6 +22,7 @@ if ($stmt->execute()) {
     $update_stmt->bind_param("ss", $sponzorstvo_id, $zival_id);
     if ($update_stmt->execute()) {
         setcookie('prijava', "Sponzorstvo urejeno.");
+        setcookie('good', 1);
         header('Location: main.php');
     } else {
         setcookie('prijava', "Error updating zivali: " . $update_stmt->error);

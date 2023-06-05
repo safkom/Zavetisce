@@ -14,6 +14,7 @@ if (isset($_COOKIE['admin'])) {
     $stmt->bind_param("i", $zival);
     if ($stmt->execute()) {
         setcookie('prijava', "Preklic uspešen.");
+        setcookie('good', 1);
         header('Location: admin.php');
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
@@ -28,6 +29,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $id, $zival);
 if ($stmt->execute()) {
     setcookie('prijava', "Preklic uspešen.");
+    setcookie('good', 1);
     header('Location: main.php');
 } else {
     setcookie('prijava', "Error: " . $stmt->error);

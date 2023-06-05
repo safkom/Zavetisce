@@ -14,10 +14,12 @@ if (isset($_COOKIE['admin'])) {
     $stmt->bind_param("i", $zival);
     if ($stmt->execute()) {
         setcookie('prijava', "Preklic uspešen.");
+        setcookie('good', 1);
         header('Location: admin.php');
         exit(); // Add an exit() after redirecting to prevent further code execution
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
+        setcookie('error', 1);
         header('Location: admin.php');
         exit(); // Add an exit() after redirecting to prevent further code execution
     }
@@ -28,10 +30,12 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $zival);
 if ($stmt->execute()) {
     setcookie('prijava', "Preklic uspešen.");
+    setcookie('good', 1);
     header('Location: main.php');
     exit(); // Add an exit() after redirecting to prevent further code execution
 } else {
     setcookie('prijava', "Error: " . $stmt->error);
+    setcookie('error', 1);
     header('Location: main.php');
     exit(); // Add an exit() after redirecting to prevent further code execution
 }

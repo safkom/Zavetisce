@@ -37,9 +37,11 @@ if ($query > 0) {
             mysqli_stmt_bind_param($stmt, "ss", $rezervacija_id, $zival);
             if (mysqli_stmt_execute($stmt)) {
                 setcookie('prijava', "Rezervacija uspešna.");
+                setcookie('good', 1);
                 header('Location: main.php');
             } else {
                 setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
+                setcookie('error', 1);
                 header('Location: main.php');
                 setcookie('error', 1);
             }

@@ -25,6 +25,7 @@ if ($result->num_rows == 0) {
     $stmt->bind_param("ssssss", $ime, $priimek, $mail, $geslo, $naslov, $kraj);
     if ($stmt->execute()) {
         setcookie('prijava', "Registracija uspešna.");
+        setcookie('good', 1);
         header('Location: preveri.php');
     } else {
         setcookie('prijava', "Error: " . $stmt->error);

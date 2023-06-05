@@ -66,6 +66,7 @@ if ($query > 0) {
                                         $stmt4->bind_param('ii', $slika_id, $zival);
                                         if ($stmt4->execute()) {
                                             setcookie('prijava', "Sprememba uspešna.");
+                                            setcookie('good', 1);
                                             header('Location: admin.php');
                                             exit();
                                         } else {
@@ -94,6 +95,7 @@ if ($query > 0) {
                             }
                         } else {
                             setcookie('prijava', 'Sprememba uspešna.');
+                            setcookie('good', 1);
                             header('Location: admin.php');
                             exit();
                         }
@@ -123,6 +125,7 @@ if ($query > 0) {
         }
     } else {
         setcookie('prijava', 'Sprememba uspešna.');
+        setcookie('good', 1);
         header('Location: admin.php');
         exit();
     }
