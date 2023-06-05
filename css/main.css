@@ -92,7 +92,7 @@ html, body {
     bottom: 10px;
     right: 10px;
     width: 200px;
-    height: auto;
+    height: 100px;
     background-color: lightgreen;
     display: none;
     padding: 10px;
