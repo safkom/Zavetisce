@@ -306,7 +306,7 @@ else if (getCookie("warning") === "1") {
   }, 5000); // Hide warningWindow after 5 seconds (adjust the time as needed)
 }
 // If neither cookie is set to 1, show loginWindow
-else {
+else if (getCookie("good") === "1"){
   document.getElementById("loginWindow").style.display = "block";
   setTimeout(function() {
     document.getElementById("loginWindow").style.display = "none";
@@ -328,6 +328,7 @@ function getCookie(name) {
     document.cookie = 'prijava=; Max-Age=0';
     document.cookie = 'error=; Max-Age=0';
     document.cookie = 'warning=; Max-Age=0';
+    document.cookie = 'good=; Max-Age=0';
 </script>
 
 </body>
