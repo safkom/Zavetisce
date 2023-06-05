@@ -66,6 +66,7 @@ $query = mysqli_num_rows($result);
     setcookie('prijava', '');
     $sql = "SELECT * FROM zivali INNER JOIN rezervacija on zivali.id = rezervacija.zival_id;";
     $result = mysqli_query($conn,$sql);
+    if(mysqli_num_rows($result) > 0){
     echo "Seznam kužkov:";
     echo '<table border ="1">';
     echo'<tr>';
@@ -145,11 +146,13 @@ $query = mysqli_num_rows($result);
     }
     echo '</table>';
  }
-else{
+ else{
     setcookie('prijava', "V sistemu trenutno ni rezervacij.");
     setcookie('warning', 1);
     header('Location: admin.php');
 }
+}
+
 ?>
 <br>
 <div id="gumbi">
