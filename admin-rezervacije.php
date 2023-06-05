@@ -148,7 +148,7 @@ $query = mysqli_num_rows($result);
 else{
     setcookie('prijava', "V sistemu trenutno ni rezervacij.");
     setcookie('warning', 1);
-    header('Location: index.php');
+    header('Location: admin.php');
 }
 ?>
 <br>
