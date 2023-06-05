@@ -137,7 +137,7 @@ if (mysqli_num_rows($result) > 1) {
 } else {
     setcookie('prijava', 'Trenutno nimaš nič rezervacij.');
     setcookie('warning', 1);
-    header('Location: index.php');
+    header('Location: main.php');
     exit();
 }
 ?>
