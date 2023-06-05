@@ -77,6 +77,7 @@
     $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
+    $danes = $date = date('m-d-Y');
     ?>
     <div class="container">
         <h1>Sponzorstvo</h1>
@@ -86,10 +87,10 @@
             <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" readonly><br><br>
 
             <label for="datum">Datum začetka:</label>
-            <input type="date" id="datum" name="datum" class="login_input" required><br><br>
+            <input type="date" id="datum" name="datum" class="login_input" min = "<?php echo $danes; ?>" required><br><br>
 
             <label for="cas">Čas sponzorstva:</label>
-            <input type="date" id="cas" name="cas" class="login_input" required><br><br>
+            <input type="date" id="cas" name="cas" class="login_input" min = "<?php echo $danes; ?>" required><br><br>
             <p>Vrsta sponzorstva:</p>
             <p>Splošna oskrba:
             <input type="radio" id="oskrba" name="sponzorstvo" value="Splošna oskrba"></p>

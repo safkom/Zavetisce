@@ -77,6 +77,7 @@
     $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
+    $danes = $date = date('m-d-Y');
     ?>
     <div class="container">
         <h1>Spremembe</h1>
@@ -85,7 +86,7 @@
             <input type="text" id="ime" name="ime" value="<?php echo $row['ime'] ?>" required><br><br>
 
             <label for="datum">Datum rojstva:</label>
-            <input type="date" id="datum" name="datum" class="login_input" value="<?php echo $row['datum_r'] ?>" required><br><br>
+            <input type="date" id="datum" name="datum" class="login_input" max = "<?php echo $danes; ?>" value="<?php echo $row['datum_r'] ?>" required><br><br>
 
             <label for="posvojen">Posvojen:</label>
             <input type="checkbox" id="posvojen" name="posvojen" class="login_input" <?php if($row['posvojen'] == 1){echo "checked";} ?>><br><br>

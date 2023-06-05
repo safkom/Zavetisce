@@ -72,6 +72,7 @@
     <?php
     require_once 'cookie.php';
     require_once 'connect.php';
+    $danes = $date = date('m-d-Y');
     ?>
     <div class="container">
         <h1>Nov vnos</h1>
@@ -80,7 +81,7 @@
             <input type="text" id="ime" name="ime"  required><br><br>
 
             <label for="datum">Datum rojstva:</label>
-            <input type="date" id="datum" name="datum" class="login_input"  required><br><br>
+            <input type="date" id="datum" name="datum" class="login_input" min = <?php echo $danes; ?> required><br><br>
 
             <label for="posvojen">Posvojen:</label>
             <input type="checkbox" id="posvojen" name="posvojen" class="login_input"><br><br>
