@@ -201,7 +201,7 @@ $sql = "SELECT * FROM zivali";
 $result = mysqli_query($conn, $sql);
 ?>
 
-<div id = "container">
+<div class = "container">
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
     <table border="1">
         <tr>
