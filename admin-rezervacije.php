@@ -59,14 +59,14 @@ $sql = "SELECT * FROM uporabniki WHERE id = $id;";
 $result = mysqli_query($conn,$sql);
 $query = mysqli_num_rows($result);
 // modify the if statement to check if id exists in database
-if($query > 0){
+    if($query > 1){
     if(isset($_COOKIE['prijava'])){
         echo $_COOKIE['prijava']."<br>";
     }
-setcookie('prijava', '');
-$sql = "SELECT * FROM zivali INNER JOIN rezervacija on zivali.id = rezervacija.zival_id;";
-$result = mysqli_query($conn,$sql);
-echo "Seznam kužkov:";
+    setcookie('prijava', '');
+    $sql = "SELECT * FROM zivali INNER JOIN rezervacija on zivali.id = rezervacija.zival_id;";
+    $result = mysqli_query($conn,$sql);
+    echo "Seznam kužkov:";
     echo '<table border ="1">';
     echo'<tr>';
         echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Rezerviran</b></td><td><b>Rezervacija - Uporabnik</b></td><td><b>Preklici rezervacijo</b></td>";
@@ -144,8 +144,10 @@ echo "Seznam kužkov:";
         echo'</tr>';
     }
     echo '</table>';
-}
+ }
 else{
+    setcookie('prijava', "V sistemu trenutno ni rezervacij.");
+    setcookie('warning', 1);
     header('Location: index.php');
 }
 ?>
