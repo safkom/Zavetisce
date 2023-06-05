@@ -66,6 +66,7 @@ $result = mysqli_stmt_get_result($stmt);
 
 if (mysqli_num_rows($result) > 0) {
     // Fetch reserved animals
+    echo mysqli_num_rows($result);
     $sql = "SELECT zivali.ime, zivali.datum_r, zivali.posvojen, zivali.slika_id, rezervacija.zival_id FROM zivali INNER JOIN rezervacija ON zivali.id = rezervacija.zival_id WHERE rezervacija.uporabnik_id = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, "i", $id);
