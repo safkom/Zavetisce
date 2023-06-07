@@ -180,7 +180,7 @@ $result = mysqli_query($conn, $sql);
         echo '<tr>';
         echo '<td>' . $row['ime'] . '</td>';
         echo '<td>' .  $row['priimek']  . '</td>';
-        echo '<td>' .  $row['mail']  . '</td>';
+        echo '<td>' .  $row['email']  . '</td>';
         echo '<td>'. $row['naslov'] .'</td>';
         echo '<td>' . $kraj . '</td>';
         echo '<td><a href="uporabnikdelete.php?uporabnik_id=' . $uporabnik . '">Izbriši</a></td>';
