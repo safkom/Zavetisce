@@ -176,7 +176,7 @@ $result = mysqli_query($conn, $sql);
         $sql1 = "SELECT * FROM kraji WHERE id = " . $kraj_id . ";";
         $result1 = mysqli_query($conn, $sql1);
         $row1 = mysqli_fetch_array($result1);
-        $kraj = $row1['ime'];
+        $kraj = $row1['kraj'];
         echo '<tr>';
         echo '<td>' . $row['ime'] . '</td>';
         echo '<td>' .  $row['priimek']  . '</td>';
