@@ -107,7 +107,7 @@
 }
 .filter-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #c0befc;
   color: white;
   border: none;
   cursor: pointer;
@@ -115,11 +115,11 @@
 }
 
 .filter-button:hover {
-  background-color: #45a049;
+  background-color: #deddfd;
 }
 
 .filter-button:active {
-  background-color: #3e8740;
+  background-color: #deddfd;
 }
     </style>
 </head>
