@@ -4,7 +4,7 @@ require_once 'cookie.php';
 
 $id = $_GET['uporabnik_id'];
 
-$sql = "DELETE FROM uporabnik WHERE id = $id;";
+$sql = "DELETE FROM uporabniki WHERE id = $id;";
     if($conn->query($sql) === TRUE) {
         setcookie('prijava', "Izbris uspešen.");
         setcookie('good', 1);
