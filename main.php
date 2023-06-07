@@ -310,7 +310,9 @@ function filterTable() {
   for (var i = 1; i < rows.length; i++) {
     var name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
 
-    if (name.includes(filterNameValue)) {
+    if (filterOptionsContainer.style.display === "none") {
+      rows[i].style.display = ""; // Display all rows when filter options are hidden
+    } else if (name.includes(filterNameValue)) {
       rows[i].style.display = "";
     } else {
       rows[i].style.display = "none";
