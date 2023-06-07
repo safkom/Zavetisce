@@ -24,9 +24,9 @@ if ($result->num_rows == 0) {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssss", $ime, $priimek, $mail, $geslo, $naslov, $kraj);
     if ($stmt->execute()) {
-        setcookie('prijava', "Registracija uspešna.");
+        setcookie('prijava', "Registracija uspešna. Prijavite se z vnešenimi podatki.");
         setcookie('good', 1);
-        header('Location: preveri.php');
+        header('Location: index.php');
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
         setcookie('error', 1);
