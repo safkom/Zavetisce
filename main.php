@@ -176,6 +176,7 @@ $result = mysqli_query($conn, $sql);
 ?>
     <p>Seznam kužkov:</p>
     <button class="filter-button" onclick="toggleFilterOptions()">Filter</button>
+    <br>
 
   <div id="filterOptionsContainer" class="filter-options">
     <label for="filterName">Filter by Name:</label>
