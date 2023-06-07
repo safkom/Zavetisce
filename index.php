@@ -104,6 +104,18 @@ body {
   padding: 10px;
   border-radius: 5px;
 }
+
+#loginWindow {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+    min-height: 30px;
+    background-color: lightgreen;
+    display: none;
+    padding: 10px;
+    border-radius: 5px;
+}
 </style>
 <title>Zavetišče</title>
 </head>
