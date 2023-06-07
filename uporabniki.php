@@ -171,8 +171,9 @@ $result = mysqli_query($conn, $sql);
 
     <?php
     while($row = mysqli_fetch_array($result)) {
+        $kraj_id = $row['kraj_id'];
         $uporabnik = $row['id'];
-        $sql1 = "SELECT * FROM kraji WHERE id = " . $row['kraj_id'] . ";";
+        $sql1 = "SELECT * FROM kraji WHERE id = " . $kraj_id . ";";
         $result1 = mysqli_query($conn, $sql1);
         $row1 = mysqli_fetch_array($result1);
         $kraj = $row1['ime'];
