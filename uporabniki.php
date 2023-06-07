@@ -153,8 +153,6 @@ if ($query == 0) {
     header('Location: index.php');
     exit();
 }
-$sql = "SELECT * FROM zivali;";
-$result = mysqli_query($conn, $sql);
 
 ?>
 <p>Seznam uporabnikov:</p>
