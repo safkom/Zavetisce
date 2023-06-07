@@ -145,7 +145,7 @@ if (!isset($_COOKIE['id'])) {
     exit();
 }
 $id = $_COOKIE['id'];
-$sql = "SELECT * FROM uporabniki";
+$sql = "SELECT * FROM uporabniki WHERE id = '$id' AND admin = 1;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 // modify the if statement to check if id exists in the database
@@ -153,6 +153,8 @@ if ($query == 0) {
     header('Location: index.php');
     exit();
 }
+$sql = "SELECT * FROM uporabniki;";
+$result = mysqli_query($conn, $sql);
 
 ?>
 <p>Seznam uporabnikov:</p>
