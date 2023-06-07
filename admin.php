@@ -162,13 +162,13 @@ $result = mysqli_query($conn, $sql);
     <br>
 
   <div id="filterOptionsContainer" class="filter-options">
-    <label for="filterName">Filter by Name:</label>
+    <label for="filterName">Filtriraj po imenu:</label>
     <input type="text" id="filterName" oninput="filterTable()" placeholder="Search by name">
 
-    <label for="sortAge">Sort by Age:</label>
+    <label for="sortAge">Sortiraj po starosti:</label>
     <select id="sortAge" onchange="filterTable()">
-      <option value="asc">Ascending</option>
-      <option value="desc">Descending</option>
+      <option value="asc">Padajoče</option>
+      <option value="desc">Naraščajoče</option>
     </select>
   </div>
   <br>
