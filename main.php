@@ -293,11 +293,18 @@ function toggleFilterOptions() {
     filterOptionsContainer.style.display = "none";
   }
   
-  // Enable or disable filter options based on visibility
+  // Enable or disable filter parameters based on visibility
   var filterNameInput = document.getElementById("filterName");
   var sortAgeSelect = document.getElementById("sortAge");
-  filterNameInput.disabled = filterOptionsContainer.style.display === "none";
-  sortAgeSelect.disabled = filterOptionsContainer.style.display === "none";
+  var filterOptionsVisible = filterOptionsContainer.style.display !== "none";
+  filterNameInput.disabled = !filterOptionsVisible;
+  sortAgeSelect.disabled = !filterOptionsVisible;
+  
+  // Reset filter values when hiding the filter options
+  if (!filterOptionsVisible) {
+    filterNameInput.value = "";
+    sortAgeSelect.value = "none";
+  }
 }
 
 function filterTable() {
@@ -357,6 +364,7 @@ function filterTable() {
 // Attach event listeners to the filter input fields
 document.getElementById("filterName").addEventListener("input", filterTable);
 document.getElementById("sortAge").addEventListener("change", filterTable);
+
 
 
 var menuBtn = document.getElementById("menuBtn");
