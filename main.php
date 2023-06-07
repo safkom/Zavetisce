@@ -116,6 +116,22 @@
   padding: 10px;
   border-radius: 5px;
 }
+.filter-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-button:hover {
+  background-color: #45a049;
+}
+
+.filter-button:active {
+  background-color: #3e8740;
+}
     </style>    
 </head>
 
@@ -159,7 +175,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
     <p>Seznam kužkov:</p>
-    <button onclick="toggleFilterOptions()">Filter</button>
+    <button class="filter-button" onclick="toggleFilterOptions()">Filter</button>
 
   <div id="filterOptionsContainer" class="filter-options">
     <label for="filterName">Filter by Name:</label>
@@ -171,6 +187,7 @@ $result = mysqli_query($conn, $sql);
       <option value="desc">Descending</option>
     </select>
   </div>
+  <br>
     <table border="1">
         <tr>
             <td><b>Ime</b></td>
