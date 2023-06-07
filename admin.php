@@ -105,6 +105,22 @@
   padding: 10px;
   border-radius: 5px;
 }
+.filter-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-button:hover {
+  background-color: #45a049;
+}
+
+.filter-button:active {
+  background-color: #3e8740;
+}
     </style>
 </head>
 <body>
