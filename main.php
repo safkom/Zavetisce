@@ -167,7 +167,6 @@ $result = mysqli_query($conn, $sql);
 
     <label for="sortAge">Sort by Age:</label>
     <select id="sortAge" onchange="filterTable()">
-      <option value="">-- Select sorting order --</option>
       <option value="asc">Ascending</option>
       <option value="desc">Descending</option>
     </select>
