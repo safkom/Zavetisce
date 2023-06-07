@@ -8,10 +8,10 @@ $sql = "DELETE FROM uporabniki WHERE id = $id;";
     if($conn->query($sql) === TRUE) {
         setcookie('prijava', "Izbris uspešen.");
         setcookie('good', 1);
-        header('Location: uporabniki.php');
+        header('Location: admin.php');
     } else {
         setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
         setcookie('error', 1);
-        header('Location: uporabniki.php');
+        header('Location: admin.php');
     }
 ?>
