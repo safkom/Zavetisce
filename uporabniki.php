@@ -145,7 +145,7 @@ if (!isset($_COOKIE['id'])) {
     exit();
 }
 $id = $_COOKIE['id'];
-$sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
+$sql = "SELECT * FROM uporabniki";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 // modify the if statement to check if id exists in the database
@@ -157,103 +157,42 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 ?>
-<p>Seznam kužkov:</p>
-    <button class="filter-button" onclick="toggleFilterOptions()">Filter</button>
-    <br>
-
-  <div id="filterOptionsContainer" class="filter-options">
-    <label for="filterName">Filter by Name:</label>
-    <input type="text" id="filterName" oninput="filterTable()" placeholder="Search by name">
-
-    <label for="sortAge">Sort by Age:</label>
-    <select id="sortAge" onchange="filterTable()">
-      <option value="asc">Ascending</option>
-      <option value="desc">Descending</option>
-    </select>
-  </div>
+<p>Seznam uporabnikov:</p>
   <br>
 <table border="1">
     <tr>
         <td><b>Ime</b></td>
-        <td><b>Starost</b></td>
-        <td><b>Posvojen</b></td>
-        <td><b>Slika</b></td>
-        <td><b>Rezerviran</b></td>
-        <td><b>Spremeni</b></td>
+        <td><b>Priimek</b></td>
+        <td><b>Mail</b></td>
+        <td><b>Naslov</b></td>
+        <td><b>Kraj</b></td>
+        <td><b>Izbriši uporanika</b></td>
     </tr>
 
     <?php
-    while ($row = mysqli_fetch_array($result)) {
-        $zival_id = $row['id'];
-        $slikaid = $row['slika_id'];
-        $sql = "SELECT * FROM slike WHERE id = '$slikaid';";
-        $klic = mysqli_query($conn, $sql);
-        $klic1 = mysqli_fetch_array($klic);
-    if ($klic1 !== null) {
-        $slika = "<img src='" . $klic1['url'] . "'>";
-    } else {
-        $slika = "Ni slike."; // or any default value you prefer
-    }
-
-        $dateOfBirth = $row['datum_r'];
-        $today = date("Y-m-d");
-        $diff = date_diff(date_create($dateOfBirth), date_create($today));
-        $ageInMonths = $diff->format('%m');
-        $ageInYears = $diff->format('%y');
-        $leta = '';
-
-        if ($ageInYears == 1) {
-            $leta = $ageInYears . ' leto in ';
-        } elseif ($ageInYears >= 2 && $ageInYears <= 4) {
-            $leta = $ageInYears . ' leti in ';
-        } elseif ($ageInYears > 4) {
-            $leta = $ageInYears . ' let in ';
-        }
-
-        if ($ageInMonths == 1) {
-            $age = $leta . '1 mesec';
-        } elseif ($ageInMonths > 1 && $ageInMonths < 5) {
-            $age = $leta . $ageInMonths . ' meseci';
-        } elseif ($ageInMonths >= 5) {
-            $age = $leta . $ageInMonths . ' mesecev';
-        } elseif($ageInMonths == 0 && $ageInYears == 0) {
-            $age = 'Manj kot 1 mesec.';
-        }
-        else{
-            $age = '';
-        }
-
-        if ($row['posvojen'] == 0) {
-            $posvojen = 'Ne';
-        } else {
-            $posvojen = 'Da';
-        }
-
-        if (is_null($row['rezervacija_id'])) {
-            $rezervacija = "Ni rezervirano";
-        } else {
-            $sql = "SELECT * FROM rezervacija WHERE zival_id = $zival_id";
-            $klic2 = mysqli_query($conn, $sql);
-            $klic3 = mysqli_fetch_array($klic2);
-            $datum = $klic3['datum'];
-            $rezervacija = 'Da, ' . $datum;
-        }
-
+    while($row = mysqli_fetch_array($result)) {
+        $uporabnik = $row['id'];
+        $sql1 = "SELECT * FROM kraji WHERE id = " . $row['kraj_id'] . ";";
+        $result1 = mysqli_query($conn, $sql1);
+        $row1 = mysqli_fetch_array($result1);
+        $kraj = $row1['ime'];
         echo '<tr>';
         echo '<td>' . $row['ime'] . '</td>';
-        echo '<td>' . $age . '</td>';
-        echo '<td>' . $posvojen . '</td>';
-        echo '<td>'.$slika.'</td>';
-        echo '<td>' . $rezervacija . '</td>';
-        echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
+        echo '<td>' .  $row['priimek']  . '</td>';
+        echo '<td>' .  $row['mail']  . '</td>';
+        echo '<td>'. $row['naslov'] .'</td>';
+        echo '<td>' . $kraj . '</td>';
+        echo '<td><a href="uporabnikdelete.php?uporabnik_id=' . $uporabnik . '">Izbriši</a></td>';
         echo '</tr>';
     }
     ?>
 </table>
 <br>
     <div id="gumbi">
-    <button class="gumbstyle" onclick="location.href = 'novoform.php';">Dodaj žival</button>
-    </div> 
+    <button class="gumbstyle" onclick="location.href = 'admin.php';">Nazaj</button>
+    </div>
+</div> 
+<br>
 
     <div id="loginWindow">
     <?php
