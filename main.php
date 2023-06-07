@@ -285,45 +285,28 @@ $result = mysqli_query($conn, $sql);
 
 <script>
 var filterOptionsContainer = document.getElementById("filterOptionsContainer");
+var filterNameInput = document.getElementById("filterName");
+var sortAgeSelect = document.getElementById("sortAge");
 
 function toggleFilterOptions() {
   if (filterOptionsContainer.style.display === "none") {
     filterOptionsContainer.style.display = "block";
+    filterNameInput.disabled = false;
+    sortAgeSelect.disabled = false;
   } else {
     filterOptionsContainer.style.display = "none";
-  }
-  
-  // Enable or disable filter parameters based on visibility
-  var filterNameInput = document.getElementById("filterName");
-  var sortAgeSelect = document.getElementById("sortAge");
-  var filterOptionsVisible = filterOptionsContainer.style.display !== "none";
-  filterNameInput.disabled = !filterOptionsVisible;
-  sortAgeSelect.disabled = !filterOptionsVisible;
-  
-  // Reset filter values when hiding the filter options
-  if (!filterOptionsVisible) {
-    filterNameInput.value = "";
-    sortAgeSelect.value = "none";
+    filterNameInput.disabled = true;
+    sortAgeSelect.disabled = true;
+    filterTable(); // Filter the table when hiding the filter options
   }
 }
 
 function filterTable() {
-  var filterNameInput = document.getElementById("filterName");
-  var sortAgeSelect = document.getElementById("sortAge");
-  
-  // Check if filter options are enabled
-  if (filterNameInput.disabled || sortAgeSelect.disabled) {
-    return; // Exit the function if filter options are disabled
-  }
-  
-  // Get filter input values and convert them to lowercase
   var filterNameValue = filterNameInput.value.toLowerCase();
   var sortAgeValue = sortAgeSelect.value;
 
-  // Get all table rows
   var rows = document.querySelectorAll("table tr");
 
-  // Loop through rows and hide those that don't match the filter
   for (var i = 1; i < rows.length; i++) {
     var name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
 
@@ -334,7 +317,6 @@ function filterTable() {
     }
   }
 
-  // Sort table rows by age
   if (sortAgeValue === "asc") {
     var sortedRows = Array.from(rows).slice(1).sort(function(a, b) {
       var ageA = parseInt(a.getElementsByTagName("td")[1].textContent);
@@ -351,17 +333,15 @@ function filterTable() {
     var sortedRows = Array.from(rows).slice(1);
   }
 
-  // Reorder table rows based on the sorted rows
   var table = document.querySelector("table");
   table.innerHTML = "";
-  table.appendChild(rows[0]); // Keep the table header row at the top
+  table.appendChild(rows[0]);
 
   sortedRows.forEach(function(row) {
     table.appendChild(row);
   });
 }
 
-// Attach event listeners to the filter input fields
 document.getElementById("filterName").addEventListener("input", filterTable);
 document.getElementById("sortAge").addEventListener("change", filterTable);
 
