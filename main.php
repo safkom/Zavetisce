@@ -159,7 +159,19 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
     <p>Seznam kužkov:</p>
-    <input type="text" id="filterInput" placeholder="Vnesi ime kužka" />
+    <div>
+      <label for="filterName">Filtriraj po imenu:</label>
+      <input type="text" id="filterName" placeholder="Vnesi ime kužka" />
+    </div>
+
+    <div>
+      <label for="sortAge">Sortiraj po starosti:</label>
+      <select id="sortAge">
+        <option value="none">Brez razvrstitve</option>
+        <option value="asc">Naraščajoče</option>
+        <option value="desc">Padajoče</option>
+      </select>
+    </div>
     <table border="1">
         <tr>
             <td><b>Ime</b></td>
@@ -274,8 +286,9 @@ $result = mysqli_query($conn, $sql);
 <script>
 
 function filterTable() {
-        // Get filter input value and convert it to lowercase
-        var filterValue = document.getElementById("filterInput").value.toLowerCase();
+        // Get filter input values and convert them to lowercase
+        var filterNameValue = document.getElementById("filterName").value.toLowerCase();
+        var sortAgeValue = document.getElementById("sortAge").value;
 
         // Get all table rows
         var rows = document.querySelectorAll("table tr");
@@ -284,16 +297,43 @@ function filterTable() {
         for (var i = 1; i < rows.length; i++) {
           var name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
 
-          if (name.includes(filterValue)) {
+          if (name.includes(filterNameValue)) {
             rows[i].style.display = "";
           } else {
             rows[i].style.display = "none";
           }
         }
+
+        // Sort table rows by age
+        if (sortAgeValue === "asc") {
+          var sortedRows = Array.from(rows).slice(1).sort(function(a, b) {
+            var ageA = parseInt(a.getElementsByTagName("td")[1].textContent);
+            var ageB = parseInt(b.getElementsByTagName("td")[1].textContent);
+            return ageA - ageB;
+          });
+        } else if (sortAgeValue === "desc") {
+          var sortedRows = Array.from(rows).slice(1).sort(function(a, b) {
+            var ageA = parseInt(a.getElementsByTagName("td")[1].textContent);
+            var ageB = parseInt(b.getElementsByTagName("td")[1].textContent);
+            return ageB - ageA;
+          });
+        } else {
+          var sortedRows = Array.from(rows).slice(1);
+        }
+
+        // Reorder table rows based on the sorted rows
+        var table = document.querySelector("table");
+        table.innerHTML = "";
+        table.appendChild(rows[0]); // Keep the table header row at the top
+
+        sortedRows.forEach(function(row) {
+          table.appendChild(row);
+        });
       }
 
-      // Attach event listener to the filter input field
-      document.getElementById("filterInput").addEventListener("input", filterTable);
+      // Attach event listeners to the filter input fields
+      document.getElementById("filterName").addEventListener("input", filterTable);
+      document.getElementById("sortAge").addEventListener("change", filterTable);
 
 var menuBtn = document.getElementById("menuBtn");
     var menuContent = document.getElementById("menuContent");
