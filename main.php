@@ -6,6 +6,7 @@
     <meta name="description" content="Miha Šafranko">
     <meta name="author" content="Miha Šafranko">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel ="stylesheet" type ="text/css"href="css/style.css">
     <title>Zavetišče</title>
     <style>
         body{
@@ -189,14 +190,25 @@ $result = mysqli_query($conn, $sql);
     </select>
   </div>
   <br>
-    <table border="1">
-        <tr>
-            <td><b>Ime</b></td>
-            <td><b>Starost</b></td>
-            <td><b>Posvojen</b></td>
-            <td><b>Slika</b></td>
-            <td><b>Rezerviraj za ogled</b></td>
-        </tr>
+  <div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Table #02</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>Ime</th>
+						      <th>Starost</th>
+						      <th>posvojen</th>
+						      <th>Slika</th>
+							  <th>Rezerviraj za ogled</th>
+						    </tr>
+                </thread>
         <?php
         while ($row = mysqli_fetch_array($result)) {
             $slikaid = $row['slika_id'];
@@ -249,8 +261,7 @@ $result = mysqli_query($conn, $sql);
             } else {
                 $rezervacija = 'Rezervirano';
             }
-
-            echo '<tr>';
+            echo '<tr class = "alert" role = "alert">';
             echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
 
             if (!empty($slika)) {
@@ -433,6 +444,10 @@ function getCookie(name) {
     document.cookie = 'warning=; Max-Age=0';
     document.cookie = 'good=; Max-Age=0';
 </script>
+<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 
 </body>
 </html>
