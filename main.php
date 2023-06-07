@@ -159,6 +159,7 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 ?>
     <p>Seznam kužkov:</p>
+    <input type="text" id="filterInput" placeholder="Vnesi ime kužka" />
     <table border="1">
         <tr>
             <td><b>Ime</b></td>
@@ -271,6 +272,28 @@ $result = mysqli_query($conn, $sql);
 
 
 <script>
+
+function filterTable() {
+        // Get filter input value and convert it to lowercase
+        var filterValue = document.getElementById("filterInput").value.toLowerCase();
+
+        // Get all table rows
+        var rows = document.querySelectorAll("table tr");
+
+        // Loop through rows and hide those that don't match the filter
+        for (var i = 1; i < rows.length; i++) {
+          var name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+
+          if (name.includes(filterValue)) {
+            rows[i].style.display = "";
+          } else {
+            rows[i].style.display = "none";
+          }
+        }
+      }
+
+      // Attach event listener to the filter input field
+      document.getElementById("filterInput").addEventListener("input", filterTable);
 
 var menuBtn = document.getElementById("menuBtn");
     var menuContent = document.getElementById("menuContent");

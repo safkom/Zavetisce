@@ -87,8 +87,6 @@
 </head>
 
 <body>
-
-
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
