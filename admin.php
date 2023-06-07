@@ -140,7 +140,21 @@ $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
 
 ?>
-Seznam kužkov:
+<p>Seznam kužkov:</p>
+    <button class="filter-button" onclick="toggleFilterOptions()">Filter</button>
+    <br>
+
+  <div id="filterOptionsContainer" class="filter-options">
+    <label for="filterName">Filter by Name:</label>
+    <input type="text" id="filterName" oninput="filterTable()" placeholder="Search by name">
+
+    <label for="sortAge">Sort by Age:</label>
+    <select id="sortAge" onchange="filterTable()">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </div>
+  <br>
 <table border="1">
     <tr>
         <td><b>Ime</b></td>
@@ -251,6 +265,79 @@ Seznam kužkov:
     }
     ?>
 <script>
+var filterOptionsContainer = document.getElementById("filterOptionsContainer");
+var filterNameInput = document.getElementById("filterName");
+var sortAgeSelect = document.getElementById("sortAge");
+
+function toggleFilterOptions() {
+  if (filterOptionsContainer.style.display === "none") {
+    filterOptionsContainer.style.display = "block";
+    enableFilterInputs();
+  } else {
+    filterOptionsContainer.style.display = "none";
+    disableFilterInputs();
+    filterTable(); // Filter the table when hiding the filter options
+  }
+}
+
+function enableFilterInputs() {
+  filterNameInput.disabled = false;
+  sortAgeSelect.disabled = false;
+}
+
+function disableFilterInputs() {
+  filterNameInput.disabled = true;
+  sortAgeSelect.disabled = true;
+  filterNameInput.value = ""; // Clear filter name input
+  sortAgeSelect.value = "default"; // Reset sort age select
+}
+
+function filterTable() {
+  var filterNameValue = filterNameInput.value.toLowerCase();
+  var sortAgeValue = sortAgeSelect.value;
+
+  var rows = document.querySelectorAll("table tr");
+
+  for (var i = 1; i < rows.length; i++) {
+    var name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+
+    if (filterOptionsContainer.style.display === "none") {
+      rows[i].style.display = ""; // Display all rows when filter options are hidden
+    } else if (name.includes(filterNameValue)) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+
+  if (sortAgeValue === "asc") {
+    var sortedRows = Array.from(rows).slice(1).sort(function(a, b) {
+      var ageA = parseInt(a.getElementsByTagName("td")[1].textContent);
+      var ageB = parseInt(b.getElementsByTagName("td")[1].textContent);
+      return ageA - ageB;
+    });
+  } else if (sortAgeValue === "desc") {
+    var sortedRows = Array.from(rows).slice(1).sort(function(a, b) {
+      var ageA = parseInt(a.getElementsByTagName("td")[1].textContent);
+      var ageB = parseInt(b.getElementsByTagName("td")[1].textContent);
+      return ageB - ageA;
+    });
+  } else {
+    var sortedRows = Array.from(rows).slice(1);
+  }
+
+  var table = document.querySelector("table");
+  table.innerHTML = "";
+  table.appendChild(rows[0]);
+
+  sortedRows.forEach(function(row) {
+    table.appendChild(row);
+  });
+}
+
+document.getElementById("filterName").addEventListener("input", filterTable);
+document.getElementById("sortAge").addEventListener("change", filterTable);
+
     var menuBtn = document.getElementById("menuBtn");
     var menuContent = document.getElementById("menuContent");
 
