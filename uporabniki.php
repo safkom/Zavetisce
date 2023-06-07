@@ -166,6 +166,7 @@ $result = mysqli_query($conn, $sql);
         <td><b>Mail</b></td>
         <td><b>Naslov</b></td>
         <td><b>Kraj</b></td>
+        <td><b>Admin</b></td>
         <td><b>Izbriši uporanika</b></td>
     </tr>
 
@@ -177,12 +178,20 @@ $result = mysqli_query($conn, $sql);
         $result1 = mysqli_query($conn, $sql1);
         $row1 = mysqli_fetch_array($result1);
         $kraj = $row1['kraj'];
+
+        if($row['admin'] == 1) {
+            $admin = 'Da';
+        } else {
+            $admin = 'Ne';
+        }
+
         echo '<tr>';
         echo '<td>' . $row['ime'] . '</td>';
         echo '<td>' .  $row['priimek']  . '</td>';
         echo '<td>' .  $row['email']  . '</td>';
         echo '<td>'. $row['naslov'] .'</td>';
         echo '<td>' . $kraj . '</td>';
+        echo '<td>' . $admin . '</td>';
         echo '<td><a href="uporabnikdelete.php?uporabnik_id=' . $uporabnik . '">Izbriši</a></td>';
         echo '</tr>';
     }
