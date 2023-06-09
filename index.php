@@ -142,34 +142,38 @@ body {
 </form>
 </div>
 
-<div id="loginWindow">
-    <?php
+<?php
     if (isset($_COOKIE['prijava'])) {
+       echo "<div id='loginWindow'>";
         echo "✅ ";
         echo $_COOKIE['prijava'];
         // setcookie("prijava", "", time() - 3600);
+        echo "</div>";
     }
     ?>
-</div>
-<div id="errorWindow">
+
+
     <?php
+    
     if (isset($_COOKIE['prijava'])) {
+        echo "<div id='errorWindow'>";
         echo "⛔ ";
         echo $_COOKIE['prijava'];
         // setcookie("prijava", "", time() - 3600);
+        echo "</div>";
     }
     ?>
-</div>
-<div id="warningWindow">
+
+
     <?php
     if (isset($_COOKIE['prijava'])) {
+        echo "<div id='warningWindow'>";
         echo "⚠️ ";
         echo $_COOKIE['prijava'];
         // setcookie("prijava", "", time() - 3600);
+        echo "</div>";
     }
     ?>
-</div>
-</div>
 <script>
 document.getElementById("errorWindow").style.display = "none";
 document.getElementById("warningWindow").style.display = "none";
