@@ -28,7 +28,7 @@ if ($stmt->execute()) {
         $fileNameCmps = explode(".", $fileName);
         $fileExtension = strtolower(end($fileNameCmps));
 
-        $allowedfileExtensions = array('jpg', 'gif', 'png');
+        $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
 
         if (in_array($fileExtension, $allowedfileExtensions)) {
             $uploadFileDir = 'img/';
