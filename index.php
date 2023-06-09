@@ -129,9 +129,9 @@ body {
 <div class="container">
   <h1>Prijava</h1>
  <form action="preveri.php" method="get">
-  <label for="fname">Mail:</label>
+  <label for="email">Mail:</label>
   <input type="text" id="email" name="email"><br><br>
-  <label for="lname">Geslo:</label>
+  <label for="geslo">Geslo:</label>
   <input type="password" id="geslo" name="geslo"><br><br>
   <input type="submit" value="Pošlji">
 </form>
