@@ -65,10 +65,6 @@ if ($stmt->execute()) {
         setcookie('error',"Vnos brez slike uspešen.");
         header('Location: treningi_upload.php');
     }
- else {
-    setcookie('error',"Prišlo je do neznane napake.");
-    header('Location: treningi_upload.php');
-}
 
 function insertSlika($link, $url)
 {
