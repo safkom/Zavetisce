@@ -67,11 +67,6 @@ if ($stmt->execute()) {
         setcookie('warning', 1);
         header('Location: admin.php');
     }
- else {
-    setcookie('prijava',"Prišlo je do neznane napake.");
-    setcookie('error', 1);
-    header('Location: admin.php');
-}
 
 // Function to insert a new slika record and return the inserted ID
 function insertSlika($conn, $url)
