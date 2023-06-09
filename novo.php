@@ -47,10 +47,14 @@ if ($stmt->execute()) {
                         setcookie('good', 1);
                         header('Location: admin.php');
                     } else {
-                        echo "Vnos ni uspel";
+                        setcookie("prijava","Vnos ni uspel");
+                        setcookie('error', 1);
+                        header('Location: admin.php');
                     }
                 } else {
-                    echo "Vnos ni uspel";
+                    setcookie("prijava","Vnos ni uspel");
+                    setcookie('error', 1);
+                    header('Location: admin.php');
                 }
             } else
                 setcookie('prijava','There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.') ;
@@ -65,6 +69,11 @@ if ($stmt->execute()) {
     } else {
         setcookie('prijava',"Vnos brez slike uspešen.");
         setcookie('warning', 1);
+        header('Location: admin.php');
+    }
+    else{
+        setcookie('prijava', "neki ne dela lol"):
+        setcookie("error", 1);
         header('Location: admin.php');
     }
 
