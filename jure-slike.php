@@ -46,7 +46,7 @@ if ($stmt->execute()) {
                     $stmt4->bind_param('ii', $slika_id, $trening_id);
                     if ($stmt4->execute()) {
                         setcookie('error',"Vnos uspešen.");
-                        header('Location: treningi_overlook.php');
+                        header('Location: trening_overlook.php');
                     } else {
                         echo "Vnos ni uspel";
                     }
@@ -55,19 +55,19 @@ if ($stmt->execute()) {
                 }
             } else
                 setcookie('error','There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.') ;
-                header('Location: treningi_overlook.php');
+                header('Location: treningi_upload.php');
             }
         } else {
             setcookie('error', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
-            header('Location: treningi_overlook.php');
+            header('Location: treningi_upload.php');
         }
     } else {
         setcookie('error',"Vnos brez slike uspešen.");
-        header('Location: treningi_overlook.php');
+        header('Location: treningi_upload.php');
     }
  else {
     setcookie('error',"Prišlo je do neznane napake.");
-    header('Location: treningi_overlook.php');
+    header('Location: treningi_upload.php');
 }
 
 function insertSlika($link, $url)
