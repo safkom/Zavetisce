@@ -52,11 +52,13 @@ if ($stmt->execute()) {
                 } else {
                     echo "Vnos ni uspel";
                 }
-            } else {
-                echo 'There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.';
+            } else
+                setcookie('prijava','There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.') ;
+                setcookie('error', 1);
+                header('Location: admin.php');
             }
         } else {
-            echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+            setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions)) ;
             setcookie('error', 1);
             header('Location: admin.php');
         }
@@ -65,7 +67,7 @@ if ($stmt->execute()) {
         setcookie('warning', 1);
         header('Location: admin.php');
     }
-} else {
+ else {
     setcookie('prijava',"Prišlo je do neznane napake.");
     setcookie('error', 1);
     header('Location: admin.php');
