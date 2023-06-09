@@ -17,7 +17,7 @@ $uporabnik = $_SESSION['idu'];
 
 $insert_sql = "INSERT INTO treningi (ime, opis, datum, tezavnost, lokacija_id, kraj_id, uporabnik_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 $stmt = $link->prepare($insert_sql);
-$stmt->bind_param('sssiiiii', $ime, $opis, $datum, $tezavnost, $lokacija, $kraj, $uporabnik);
+$stmt->bind_param('sssiiii', $ime, $opis, $datum, $tezavnost, $lokacija, $kraj, $uporabnik);
 
 if ($stmt->execute()) {
     $trening_id = $stmt->insert_id;
