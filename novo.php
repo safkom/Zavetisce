@@ -43,34 +43,35 @@ if ($stmt->execute()) {
                     $stmt4 = $conn->prepare($update_sql3);
                     $stmt4->bind_param('ii', $slika_id, $zival_id);
                     if ($stmt4->execute()) {
-                        setcookie('prijava',"Vnos uspešen.");
+                        setcookie('prijava', 'Vnos uspešen.');
                         setcookie('good', 1);
                         header('Location: admin.php');
                     } else {
-                        setcookie("prijava","Vnos ni uspel");
+                        setcookie("prijava", "Vnos ni uspel");
                         setcookie('error', 1);
                         header('Location: admin.php');
                     }
                 } else {
-                    setcookie("prijava","Vnos ni uspel");
+                    setcookie("prijava", "Vnos ni uspel");
                     setcookie('error', 1);
                     header('Location: admin.php');
                 }
-            } else
-                setcookie('prijava','There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.') ;
+            } else {
+                setcookie('prijava', 'There was some error moving the file to the upload directory. Please make sure the upload directory is writable by the web server.');
                 setcookie('error', 1);
                 header('Location: admin.php');
             }
         } else {
-            setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions)) ;
+            setcookie('prijava', 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions));
             setcookie('error', 1);
             header('Location: admin.php');
         }
     } else {
-        setcookie('prijava',"Vnos brez slike uspešen.");
+        setcookie('prijava', 'Vnos brez slike uspešen.');
         setcookie('warning', 1);
         header('Location: admin.php');
     }
+}
 
 // Function to insert a new slika record and return the inserted ID
 function insertSlika($conn, $url)
