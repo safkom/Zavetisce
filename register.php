@@ -9,7 +9,6 @@ $geslo1 = $_GET['geslo'];
 $geslo = password_hash($geslo1, PASSWORD_DEFAULT);
 $naslov = $_GET['naslov'];
 $kraj = $_GET['kraj'];
-echo $kraj;
 
 // Prepare the SELECT statement
 $sql = "SELECT * FROM uporabniki WHERE email = ?";
@@ -28,15 +27,18 @@ if ($result->num_rows == 0) {
         setcookie('prijava', "Registracija uspešna. Prijavite se z vnešenimi podatki.");
         setcookie('good', 1);
         header('Location: index.php');
+        exit();
     } else {
         setcookie('prijava', "Error: " . $stmt->error);
         setcookie('error', 1);
         header('Location: registracija.php');
+        exit();
     }
 } else {
     setcookie('prijava', "Uporabnik z tem mailom že obstaja.");
     setcookie('warning', 1);
     header('Location: registracija.php');
+    exit();
 }
 
 $stmt->close();
