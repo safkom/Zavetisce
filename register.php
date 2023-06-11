@@ -9,6 +9,7 @@ $geslo1 = $_GET['geslo'];
 $geslo = password_hash($geslo1, PASSWORD_DEFAULT);
 $naslov = $_GET['naslov'];
 $kraj = $_GET['kraj'];
+echo $kraj;
 
 // Prepare the SELECT statement
 $sql = "SELECT * FROM uporabniki WHERE email = ?";
