@@ -161,7 +161,6 @@ if (isset($_SESSION["admin"])) {
 }
 
 $id = $_SESSION["id"];
-echo $id;
 
 $sql = "SELECT * FROM uporabniki WHERE id = ?;";
 $stmt = mysqli_prepare($conn, $sql);
