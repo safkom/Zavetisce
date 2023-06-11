@@ -150,17 +150,17 @@
 require_once 'cookie.php';
 require_once 'connect.php';
 
-if (!isset($_COOKIE['id'])) {
+if (!isset($_SESSION['id'])) {
     header('Location: index.php');
     exit();
 }
 
-if (isset($_COOKIE['admin'])) {
+if (isset($_SESSION['admin'])) {
     header('Location: admin.php');
     exit();
 }
 
-$id = mysqli_real_escape_string($conn, $_COOKIE['id']);
+$id = mysqli_real_escape_string($conn, $_SESSION['id']);
 
 $sql = "SELECT * FROM uporabniki WHERE id = '$id';";
 $result = mysqli_query($conn, $sql);

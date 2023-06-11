@@ -122,7 +122,7 @@ body {
 <body>
   <?php
 
-  if(isset($_COOKIE['id'])){
+  if(isset($_SESSION['id'])){
     header('Location: main.php');
   }
   ?>

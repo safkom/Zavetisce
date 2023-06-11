@@ -54,7 +54,7 @@
 <?php
 require_once 'cookie.php';
 require_once 'connect.php';
-$id = $_COOKIE['id'];
+$id = $_SESSION['id'];
 $sql = "SELECT * FROM uporabniki WHERE id = $id;";
 $result = mysqli_query($conn,$sql);
 $query = mysqli_num_rows($result);

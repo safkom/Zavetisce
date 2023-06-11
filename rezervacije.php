@@ -55,7 +55,7 @@
 require_once 'cookie.php';
 require_once 'connect.php';
 
-$id = $_COOKIE['id'];
+$id = $_SESSION['id'];
 
 // Check if ID exists in the database
 $sql = "SELECT * FROM uporabniki WHERE id = ?";

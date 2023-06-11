@@ -2,7 +2,7 @@
 require_once 'connect.php';
 require_once 'cookie.php';
 
-$id = $_COOKIE['zival_id'];
+$id = $_SESSION['zival_id'];
 
 $sql = "DELETE FROM zivali WHERE id = $id;";
     if($conn->query($sql) === TRUE) {

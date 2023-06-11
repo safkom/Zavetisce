@@ -2,13 +2,13 @@
 require_once 'connect.php';
 require_once 'cookie.php';
 
-$id = $_COOKIE['id'];
+$id = $_SESSION['id'];
 $zival = $_GET['sponzorstvo_id'];
 echo $id;
 echo "<br>";
 echo $zival;
 
-if (isset($_COOKIE['admin'])) {
+if (isset($_SESSION['admin'])) {
     $sql = "DELETE FROM sponzorstva WHERE id = ?;";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $zival);

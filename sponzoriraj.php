@@ -73,7 +73,7 @@
     require_once 'cookie.php';
     require_once 'connect.php';
     $zival = $_GET['zival_id'];
-    setcookie('zival_id', $zival);
+    $_SESSION['zival_id'] = $zival;
     $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
