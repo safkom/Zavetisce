@@ -150,10 +150,10 @@
 session_start();
 require_once 'connect.php';
 
-if (!isset($_SESSION["id"])) {
-    header('Location: index.php');
-    exit();
-}
+//if (!isset($_SESSION["id"])) {
+//    header('Location: index.php');
+//    exit();
+//}
 
 //if (isset($_SESSION["admin"])) {
 //    header('Location: admin.php');
