@@ -88,7 +88,7 @@
 
 <body>
 <?php
-require_once 'cookie.php';
+session_start();
 require_once 'connect.php';
 $sql = "SELECT z.ime, z.datum_r, z.slika_id, s.id, s.vrsta FROM sponzorstva s INNER JOIN zivali z ON s.id = z.sponzorstvo_id WHERE s.uporabnik_id = ".$_SESSION['id'].";";
 $result = mysqli_query($conn, $sql);

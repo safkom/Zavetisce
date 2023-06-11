@@ -1,6 +1,6 @@
 <?php
 require_once 'connect.php';
-require_once 'cookie.php';
+session_start();
 
 $id = $_SESSION['id'];
 $sql = "SELECT * FROM uporabniki WHERE id = ?;";

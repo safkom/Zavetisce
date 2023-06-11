@@ -110,7 +110,7 @@ body {
 </head>
 <body>
   <?php
-  require_once 'cookie.php';
+  session_start();
   ?>
   <div class = "container">
     <h1>Registracija</h1>

@@ -70,7 +70,7 @@
 </head>
 <body>
     <?php
-    require_once 'cookie.php';
+    session_start();
     require_once 'connect.php';
     $danes = $date = date('m-d-Y');
     ?>

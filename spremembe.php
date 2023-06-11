@@ -70,7 +70,7 @@
 </head>
 <body>
     <?php
-    require_once 'cookie.php';
+    session_start();
     require_once 'connect.php';
     $zival = $_GET['zival_id'];
     $_SESSION['zival_id'] = $zival;

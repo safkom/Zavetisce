@@ -52,7 +52,7 @@
 <body>
     <div id = "container">
 <?php
-require_once 'cookie.php';
+session_start();
 require_once 'connect.php';
 
 $id = $_SESSION['id'];

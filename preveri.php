@@ -1,6 +1,6 @@
 <?php
 require_once 'connect.php';
-
+session_start();
 $email = $_GET['email'];
 $password = $_GET['geslo'];
 

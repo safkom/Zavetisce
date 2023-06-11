@@ -1,6 +1,6 @@
 <?php
 require_once 'connect.php';
-require_once 'cookie.php';
+session_start();
 
 $id = $_SESSION['id'];
 $zival = $_GET['zival_id'];
