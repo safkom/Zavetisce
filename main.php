@@ -170,10 +170,11 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 $query = mysqli_num_rows($result);
 
-if ($query > 0) {
+if ($query == 0) {
     header('Location: index.php');
     exit();
 }
+
 
 
 $sql = "SELECT * FROM zivali;";
