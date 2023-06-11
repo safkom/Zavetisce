@@ -2,7 +2,7 @@
 require_once 'connect.php';
 require_once 'cookie.php';
 
-$id = $_COOKIE['id'];
+$id = $_SESSION['id'];
 $sql = "SELECT * FROM uporabniki WHERE id = ?;";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "s", $id);
@@ -20,7 +20,7 @@ if ($query > 0) {
     $result = mysqli_stmt_get_result($stmt);
     $query = mysqli_num_rows($result);
     if ($query == 0) {
-        $id = $_COOKIE['id'];
+        $id = $_SESSION['id'];
         $date = strtotime("+7 day");
         $datum = date('Y-m-d', $date);
 
@@ -43,7 +43,6 @@ if ($query > 0) {
                 setcookie('prijava', "Error: " . $update_sql . "<br>" . $conn->error);
                 setcookie('error', 1);
                 header('Location: main.php');
-                setcookie('error', 1);
             }
         } else {
             setcookie('prijava', "Error: " . $sql . "<br>" . $conn->error);
