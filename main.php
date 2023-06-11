@@ -155,10 +155,10 @@ require_once 'connect.php';
 //    exit();
 //}
 
-//if (isset($_SESSION["admin"])) {
-//    header('Location: admin.php');
-//    exit();
-//}
+if (isset($_SESSION["admin"])) {
+    header('Location: admin.php');
+    exit();
+}
 
 $id = $_SESSION["id"];
 echo $id;
