@@ -167,7 +167,7 @@ $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
 // Modify the if statement to check if id exists in the database
-if ($query == 0) {
+if ($query > 0) {
     header('Location: index.php');
     exit();
 }
