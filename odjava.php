@@ -1,4 +1,5 @@
 <?php
+session_start();
 session_destroy();
 //delete cookie id and prijava
 setcookie('prijava', "Odjava uspešna.");
