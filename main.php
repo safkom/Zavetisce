@@ -162,7 +162,7 @@ if (isset($_SESSION["admin"])) {
 
 $id = $_SESSION["id"];
 
-$sql = "SELECT * FROM uporabniki WHERE id = '$id';";
+$sql = "SELECT * FROM uporabniki WHERE id = $id;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
