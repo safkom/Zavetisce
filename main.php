@@ -155,10 +155,10 @@ require_once 'connect.php';
 //    exit();
 //}
 
-if (isset($_SESSION["admin"])) {
-    header('Location: admin.php');
-    exit();
-}
+//if (isset($_SESSION["admin"])) {
+//    header('Location: admin.php');
+//    exit();
+//}
 
 $id = $_SESSION["id"];
 echo $id;
@@ -168,10 +168,10 @@ $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
 // Modify the if statement to check if id exists in the database
-//if ($query > 0) {
-//    header('Location: index.php');
-//    exit();
-//}
+if ($query > 0) {
+  header('Location: index.php');
+  exit();
+}
 
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
