@@ -137,7 +137,7 @@
   overflow-x: scroll; }
 
 .table {
-  min-width: 1000px !important;
+  min-width: 1000px  ;
   border-collapse: separate;
   border-spacing: 0 10px; }
   .table thead th {
@@ -162,15 +162,15 @@
   *,
   *::before,
   *::after {
-    text-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important; }
+    text-shadow: none  ;
+    -webkit-box-shadow: none  ;
+    box-shadow: none  ; }
   a:not(.btn) {
     text-decoration: underline; }
   abbr[title]::after {
     content: " (" attr(title) ")"; }
   pre {
-    white-space: pre-wrap !important; }
+    white-space: pre-wrap  ; }
   pre,
   blockquote {
     border: 1px solid #adb5bd;
@@ -191,21 +191,21 @@
   @page {
     size: a3; }
   body {
-    min-width: 992px !important; }
+    min-width: 992px  ; }
   .container {
-    min-width: 992px !important; }
+    min-width: 992px  ; }
   .navbar {
     display: none; }
   .badge {
     border: 1px solid #000; }
   .table {
-    border-collapse: collapse !important; }
+    border-collapse: collapse  ; }
     .table td,
     .table th {
-      background-color: #fff !important; }
+      background-color: #fff  ; }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #dee2e6 !important; }
+    border: 1px solid #dee2e6  ; }
   .table-dark {
     color: inherit; }
     .table-dark th,
@@ -231,8 +231,8 @@ a {
   transition: .3s all ease;
   color: #1089ff; }
   a:hover, a:focus {
-    text-decoration: none !important;
-    outline: none !important;
+    text-decoration: none  ;
+    outline: none  ;
     -webkit-box-shadow: none;
     box-shadow: none; }
 
@@ -244,7 +244,7 @@ h1, h2, h3, h4, h5,
   color: #000; }
 
 .bg-primary {
-  background: #1089ff !important; }
+  background: #1089ff  ; }
 
 .ftco-section {
   padding: 7em 0; }
