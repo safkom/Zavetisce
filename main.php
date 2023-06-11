@@ -160,7 +160,7 @@ if (isset($_SESSION["admin"])) {
     exit();
 }
 
-$id = mysqli_real_escape_string($conn, $_SESSION["id"]);
+$id = $_SESSION["id"];
 
 $sql = "SELECT * FROM uporabniki WHERE id = '$id';";
 $result = mysqli_query($conn, $sql);
