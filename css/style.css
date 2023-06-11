@@ -1484,7 +1484,6 @@ pre {
     background-color: rgba(0, 0, 0, 0.075); }
 
 .table .thead-dark th {
-  color: #fff;
   border-color: #454d55; }
 
 .table .thead-light th {
@@ -1492,8 +1491,7 @@ pre {
   background-color: #e9ecef;
   border-color: #dee2e6; }
 
-.table-dark {
-  color: #fff; }
+.table-dark { }
   .table-dark th,
   .table-dark td,
   .table-dark thead th {
