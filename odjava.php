@@ -1,5 +1,5 @@
 <?php
-session_abort();
+session_destroy();
 //delete cookie id and prijava
 setcookie('prijava', "Odjava uspešna.");
 setcookie('good',"", time()- 3600);
