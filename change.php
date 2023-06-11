@@ -5,14 +5,14 @@ error_reporting(E_ALL);
 require_once 'connect.php';
 session_start();
 
-$id = $_SESSION['id'];
+$id = $_SESSION["id"];
 $sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
 // Check if the user is an admin
 if ($query > 0) {
-    $zival = $_SESSION['zival_id'];
+    $zival = $_SESSION["zival_id"];
     $uporabnikEmail = $_POST['uporabnikid'];
 
     // Check if uporabnikId is empty

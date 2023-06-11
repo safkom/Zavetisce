@@ -5,8 +5,8 @@ session_start();
 $datum_z = $_POST['datum'];
 $cas = $_POST['cas'];
 $vrsta = $_POST['sponzorstvo'];
-$uporabnik_id = $_SESSION['id'];
-$zival_id = $_SESSION['zival_id'];
+$uporabnik_id = $_SESSION["id"];
+$zival_id = $_SESSION["zival_id"];
 
 // Prepare the INSERT statement
 $sql = "INSERT INTO sponzorstva (uporabnik_id, vrsta, datum_zacetka, datum_konca)

@@ -2,7 +2,7 @@
 require_once 'connect.php';
 session_start();
 
-$id = $_SESSION['id'];
+$id = $_SESSION["id"];
 $sql = "SELECT * FROM uporabniki WHERE id = ?;";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, "s", $id);
@@ -20,7 +20,7 @@ if ($query > 0) {
     $result = mysqli_stmt_get_result($stmt);
     $query = mysqli_num_rows($result);
     if ($query == 0) {
-        $id = $_SESSION['id'];
+        $id = $_SESSION["id"];
         $date = strtotime("+7 day");
         $datum = date('Y-m-d', $date);
 

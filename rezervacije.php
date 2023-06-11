@@ -55,7 +55,7 @@
 session_start();
 require_once 'connect.php';
 
-$id = $_SESSION['id'];
+$id = $_SESSION["id"];
 
 // Check if ID exists in the database
 $sql = "SELECT * FROM uporabniki WHERE id = ?";

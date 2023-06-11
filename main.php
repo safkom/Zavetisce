@@ -150,17 +150,17 @@
 session_start();
 require_once 'connect.php';
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION["id"])) {
     header('Location: index.php');
     exit();
 }
 
-if (isset($_SESSION['admin'])) {
+if (isset($_SESSION["admin"])) {
     header('Location: admin.php');
     exit();
 }
 
-$id = mysqli_real_escape_string($conn, $_SESSION['id']);
+$id = mysqli_real_escape_string($conn, $_SESSION["id"]);
 
 $sql = "SELECT * FROM uporabniki WHERE id = '$id';";
 $result = mysqli_query($conn, $sql);

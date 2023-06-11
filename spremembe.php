@@ -72,7 +72,7 @@
     <?php
     session_start();
     require_once 'connect.php';
-    $_SESSION['zival_id'] = $_GET['zival_id'];
+    $_SESSION["zival_id"] = $_GET['zival_id'];
     $sql = "SELECT * FROM zivali WHERE id = ".$_GET['zival_id'].";";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($result);
