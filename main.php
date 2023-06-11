@@ -150,28 +150,31 @@
 session_start();
 require_once 'connect.php';
 
-//if (!isset($_SESSION["id"])) {
-//    header('Location: index.php');
-//    exit();
-//}
+if (!isset($_SESSION["id"])) {
+    header('Location: index.php');
+    exit();
+}
 
-//if (isset($_SESSION["admin"])) {
-//    header('Location: admin.php');
-//    exit();
-//}
+if (isset($_SESSION["admin"])) {
+    header('Location: admin.php');
+    exit();
+}
 
 $id = $_SESSION["id"];
 echo $id;
 
-$sql = "SELECT * FROM uporabniki WHERE id = $id;";
-$result = mysqli_query($conn, $sql);
-$query = mysqli_num_rows($result);
+$sql = "SELECT * FROM uporabniki WHERE id = ?;";
+$stmt = mysqli_prepare($conn, $sql);
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-// Modify the if statement to check if id exists in the database
-if ($query > 0) {
-  header('Location: index.php');
-  exit();
+
+if ($query == 0) {
+    header('Location: index.php');
+    exit();
 }
+
 
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);
