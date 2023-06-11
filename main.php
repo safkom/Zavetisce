@@ -185,7 +185,7 @@ $result = mysqli_query($conn, $sql);
 
   <div id="filterOptionsContainer" class="filter-options">
     <label for="filterName">Filtriraj po imenu:</label>
-    <input type="text" id="filterName" oninput="filterTable()" placeholder="Search by name">
+    <input type="text" id="filterName" oninput="filterTable()">
 
     <label for="sortAge">Sortiraj po starosi:</label>
     <select id="sortAge" onchange="filterTable()">
