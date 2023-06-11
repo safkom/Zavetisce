@@ -128,14 +128,15 @@ body {
   <label for="kraji">Kraj:</label>
   <input type="text" id="kraj" name = "kraj" list="kraji" required><br><br>
   <datalist id="kraji">
-    <?php
-    require_once 'connect.php';
-    $sql = "SELECT kraj FROM kraji";
-    $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-      echo "<option value = ".$row['kraj'].">";
-    }
-    ?>
+  <?php
+require_once 'connect.php';
+$sql = "SELECT kraj FROM kraji";
+$result = mysqli_query($conn, $sql);
+while ($row = mysqli_fetch_array($result)) {
+  echo '<option value="' . $row['kraj'] . '">';
+}
+?>
+
 </datalist>
   <input type="submit" value="Pošlji">
 </form>
