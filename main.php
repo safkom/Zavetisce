@@ -161,16 +161,17 @@ if (isset($_SESSION["admin"])) {
 }
 
 $id = $_SESSION["id"];
+echo $id;
 
 $sql = "SELECT * FROM uporabniki WHERE id = $id;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 
 // Modify the if statement to check if id exists in the database
-if ($query > 0) {
-    header('Location: index.php');
-    exit();
-}
+//if ($query > 0) {
+//    header('Location: index.php');
+//    exit();
+//}
 
 $sql = "SELECT * FROM zivali;";
 $result = mysqli_query($conn, $sql);

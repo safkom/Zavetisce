@@ -145,7 +145,6 @@ if (!isset($_SESSION["id"])) {
     exit();
 }
 $id = $_SESSION["id"];
-echo $_SESSION["id"];
 $sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);

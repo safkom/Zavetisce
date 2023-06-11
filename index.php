@@ -121,7 +121,6 @@ body {
 </head>
 <body>
   <?php
-  echo $_SESSION["id"];
   if(isset($_SESSION["id"])){
     header('Location: main.php');
   }
