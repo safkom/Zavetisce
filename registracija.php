@@ -132,7 +132,7 @@ body {
     require_once 'connect.php';
     $sql = "SELECT kraj FROM kraji";
     $result = mysqli_query($conn, $sql);
-    while ($row = mysqli_fetch_array($result);) {
+    while ($row = mysqli_fetch_array($result)) {
       echo "<option value = ".$row['kraj'].">";
     }
     ?>
