@@ -140,11 +140,11 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once 'cookie.php';
 require_once 'connect.php';
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION["id"])) {
     header('Location: index.php');
     exit();
 }
-$id = $_SESSION['id'];
+$id = $_SESSION["id"];
 $sql = "SELECT * FROM uporabniki WHERE id = $id AND admin = 1;";
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);

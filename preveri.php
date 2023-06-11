@@ -15,13 +15,13 @@ if ($result->num_rows > 0) {
     $hash = $row['geslo'];
     if (password_verify($password, $hash)) {
         if ($row['admin'] == 1) {
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['admin'] = 1;
+            $_SESSION["id"] = $row['id'];
+            $_SESSION["admin"] = 1;
             setcookie('prijava', "Prijava uspešna.");
             setcookie('good', 1);
             header('Location: admin.php');
         } else {
-            $_SESSION['id'] = $row['id'];
+            $_SESSION["id"] = $row['id'];
             setcookie('prijava', "Prijava uspešna.");
             setcookie('good', 1);
             header('Location: main.php');
