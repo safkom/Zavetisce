@@ -8167,7 +8167,6 @@ h1, h2, h3, h4, h5,
 
 .table {
   min-width: 1000px !important;
-  width: 100%;
   border-collapse: separate;
   border-spacing: 0 10px; }
   .table thead th {
