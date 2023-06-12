@@ -189,8 +189,8 @@ $result = mysqli_query($conn, $sql);
 
     <label for="sortAge">Sortiraj po starosi:</label>
     <select id="sortAge" onchange="filterTable()">
-      <option value="asc">Ascending</option>
-      <option value="desc">Descending</option>
+      <option value="asc">Naraščajoče</option>
+      <option value="desc">Padajoče</option>
     </select>
   </div>
   <br>

@@ -163,12 +163,12 @@ $result = mysqli_query($conn, $sql);
 
   <div id="filterOptionsContainer" class="filter-options">
     <label for="filterName">Filtriraj po imenu:</label>
-    <input type="text" id="filterName" oninput="filterTable()" placeholder="Search by name">
+    <input type="text" id="filterName" oninput="filterTable()" placeholder="Ime">
 
     <label for="sortAge">Sortiraj po starosti:</label>
     <select id="sortAge" onchange="filterTable()">
-      <option value="asc">Padajoče</option>
-      <option value="desc">Naraščajoče</option>
+      <option value="asc">Naraščajoče</option>
+      <option value="desc">Padajoče</option>
     </select>
   </div>
   <br>
