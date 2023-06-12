@@ -172,15 +172,23 @@ $result = mysqli_query($conn, $sql);
     </select>
   </div>
   <br>
-<table border="1">
-    <tr>
-        <td><b>Ime</b></td>
-        <td><b>Starost</b></td>
-        <td><b>Posvojen</b></td>
-        <td><b>Slika</b></td>
-        <td><b>Rezerviran</b></td>
-        <td><b>Spremeni</b></td>
-    </tr>
+  <div class="container">
+			<div class="row justify-content-center">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>Ime</th>
+						      <th>Starost</th>
+						      <th>Posvojen</th>
+						      <th>Slika</th>
+							  <th>Rezerviran</th>
+                <th>Spremeni</th>
+						    </tr>
+</thread>
 
     <?php
     while ($row = mysqli_fetch_array($result)) {
@@ -238,13 +246,17 @@ $result = mysqli_query($conn, $sql);
             $datum = $klic3['datum'];
             $rezervacija = 'Da, ' . $datum;
         }
+        echo '<tr class = "alert" role = "alert">';
+        echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
+       
+        if (!empty($slika)) {
+          echo "<img src='".$slika."'>";
+      } else {
+          echo "Ni slike";
+      }
 
-        echo '<tr>';
-        echo '<td>' . $row['ime'] . '</td>';
-        echo '<td>' . $age . '</td>';
-        echo '<td>' . $posvojen . '</td>';
-        echo '<td>'.$slika.'</td>';
-        echo '<td>' . $rezervacija . '</td>';
+        echo "</td><td>".$rezervacija."</td>";
+        echo '</tr>';
         echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
         echo '</tr>';
     }
