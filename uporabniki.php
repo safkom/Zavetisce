@@ -159,17 +159,24 @@ $result = mysqli_query($conn, $sql);
 ?>
 <p>Seznam uporabnikov:</p>
   <br>
-<table border="1">
-    <tr>
-        <td><b>Ime</b></td>
-        <td><b>Priimek</b></td>
-        <td><b>Mail</b></td>
-        <td><b>Naslov</b></td>
-        <td><b>Kraj</b></td>
-        <td><b>Admin</b></td>
-        <td><b>Izbriši uporanika</b></td>
-    </tr>
-
+  <div class="container">
+			<div class="row justify-content-center">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>Ime</th>
+						      <th>Priimek</th>
+						      <th>Mail</th>
+						      <th>Naslov</th>
+							  <th>Kraj</th>
+                <th>Admin</th>
+                <th>Izbriši uporabnika</th>
+						    </tr>
+</thread>
     <?php
     while($row = mysqli_fetch_array($result)) {
         $kraj_id = $row['kraj_id'];
