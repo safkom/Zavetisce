@@ -136,7 +136,7 @@
     </style>    
 </head>
 
-<body>
+<body onload="toggleFilterOptions()">
 <div id="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
@@ -205,7 +205,7 @@ $result = mysqli_query($conn, $sql);
 						    <tr>
 						      <th>Ime</th>
 						      <th>Starost</th>
-						      <th>posvojen</th>
+						      <th>Posvojen</th>
 						      <th>Slika</th>
 							  <th>Rezerviraj za ogled</th>
 						    </tr>

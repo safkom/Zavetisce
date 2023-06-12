@@ -124,7 +124,7 @@
 }
     </style>
 </head>
-<body>
+<body onload="toggleFilterOptions()">
 <div id="container">
 <div class="dropdown">
     <button id="menuBtn" class="menu-btn">Menu</button>
@@ -426,5 +426,9 @@ function getCookie(name) {
     document.cookie = 'warning=; Max-Age=0';
     document.cookie = 'good=; Max-Age=0';
 </script>
+<script src="js/jquery.min.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
