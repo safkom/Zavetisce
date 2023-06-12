@@ -12,7 +12,7 @@
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
         }
-        .container {
+        .containers {
             margin: 50px auto;
             padding: 20px;
             background-color: #fff;
@@ -95,7 +95,7 @@ $sql = "SELECT z.ime, z.datum_r, z.slika_id, s.id, s.vrsta FROM sponzorstva s IN
 $result = mysqli_query($conn, $sql);
 $query = mysqli_num_rows($result);
 if($query > 0){
-    echo "<div class='container'>";
+    echo "<div class='containers'>";
     echo "<p>Tukaj so živali, ki jih sponzoriraš:</p>";
     echo "<div class='container'>
 			<div class='row justify-content-center'>
@@ -112,7 +112,7 @@ if($query > 0){
 						      <th>Slika</th>
 							  <th>Prekliči sponzorstvo</th>
 						    </tr>
-</thread>";
+        </thread>";
 
 while ($row = mysqli_fetch_array($result)) {
     $sponzorstvo = "<a href='preklicis.php?sponzorstvo_id=".$row['id']."'>Prekliči</a>";
@@ -209,7 +209,7 @@ $sql = "SELECT * FROM zivali";
 $result = mysqli_query($conn, $sql);
 ?>
 
-<div class = "container">
+<div class = "containers">
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
     <div class="container">
 			<div class="row justify-content-center">
