@@ -96,14 +96,22 @@ $query = mysqli_num_rows($result);
 if($query > 0){
     echo "<div class='container'>";
     echo "<p>Tukaj so živali, ki jih sponzoriraš:</p>";
-echo "<table border='1'>";
-echo "<tr>";
-echo "<td><b>Ime</b></td>";
-echo "<td><b>Starost</b></td>";
-echo "<td><b>Vrsta sponzorstva</b></td>";
-echo "<td><b>Slika</b></td>";
-echo "<td><b>Prekliči sponzorstvo</b></td>";
-echo "</tr>";
+    echo "<div class='container'>
+			<div class='row justify-content-center'>
+			</div>
+			<div class='row'>
+				<div class='col-md-12'>
+					<div class='table-wrap'>
+						<table class='table'>
+						  <thead class='thead-dark'>
+						    <tr>
+						      <th>Ime</th>
+						      <th>Starost</th>
+						      <th>Vrsta sponzorstva</th>
+						      <th>Slika</th>
+							  <th>Prekliči sponzorstvo</th>
+						    </tr>
+</thread>";
 
 while ($row = mysqli_fetch_array($result)) {
     $sponzorstvo = "<a href='preklicis.php?sponzorstvo_id=".$row['id']."'>Prekliči</a>";
@@ -202,13 +210,21 @@ $result = mysqli_query($conn, $sql);
 
 <div class = "container">
     <p>Bi sponzoriral žival? Na tem seznamu lahko izbereš žival za sponzorirati:</p>
-    <table border="1">
-        <tr>
-            <td><b>Ime</b></td>
-            <td><b>Starost</b></td>
-            <td><b>Slika</b></td>
-            <td><b>Sponzoriraj</b></td>
-        </tr>
+    <div class="container">
+			<div class="row justify-content-center">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						    <th>Ime</th>
+						    <th>Starost</th>
+						    <th>Slika</th>
+                            <th>Sponzoriraj</th>
+						    </tr>
+</thread>
         <?php
         while ($row = mysqli_fetch_array($result)) {
             $slikaid = $row['slika_id'];
