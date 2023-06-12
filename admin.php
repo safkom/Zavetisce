@@ -194,14 +194,15 @@ $result = mysqli_query($conn, $sql);
     while ($row = mysqli_fetch_array($result)) {
         $zival_id = $row['id'];
         $slikaid = $row['slika_id'];
-        $sql = "SELECT * FROM slike WHERE id = '$slikaid';";
-        $klic = mysqli_query($conn, $sql);
-        $klic1 = mysqli_fetch_array($klic);
-    if ($klic1 !== null) {
-        $slika = "<img src='" . $klic1['url'] . "'>";
-    } else {
-        $slika = "Ni slike."; // or any default value you prefer
-    }
+            $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+            $klic = mysqli_query($conn, $sql1);
+            $klic1 = mysqli_fetch_array($klic);
+
+            if ($klic1 !== null) {
+                $slika = $klic1['url'];
+            } else {
+                $slika = null;
+            }
 
         $dateOfBirth = $row['datum_r'];
         $today = date("Y-m-d");
