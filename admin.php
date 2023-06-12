@@ -256,7 +256,6 @@ $result = mysqli_query($conn, $sql);
       }
 
         echo "</td><td>".$rezervacija."</td>";
-        echo '</tr>';
         echo '<td><a href="spremembe.php?zival_id=' . $zival_id . '">Spremeni</a></td>';
         echo '</tr>';
     }
