@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Miha Šafranko"/>
     <meta name="author" content="Miha Šafranko" />
-    <link rel="stylesheet" type="text/css" href="css/rezervacije.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <style>
         body{
             background: linear-gradient(90deg, #C7C5F4, #776BCC);
