@@ -158,7 +158,7 @@ $result = mysqli_query($conn, $sql);
                 $posvojen = 'Da';
             }
 
-            echo '<tr>';
+            echo '<tr class = "alert" role = "alert">';
             echo '<td>'.$row['ime']."</td><td>".$age."</td><td>".$posvojen."</td><td>";
 
             if (!empty($slika)) {
