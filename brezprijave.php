@@ -96,13 +96,21 @@ $result = mysqli_query($conn, $sql);
 ?>
 <div id = "container">
     <p>Seznam kužkov:</p>
-    <table border="1">
-        <tr>
-            <td><b>Ime</b></td>
-            <td><b>Starost</b></td>
-            <td><b>Posvojen</b></td>
-            <td><b>Slika</b></td>
-        </tr>
+    <div class="container">
+        <div class="row justify-content-center">
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-wrap">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Ime</th>
+                    <th>Starost</th>
+                    <th>Posvojen</th>
+                    <th>Slika</th>
+                  </tr>
+  </thread>
         <?php
         while ($row = mysqli_fetch_array($result)) {
             $slikaid = $row['slika_id'];
