@@ -193,7 +193,7 @@ $result = mysqli_query($conn, $sql);
             $admin = 'Ne';
         }
 
-        echo '<tr>';
+        echo '<tr class = "alert" role = "alert">';
         echo '<td>' . $row['ime'] . '</td>';
         echo '<td>' .  $row['priimek']  . '</td>';
         echo '<td>' .  $row['email']  . '</td>';
