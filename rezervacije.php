@@ -73,12 +73,24 @@ if (mysqli_num_rows($result) != 0) {
     $result = mysqli_stmt_get_result($stmt);
     if(mysqli_num_rows($result) > 0){
 
-
-    echo "Seznam kužkov:";
-    echo '<table border="1">';
-    echo '<tr>';
-    echo "<td><b>Ime</b></td><td><b>Starost</b></td><td><b>Posvojen</b></td><td><b>Slika</b></td><td><b>Preklici rezervacijo</b></td>";
-    echo '</tr>';
+        ?>
+        <div class="container">
+			<div class="row justify-content-center">
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-wrap">
+						<table class="table">
+						  <thead class="thead-dark">
+						    <tr>
+						      <th>Ime</th>
+						      <th>Starost</th>
+						      <th>Posvojen</th>
+						      <th>Slika</th>
+                <th>Prekliči rezervacijo</th>
+						    </tr>
+</thread>
+<?php
 
     while ($row = mysqli_fetch_array($result)) {
         $slikaid = $row['slika_id'];
