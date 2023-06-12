@@ -75,10 +75,15 @@ $query = mysqli_num_rows($result);
 
     while($row=mysqli_fetch_array($result)){
         $slikaid = $row['slika_id'];
-        $sql = "SELECT * FROM slike WHERE id = ".$slikaid.";";
-        $klic = mysqli_query($conn,$sql);
-        $klic1 = mysqli_fetch_array($klic);
-        $slika = $klic1['url'];
+            $sql1 = "SELECT * FROM slike WHERE id = '$slikaid';";
+            $klic = mysqli_query($conn, $sql1);
+            $klic1 = mysqli_fetch_array($klic);
+
+            if ($klic1 !== null) {
+                $slika = $klic1['url'];
+            } else {
+                $slika = null;
+            }
         $uporabnik_id = $row['uporabnik_id'];
         $zival_id = $row['zival_id'];
         $dateOfBirth = $row['datum_r'];
