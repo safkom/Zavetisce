@@ -279,7 +279,7 @@ $result = mysqli_query($conn, $sql);
     <br>
     <div id="gumbi">
     <button class="gumbstyle" onclick="location.href = 'sponzorstva.php';">Sponzorstva</button>
-    <button class="gumbstyle" onclick="location.href = 'sprehajanje.php';">Sprehajanje psov</button>
+    <button class="gumbstyle" onclick="location.href = 'rezervacije.php';">Rezervacije</button>
     </div>  
 </div>
 
