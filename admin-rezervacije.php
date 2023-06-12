@@ -144,9 +144,14 @@ $query = mysqli_num_rows($result);
             $rezerviran = "Ne.";
             $uporabnik = "/";
         }
+        if (!empty($slika)) {
+            echo "<img src='".$slika."'>";
+        } else {
+            echo "Ni slike";
+        }
 
         echo'<tr>';
-        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td><img src='".$slika."'></td><td>".$rezerviran."</td><td>".$uporabnik."</td><td><a href = 'preklici.php?zival_id=".$zival_id."' >Preklici</td>";
+        echo '<td>'.$row['ime']."</td><td> ".$age. "</td><td> ".$posvojen."</td><td>".$slika."</td><td>".$rezerviran."</td><td>".$uporabnik."</td><td><a href = 'preklici.php?zival_id=".$zival_id."' >Preklici</td>";
         echo'</tr>';
     }
     echo '</table>';
