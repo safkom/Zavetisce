@@ -98,6 +98,8 @@
             <input type="radio" id="zdravljenje" name="sponzorstvo" value="Zdravljenje"></p>
             <p>Prehrana:
             <input type="radio" id="prehrana" name="sponzorstvo" value="Prehrana"></p>
+            <p>Sprehajanje:
+            <input type="radio" id="sprehajanje" name="sponzorstvo" value="Sprehajanje"></p>
             
 
            <br><br>
