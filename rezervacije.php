@@ -143,7 +143,7 @@ if (mysqli_num_rows($result) != 0) {
 
         $posvojen = ($row['posvojen'] == 0) ? 'Ne' : 'Da';
 
-        echo '<tr>';
+        echo '<tr class = "alert" role = "alert">';
         echo '<td>' . $row['ime'] . "</td><td> " . $age . "</td><td> " . $posvojen . "</td><td>".$slika."</td><td><a href='preklici.php?zival_id=" . $row['zival_id'] . "'>Preklici</td>";
         echo '</tr>';
     }
